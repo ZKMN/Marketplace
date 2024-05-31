@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import { useQueryState } from 'nuqs';
 
@@ -7,12 +7,6 @@ import { IProductDetails } from '@/shared/types';
 
 export const ChooseSize = ({ sizes }: { sizes?: IProductDetails['sizes']; }) => {
   const [sizeId, setSizeId] = useQueryState('sizeId');
-
-  useEffect(() => {
-    if (!sizeId && sizes?.length) {
-      setSizeId(String(sizes[0].id));
-    }
-  }, [sizes]);
 
   return (
     <Grid
@@ -34,7 +28,13 @@ export const ChooseSize = ({ sizes }: { sizes?: IProductDetails['sizes']; }) => 
           {sizes?.map(({ id, value }) => (
             <Grid item key={id} flex={1}>
               <Box
-                sx={{ cursor: 'pointer', outline: Number(sizeId) === Number(id) ? '2px solid #FF7C2A' : 'none' }}
+                sx={{
+                  cursor: 'pointer',
+                  outline: Number(sizeId) === Number(id) ? '2px solid #FF7C2A' : 'none',
+                  ':focus': {
+                    outline: Number(sizeId) === Number(id) ? '2px solid #FF7C2A' : '1px solid #FF7C2A',
+                  },
+                }}
                 onClick={() => setSizeId(String(id))}
                 width="100%"
                 bgcolor="background.paper"

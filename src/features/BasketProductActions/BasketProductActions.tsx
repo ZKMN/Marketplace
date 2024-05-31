@@ -6,11 +6,10 @@ import { useDeleteRequest } from '@/shared/api/hooks';
 import { BasePopup, IntlButton } from '@/shared/components';
 import { addQueryParamsToURL } from '@/shared/lib/helpers';
 import { useLngRouter } from '@/shared/lib/hooks';
-import { IBasketProduct, IBasketResponse, Links } from '@/shared/types';
 import { initBasketSuccessAction } from '@/shared/lib/store';
+import { IBasketProduct, IBasketResponse, Links } from '@/shared/types';
 
 export const BasketProductActions = ({
-  // sizeId,
   quantity,
   shoesType,
   productId,
@@ -23,11 +22,12 @@ export const BasketProductActions = ({
 }) => {
   const [handleRedirect] = useLngRouter();
 
-  const [handleDeleteProduct] = useDeleteRequest<IBasketResponse>({ 
+  const [handleDeleteProduct] = useDeleteRequest<IBasketResponse>({
     url: `/basket/${sizeId}`,
+    withCredentials: true,
     config: {
-      onSuccess: ({data}) => initBasketSuccessAction(data)
-    }
+      onSuccess: ({ data }) => initBasketSuccessAction(data),
+    },
   });
 
   return (
@@ -46,11 +46,11 @@ export const BasketProductActions = ({
               onEdit?.();
               handleRedirect(
                 addQueryParamsToURL(
-                  `${Links.CATALOGUE}/${shoesType}/${productId}`,
+                  `${Links.PRODUCT}/${shoesType}/${productId}`,
                   {
+                    sizeId,
                     quantity,
                     edit: true,
-                    size: sizeId,
                   },
                 ),
               );

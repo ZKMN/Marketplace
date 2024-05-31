@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Grid } from '@mui/material';
 import { useQueryState } from 'nuqs';
 
@@ -8,16 +8,6 @@ import { IntlTypography } from '@/shared/components';
 
 export const ChooseQuantity = ({ available }: { available: number; }) => {
   const [quantity, setQuantity] = useQueryState('quantity');
-
-  useEffect(() => {
-    if (!quantity) {
-      setQuantity('1');
-    }
-
-    if (Number(quantity) > available) {
-      setQuantity(String(available));
-    }
-  }, [quantity]);
 
   return (
     <Grid container wrap="nowrap" alignItems="center">

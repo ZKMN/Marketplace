@@ -30,7 +30,7 @@ const Cart = () => {
         alignItems="center"
         to={Links.CHECKOUT}
         sx={{
-          cursor: !basket?.numItems ? 'default' : 'pointer',
+          cursor: 'pointer',
           border: 'none',
           bgcolor: 'background.paper',
         }}

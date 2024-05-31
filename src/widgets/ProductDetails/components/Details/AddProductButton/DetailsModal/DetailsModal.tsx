@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Grid, Typography } from '@mui/material';
 
-import { BasketProductActions } from '@/features/BasketProductActions';
+import { DeleteBasketProductAction } from '@/features/DeleteBasketProductAction';
 
 import { ProductBasketDetails } from '@/entities/Product';
 
@@ -53,7 +53,7 @@ export const DetailsModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 'isOpen
           <Grid item xs={12} md={6}>
             <IntlButton
               intl={{ label: 'continueShopping' }}
-              onClick={handleRedirect(Links.CATALOGUE)}
+              onClick={handleRedirect(`${Links.CATALOGUE}/1`)}
             />
           </Grid>
         </Grid>
@@ -65,15 +65,7 @@ export const DetailsModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 'isOpen
             <ProductBasketDetails
               product={product}
               quantity={quantity}
-              actions={(
-                <BasketProductActions
-                  onEdit={onClose}
-                  shoesType={product.shoesType}
-                  sizeId={product.size.id}
-                  quantity={quantity}
-                  productId={product.productId}
-                />
-              )}
+              actions={<DeleteBasketProductAction sizeId={product.size.id} />}
             />
           </Grid>
         ))}

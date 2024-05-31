@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import { BasketProductActions } from '@/features/BasketProductActions';
+import { DeleteBasketProductAction } from '@/features/DeleteBasketProductAction';
 
 import { ProductBasketDetails } from '@/entities/Product';
 
@@ -54,14 +54,7 @@ export const BasketDetailsStep = () => {
               <ProductBasketDetails
                 product={product}
                 quantity={quantity}
-                actions={(
-                  <BasketProductActions
-                    shoesType={product.shoesType}
-                    sizeId={product.size.id}
-                    quantity={quantity}
-                    productId={product.productId}
-                  />
-                )}
+                actions={<DeleteBasketProductAction sizeId={product.size.id} />}
               />
             </Grid>
           ))}
@@ -116,10 +109,10 @@ export const BasketDetailsStep = () => {
         <Grid container spacing={2}>
           <Grid item flex={1}>
             <IntlButton
-              intl={{ label: 'buyMore' }}
+              intl={{ label: 'continueShopping' }}
               size="small"
               color="secondary"
-              onClick={handleRedirect(Links.CATALOGUE)}
+              onClick={handleRedirect(`${Links.CATALOGUE}/1`)}
             />
           </Grid>
 

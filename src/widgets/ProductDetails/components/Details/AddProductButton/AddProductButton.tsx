@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { useBoolean } from 'ahooks';
 import { useSearchParams } from 'next/navigation';
 
-import { usePutRequest } from '@/shared/api/hooks';
+import { usePatchRequest, usePutRequest } from '@/shared/api/hooks';
 import { LoadingIntlButton } from '@/shared/components';
 import { initBasketSuccessAction } from '@/shared/lib/store';
 import { IBasketResponse } from '@/shared/types';
@@ -19,7 +19,9 @@ export const AddProductButton = () => {
   const sizeId = search.get('sizeId');
   const quantity = search.get('quantity');
 
-  const [handlePutProduct, { loading }] = usePutRequest<IBasketResponse, { sizeId: number; quantity: number; }>({
+  const hookRequest = edit ? usePatchRequest : usePutRequest;
+
+  const [handleProduct, { loading }] = hookRequest<IBasketResponse, { sizeId: number; quantity: number; }>({
     url: '/basket',
     withCredentials: true,
     config: {
@@ -52,7 +54,7 @@ export const AddProductButton = () => {
         intl={{ label: edit ? 'edit' : 'addToCart' }}
         loading={loading}
         disabled={!sizeId}
-        onClick={() => handlePutProduct({
+        onClick={() => handleProduct({
           payload: {
             sizeId: Number(sizeId),
             quantity: Number(quantity),

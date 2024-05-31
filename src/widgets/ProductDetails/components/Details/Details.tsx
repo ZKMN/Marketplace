@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import {
   Box,
   Divider,
@@ -11,9 +11,7 @@ import {
 
 import { ProductPrice, ProductTopSale } from '@/entities/Product';
 
-import { useGetSWR } from '@/shared/api/hooks';
 import { getProductType } from '@/shared/lib/helpers';
-import { useTypedParams } from '@/shared/lib/hooks';
 import { IProductDetails } from '@/shared/types';
 
 import { AddProductButton } from './AddProductButton';
@@ -26,18 +24,10 @@ import { DetailsSkeleton } from './DetailsSkeleton';
 import { FootLength } from './FootLength';
 import { YouMayLike } from './YouMayLike';
 
+import { useGetProduct } from '../../api/hooks';
+
 const DetailsComponent = ({ product }: { product?: IProductDetails; }) => {
-  const [productResponse, setResponse] = useState<IProductDetails>();
-
-  const { productId } = useTypedParams();
-
-  const { data } = useGetSWR<IProductDetails>({
-    url: `/products/${productId}`,
-    config: {
-      onSuccess: setResponse,
-      fallbackData: productResponse || product,
-    },
-  });
+  const { data } = useGetProduct(product);
 
   return (
     <Grid container mt={2}>
