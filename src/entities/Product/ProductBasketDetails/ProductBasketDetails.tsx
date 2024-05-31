@@ -21,6 +21,7 @@ export const ProductBasketDetails = ({
     size,
     code,
     price,
+    color,
     discount,
     shoesType,
     priceInitial,
@@ -90,7 +91,7 @@ export const ProductBasketDetails = ({
                     borderRadius="4px"
                   >
                     <Typography textAlign="center" fontSize="0.9rem">
-                      {size}
+                      {size.value}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -105,7 +106,7 @@ export const ProductBasketDetails = ({
                     textAlign="left"
                   />
 
-                  <ProductColor color="red" />
+                  <ProductColor color={color.value} />
                 </Grid>
               </Grid>
             </Grid>

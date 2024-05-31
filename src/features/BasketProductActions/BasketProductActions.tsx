@@ -6,7 +6,8 @@ import { useDeleteRequest } from '@/shared/api/hooks';
 import { BasePopup, IntlButton } from '@/shared/components';
 import { addQueryParamsToURL } from '@/shared/lib/helpers';
 import { useLngRouter } from '@/shared/lib/hooks';
-import { IBasketProduct, Links } from '@/shared/types';
+import { IBasketProduct, IBasketResponse, Links } from '@/shared/types';
+import { initBasketSuccessAction } from '@/shared/lib/store';
 
 export const BasketProductActions = ({
   // sizeId,
@@ -21,7 +22,12 @@ export const BasketProductActions = ({
 }) => {
   const [handleRedirect] = useLngRouter();
 
-  const [handleDeleteProduct] = useDeleteRequest({ url: `/basket/${productId}` });
+  const [handleDeleteProduct] = useDeleteRequest<IBasketResponse>({ 
+    url: `/basket/${productId}`,
+    config: {
+      onSuccess: ({data}) => initBasketSuccessAction(data)
+    }
+  });
 
   return (
     <BasePopup icon={<MoreVert />}>

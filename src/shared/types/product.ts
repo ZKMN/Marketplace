@@ -1,3 +1,17 @@
+export interface IProductColor {
+  id: number;
+  image: string;
+  value: string;
+  productId: string;
+}
+
+export interface IProductSize {
+  id: number;
+  value: string;
+  centimeters?: number;
+}
+
+
 export interface IProduct {
   img: string;
   code: string;
@@ -7,29 +21,15 @@ export interface IProduct {
   priceInitial: number;
   currency: 'EUR';
   shoesType: string;
-  colors: {
-    id: number;
-    image: string;
-    value: string;
-    productId: string;
-  }[];
-  sizes: {
-    id: number;
-    value: string;
-    centimeters?: number;
-  }[];
+  sizes: IProductSize[];
+  colors: IProductColor[];
 }
 
 export interface IProductDetails extends Omit<IProduct, 'img'> {
   images: string[]; // Array of urls
   gender: 'boy' | 'girl'; // or we can split in in boolean props boys: true; girls: true;
   available: number;
-  color: {
-    id: number;
-    image?: string;
-    value: string; // hex like #FFFFFF
-    productId: string;
-  };
+  color: IProductColor;
   youMayLike: {
     id: string | number;
     image: string;

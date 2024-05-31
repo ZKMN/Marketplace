@@ -1,3 +1,5 @@
+import { IProductColor, IProductSize } from "./product";
+
 export interface IBasketProduct {
   productId: number;
   code: string;
@@ -7,7 +9,8 @@ export interface IBasketProduct {
   currency: 'EUR';
   shoesType: string;
   img: string;
-  size: number;
+  size: IProductSize;
+  color: IProductColor;
 }
 
 export interface IBasketProductResponse {
