@@ -57,7 +57,7 @@ export const BasketDetailsStep = () => {
                 actions={(
                   <BasketProductActions
                     shoesType={product.shoesType}
-                        // sizeId={size.id}
+                    sizeId={product.size.id}
                     quantity={quantity}
                     productId={product.productId}
                   />

@@ -14,16 +14,17 @@ export const BasketProductActions = ({
   quantity,
   shoesType,
   productId,
+  sizeId,
   onEdit,
 }: Pick<IBasketProduct, 'shoesType' | 'productId'> & {
-  // sizeId: number;
+  sizeId: number;
   quantity: number;
   onEdit?: () => void;
 }) => {
   const [handleRedirect] = useLngRouter();
 
   const [handleDeleteProduct] = useDeleteRequest<IBasketResponse>({ 
-    url: `/basket/${productId}`,
+    url: `/basket/${sizeId}`,
     config: {
       onSuccess: ({data}) => initBasketSuccessAction(data)
     }
@@ -49,7 +50,7 @@ export const BasketProductActions = ({
                   {
                     quantity,
                     edit: true,
-                    // size: sizeId,
+                    size: sizeId,
                   },
                 ),
               );

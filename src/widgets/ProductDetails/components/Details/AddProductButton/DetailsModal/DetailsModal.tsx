@@ -69,7 +69,7 @@ export const DetailsModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 'isOpen
                 <BasketProductActions
                   onEdit={onClose}
                   shoesType={product.shoesType}
-                  // sizeId={size.id}
+                  sizeId={product.size.id}
                   quantity={quantity}
                   productId={product.productId}
                 />
