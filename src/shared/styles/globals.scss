@@ -1,0 +1,30 @@
+@import 'src/shared/styles/slick';
+@import 'src/shared/styles/toastify';
+@import 'src/shared/styles/gmap-autocomplete';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+:root {
+  color-scheme: light;
+}

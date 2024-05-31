@@ -1,0 +1,22 @@
+@import 'src/shared/styles/colors';
+@import 'src/shared/styles/mixins';
+
+@import 'react-toastify/dist/ReactToastify.css';
+
+.Toastify__toast-theme--light.Toastify__toast--error {
+  color: $white;
+  background-color: $error-main;
+}
+
+.Toastify__toast-theme--light.Toastify__toast--success {
+  color: $white;
+  background-color: $success-main;
+}
+
+.Toastify__toast {
+  width: max-content;
+
+  @include sm {
+    width: 300px;
+  }
+}

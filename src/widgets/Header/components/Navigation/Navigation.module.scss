@@ -1,0 +1,20 @@
+.menuUl {
+  gap: 30px;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.menuItem {
+  position: relative;
+  list-style-type: none;
+}
+
+.activeMenuItem {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}

@@ -1,0 +1,21 @@
+@import 'src/shared/styles/colors';
+@import 'src/shared/styles/mixins';
+
+.pac-container {
+  font-family: Weestep, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.pac-icon {
+  margin-right: 15px;
+}
+
+.pac-item-query {
+  font-size: 15px;
+}
+
+.pac-item {
+  padding: 8px 20px;
+  font-size: 15px;
+}

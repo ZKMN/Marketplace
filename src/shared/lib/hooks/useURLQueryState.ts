@@ -1,0 +1,23 @@
+'use client';
+
+import { NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { useSearchParams } from 'next/navigation';
+
+import { useLngRouter, usePathnameWithoutLng } from '.';
+
+export const useURLQueryState = (): [(path?: string, options?: NavigateOptions) => void, URLSearchParams] => {
+  const [push] = useLngRouter();
+  const pathname = usePathnameWithoutLng();
+  const searchParams = useSearchParams();
+
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
+
+  const handlePushQuery = (path?: string, options?: NavigateOptions) => {
+    const search = queryParams.toString();
+    const query = search ? `?${search}` : '';
+
+    push(`${path || pathname}${query}`, { scroll: false, ...options });
+  };
+
+  return [handlePushQuery, queryParams];
+};
