@@ -1,4 +1,4 @@
-import { IProductColor, IProductSize } from "./product";
+import { IProductColor, IProductSize } from './product';
 
 export interface IBasketProduct {
   productId: number;

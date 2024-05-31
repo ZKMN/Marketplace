@@ -11,7 +11,6 @@ export interface IProductSize {
   centimeters?: number;
 }
 
-
 export interface IProduct {
   img: string;
   code: string;
