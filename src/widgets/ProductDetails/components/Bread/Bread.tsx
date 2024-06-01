@@ -4,7 +4,7 @@ import React from 'react';
 import { Breadcrumbs, Typography } from '@mui/material';
 
 import { IntlLink } from '@/shared/components';
-import { getProductType } from '@/shared/lib/helpers';
+import { getShoesType } from '@/shared/lib/helpers';
 import { useTypedParams } from '@/shared/lib/hooks';
 import { Links } from '@/shared/types';
 
@@ -21,7 +21,7 @@ export const Bread = () => {
       />
 
       <IntlLink to={`${Links.CATALOGUE}/1?${category}`}>
-        {getProductType(type)}
+        {getShoesType(type)}
       </IntlLink>
 
       <Typography color="text.grey">{productId}</Typography>

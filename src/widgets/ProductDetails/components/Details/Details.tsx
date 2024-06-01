@@ -11,7 +11,7 @@ import {
 
 import { ProductPrice, ProductTopSale } from '@/entities/Product';
 
-import { getProductType } from '@/shared/lib/helpers';
+import { getShoesType } from '@/shared/lib/helpers';
 import { IProductDetails } from '@/shared/types';
 
 import { AddProductButton } from './AddProductButton';
@@ -85,7 +85,7 @@ const DetailsComponent = ({ product }: { product?: IProductDetails; }) => {
                   },
                 })}
               >
-                {getProductType(data?.shoesType)}
+                {getShoesType(data?.shoesType)}
               </Typography>
             </Grid>
 

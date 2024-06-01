@@ -6,7 +6,7 @@ import { Product } from '@/pagesLayer/Product';
 
 import { getServerProduct } from '@/shared/api/helpers';
 import { config } from '@/shared/lib/config';
-import { getProductType } from '@/shared/lib/helpers';
+import { getShoesType } from '@/shared/lib/helpers';
 import { INextPageParams, Links } from '@/shared/types';
 
 export async function generateMetadata({ params: { lng, productId } }: INextPageParams): Promise<Metadata> {
@@ -16,13 +16,13 @@ export async function generateMetadata({ params: { lng, productId } }: INextPage
     const discountText = product?.discount ? `, DISCOUNT -${product?.discount.toFixed(0)}%❗❗❗` : ' 👣🌟';
 
     return {
-      title: `👟💖 Look at these cool ${getProductType(product?.shoesType)}${discountText}`,
+      title: `👟💖 Look at these cool ${getShoesType(product?.shoesType)}${discountText}`,
       metadataBase: new URL(String(config.urls.site)),
       description: upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}🌟`).join(', ')),
       openGraph: {
         url: `${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
         type: 'website',
-        title: `👟💖 Look at these cool ${getProductType(product?.shoesType)}${discountText}`,
+        title: `👟💖 Look at these cool ${getShoesType(product?.shoesType)}${discountText}`,
         locale: lng,
         images: {
           url: product?.images[0] as string,
@@ -32,7 +32,7 @@ export async function generateMetadata({ params: { lng, productId } }: INextPage
       },
       twitter: {
         site: config.urls.site,
-        title: `👟💖 Look at these cool ${getProductType(product?.shoesType)}${discountText}`,
+        title: `👟💖 Look at these cool ${getShoesType(product?.shoesType)}${discountText}`,
         description: upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}🌟`).join(', ')),
         images: {
           url: product?.images[0] as string,
@@ -46,13 +46,13 @@ export async function generateMetadata({ params: { lng, productId } }: INextPage
   const discountText = product?.discount ? `, DESCUENTO -${product?.discount.toFixed(0)}%❗❗❗` : ' 👣🌟';
 
   return {
-    title: `👟💖 Mira qué ${getProductType(product?.shoesType)} tan chulos${discountText}`,
+    title: `👟💖 Mira qué ${getShoesType(product?.shoesType)} tan chulos${discountText}`,
     metadataBase: new URL(String(config.urls.site)),
     description: upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}🌟`).join(', ')),
     openGraph: {
       url: `${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
       type: 'website',
-      title: `👟💖 Mira qué ${getProductType(product?.shoesType)} tan chulos${discountText}`,
+      title: `👟💖 Mira qué ${getShoesType(product?.shoesType)} tan chulos${discountText}`,
       locale: lng,
       images: {
         url: product?.images[0] as string,
@@ -62,7 +62,7 @@ export async function generateMetadata({ params: { lng, productId } }: INextPage
     },
     twitter: {
       site: config.urls.site,
-      title: `👟💖 Mira qué ${getProductType(product?.shoesType)} tan chulos${discountText}`,
+      title: `👟💖 Mira qué ${getShoesType(product?.shoesType)} tan chulos${discountText}`,
       description: upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}🌟`).join(', ')),
       images: {
         url: product?.images[0] as string,
@@ -91,7 +91,7 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
     item: `${config.urls.site}/producto`,
   }, {
     position: 2,
-    name: getProductType(type),
+    name: getShoesType(type),
     item: `${config.urls.site}/producto/${type}`,
   }, {
     position: 3,
@@ -105,7 +105,7 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
     item: `${config.urls.site}/producto`,
   }, {
     position: 2,
-    name: getProductType(type),
+    name: getShoesType(type),
     item: `${config.urls.site}/producto/${type}`,
   }, {
     position: 3,
@@ -124,7 +124,7 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
 
       <ProductJsonLd
         useAppDir
-        productName={getProductType(product?.shoesType)}
+        productName={getShoesType(product?.shoesType)}
         images={product?.images}
         description={upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}`).join(', '))}
         brand="Weestep"

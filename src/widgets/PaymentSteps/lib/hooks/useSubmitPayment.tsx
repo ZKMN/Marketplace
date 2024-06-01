@@ -3,13 +3,15 @@ import { useBoolean } from 'ahooks';
 import { useQueryState } from 'nuqs';
 
 import { errorMessage } from '@/shared/lib/helpers';
-import { localBasketStore, resetBasketProductsAction } from '@/shared/lib/store';
+import { basketStore, resetBasketProductsAction } from '@/shared/lib/store';
 
 import { getClientSecret } from '../api';
 import { checkoutStore, incrStepAction } from '../store';
 
 export const useSubmitStripePayment = (amount: string): [() => void, { loading: boolean; }] => {
-  const products = localBasketStore((state) => state.products);
+  const products = basketStore((state) => state.basket?.items);
+
+  const carrier = checkoutStore((state) => state.carrier);
   const shippingDetails = checkoutStore((state) => state.shippingDetails);
 
   const stripe = useStripe();
@@ -28,18 +30,17 @@ export const useSubmitStripePayment = (amount: string): [() => void, { loading: 
     setTrue();
 
     try {
-      const clientSecret = await getClientSecret(amount);
+      const prods = products?.map((item) => ({ sizeId: item.product.size.id }));
 
-      const metadata = products?.reduce((acc, item) => {
-        acc[item.productId] = JSON.stringify(item);
-
-        return acc;
-      }, {} as { [key: string]: string; });
+      const clientSecret = await getClientSecret(amount, carrier, prods, shippingDetails);
 
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: cardElement,
-          metadata,
+          metadata: {
+            products: JSON.stringify(prods),
+            shippingDetails: JSON.stringify(prods),
+          },
           billing_details: {
             name: `${shippingDetails?.firstName} ${shippingDetails?.lastName}`,
             email: shippingDetails?.email,

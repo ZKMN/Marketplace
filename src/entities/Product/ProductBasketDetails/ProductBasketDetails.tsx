@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 
 import { BaseImage, IntlTypography } from '@/shared/components';
-import { getProductType } from '@/shared/lib/helpers';
+import { getShoesType } from '@/shared/lib/helpers';
 import { IBasketProduct } from '@/shared/types';
 
 import { ProductColor, ProductPrice } from '..';
@@ -68,7 +68,7 @@ export const ProductBasketDetails = ({
 
         <Grid container>
           <Typography color="text.grey">
-            {`${quantity} x ${getProductType(shoesType)}`}
+            {`${quantity} x ${getShoesType(shoesType)}`}
           </Typography>
         </Grid>
 

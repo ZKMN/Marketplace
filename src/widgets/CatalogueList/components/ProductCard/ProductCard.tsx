@@ -9,7 +9,7 @@ import {
 import { ProductTopSale } from '@/entities/Product';
 
 import { BaseImage } from '@/shared/components';
-import { getProductType } from '@/shared/lib/helpers';
+import { getShoesType } from '@/shared/lib/helpers';
 import { useClickRedirect } from '@/shared/lib/hooks';
 import { IProduct, Links } from '@/shared/types';
 
@@ -56,7 +56,7 @@ export const ProductCard = ({ product }: { product: IProduct; }) => {
         <Grid container mb={2} p="10px 0 0 16px">
           <Grid item>
             <Typography fontWeight={700}>
-              {getProductType(shoesType)}
+              {getShoesType(shoesType)}
             </Typography>
           </Grid>
 

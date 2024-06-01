@@ -5,16 +5,16 @@ import { getClientSecret } from '@/widgets/PaymentSteps/lib/api';
 import { checkoutStore } from '@/widgets/PaymentSteps/lib/store';
 
 import { config } from '@/shared/lib/config';
-import { errorMessage } from '@/shared/lib/helpers';
+import { errorMessage, getShoesType } from '@/shared/lib/helpers';
 import { useTypedParams } from '@/shared/lib/hooks';
-import { localBasketStore } from '@/shared/lib/store';
+import { basketStore } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
 export const StripeExpress = ({ amount }: { amount: string; }) => {
-  const products = localBasketStore((state) => state.products);
-  const shippingDetails = checkoutStore((state) => state.shippingDetails);
+  const products = basketStore((state) => state.basket?.items);
 
   const carrier = checkoutStore((state) => state.carrier);
+  const shippingDetails = checkoutStore((state) => state.shippingDetails);
 
   const stripe = useStripe();
   const { lng } = useTypedParams();
@@ -52,10 +52,10 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
   expressCheckoutElement.mount('#express-checkout-element');
 
   expressCheckoutElement.on('click', async ({ resolve }) => {
-    const lineItems = products?.map(({ code, quantity, price }) => ({
-      name: `${code} (${quantity})`,
+    const lineItems = products?.map(({ product, quantity, itemsTotal }) => ({
+      name: `${quantity} x ${getShoesType(product.shoesType)}`,
       // stripe working with cents
-      amount: Number((quantity * price) * 100),
+      amount: Number(itemsTotal * 100),
     }));
 
     if (carrier) {
@@ -74,7 +74,9 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
 
   expressCheckoutElement.on('confirm', async () => {
     try {
-      const clientSecret = await getClientSecret(amount);
+      const prods = products?.map((item) => ({ sizeId: item.product.size.id }));
+
+      const clientSecret = await getClientSecret(amount, carrier, prods, shippingDetails);
 
       const { error } = await stripe.confirmPayment({
         elements,

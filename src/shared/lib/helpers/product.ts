@@ -18,4 +18,4 @@ export const getProductsQuantity = (products?: ILocalBasketProduct[]) => product
   return qty;
 }, 0) as number;
 
-export const getProductType = (shoesType?: string) => startCase(toLower(shoesType));
+export const getShoesType = (shoesType?: string) => startCase(toLower(shoesType));
