@@ -5,8 +5,19 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: ['Googlebot', 'Applebot', 'Bingbot'],
-        allow: ['/catalogo', '/catalogo/zapatos', '/catalogo/zapatos/pagina', '/contactos', '/blog', '/preguntas-frecuentes'],
-        disallow: ['/checkout', '/devoluciones-y-reembolsos', '/terminos-y-condiciones'],
+        allow: [
+          '/producto/*',
+          '/catalogo/*',
+          '/contactos',
+          '/blog',
+          '/preguntas-frecuentes',
+        ],
+        disallow: [
+          '/checkout',
+          '/devoluciones-y-reembolsos',
+          '/terminos-y-condiciones',
+          '/*?selected_facets=*',
+        ],
       },
     ],
   };

@@ -1,0 +1,33 @@
+{
+  "redirects": [
+    {
+      "source": "/en/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "selected_facets"
+        }
+      ],
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/es/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "selected_facets"
+        }
+      ],
+      "destination": "/es",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "statusCode": 301
+    }
+  ]
+}

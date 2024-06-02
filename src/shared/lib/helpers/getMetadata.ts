@@ -44,7 +44,7 @@ export const getEsMetadata = ({
   category: 'Zapatos',
   applicationName: 'Weestep kids',
   alternates: {
-    // canonical: 'https://www.weestep-kids.es',
+    canonical: url,
     languages: {
       'es-ES': new URL(`${config.urls.site}/es`),
       'en-US': new URL(`${config.urls.site}/en`),
@@ -140,7 +140,7 @@ export const getArticleEsMetadata = ({
   category: 'Zapatos',
   applicationName: 'Weestep kids',
   alternates: {
-    // canonical: 'https://www.weestep-kids.es',
+    canonical: url,
     languages: {
       'es-ES': new URL(`${config.urls.site}/es`),
       'en-US': new URL(`${config.urls.site}/en`),
@@ -195,7 +195,7 @@ export const getArticleEnMetadata = ({
   category: 'Shoes',
   applicationName: 'Weestep kids',
   alternates: {
-    // canonical: 'https://www.weestep-kids.es',
+    canonical: url,
     languages: {
       'es-ES': new URL(`${config.urls.site}/es`),
       'en-US': new URL(`${config.urls.site}/en`),
@@ -240,7 +240,7 @@ export const getEnMetadata = ({
   metadataBase: new URL(config.urls.site),
   applicationName: 'Weestep kids',
   alternates: {
-    // canonical: 'https://www.weestep-kids.es',
+    canonical: url,
     languages: {
       'es-ES': new URL(`${config.urls.site}/es`),
       'en-US': new URL(`${config.urls.site}/en`),
