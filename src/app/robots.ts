@@ -16,7 +16,7 @@ export default function robots(): MetadataRoute.Robots {
           '/checkout',
           '/devoluciones-y-reembolsos',
           '/terminos-y-condiciones',
-          '/*?selected_facets=*',
+          '/*?selected_facets*',
         ],
       },
     ],
