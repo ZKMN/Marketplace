@@ -1,17 +1,18 @@
 'use client';
 
 import React, { Suspense, useState } from 'react';
-import { Box, Grid, Skeleton } from '@mui/material';
+import { Grid, Skeleton } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 
 import { useGetSWR } from '@/shared/api/hooks';
 import { Loading } from '@/shared/components';
 import { PRODUCTS_COUNT } from '@/shared/consts';
 import { useTypedParams } from '@/shared/lib/hooks';
-import { IFilter, IProduct } from '@/shared/types';
+import { IFilter, IProduct, IProductsResponse } from '@/shared/types';
 
 import {
   CardSkeleton,
+  EmptyResult,
   Filters,
   FiltersDrawer,
   Pagination,
@@ -30,7 +31,7 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
   const search = queryParams.toString();
   const query = search ? `?${search}` : '';
 
-  const { data, isLoading } = useGetSWR<{ items: IProduct[]; filters: IFilter[]; total: number; }>({
+  const { data, isLoading } = useGetSWR<IProductsResponse>({
     url: `/products/list${query}`,
     queryParams: {
       page: page || 1,
@@ -43,7 +44,7 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
   });
 
   return (
-    <Box minHeight={700}>
+    <Grid>
       <Grid
         container
         justifyContent="space-between"
@@ -67,7 +68,7 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
         <Grid item xs={24} md={7} lg={5} component="section">
           <Grid container spacing={{ xs: 1 }}>
             <Grid item xs={6} md={24}>
-              <Box
+              <Grid
                 sx={({ breakpoints }) => ({
                   [breakpoints.down('md')]: {
                     display: 'none',
@@ -75,7 +76,7 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
                 })}
               >
                 <Filters filters={data?.filters} />
-              </Box>
+              </Grid>
 
               <FiltersDrawer filters={data?.filters} />
             </Grid>
@@ -97,6 +98,8 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
         <Grid item flex={1} position="relative" component="section">
           <Loading toTop blurred height="100%" loading={isLoading}>
             <Grid container spacing={2}>
+              {!data?.items.length && !isLoading && <EmptyResult />}
+
               {data?.items.map((product) => (
                 <Grid
                   item
@@ -115,7 +118,7 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
       </Grid>
 
       <Pagination total={data?.total} />
-    </Box>
+    </Grid>
   );
 };
 
@@ -124,7 +127,7 @@ export const CatalogueList = ({ filters, products }: { filters: IFilter[]; produ
     fallback={(
       <Grid container spacing={3} columns={24}>
         <Grid item xs={24} md={7} lg={5} component="section">
-          <Box
+          <Grid
             sx={({ breakpoints }) => ({
               [breakpoints.down('md')]: {
                 display: 'none',
@@ -132,13 +135,12 @@ export const CatalogueList = ({ filters, products }: { filters: IFilter[]; produ
             })}
           >
             <Skeleton variant="rectangular" width="100%" height={400} />
-          </Box>
+          </Grid>
         </Grid>
 
         <Grid item flex={1} position="relative" component="section">
           <Grid container spacing={2}>
-
-            {Array.from({ length: 8 }).map((_, index) => (
+            {Array.from({ length: 12 }).map((_, index) => (
               <Grid
                 item
                 // eslint-disable-next-line react/no-array-index-key

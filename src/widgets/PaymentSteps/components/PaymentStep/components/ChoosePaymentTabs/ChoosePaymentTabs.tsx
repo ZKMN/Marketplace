@@ -141,9 +141,9 @@ export const ChoosePaymentTabs = ({ amount }: { amount: string; }) => {
                 </Grid>
               )}
               sx={{
-                width: 110,
                 p: 1,
                 ml: index !== 0 ? 1 : 0,
+                width: 110,
                 minHeight: 'auto',
                 bgcolor: 'background.default',
                 borderRadius: 2,

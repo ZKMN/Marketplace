@@ -36,7 +36,11 @@ const FilterItem = ({
   values,
   queryKey,
   metadata,
-}: { values: IFilterValue[]; queryKey: string; metadata: IFilter['metadata']; }) => {
+}: {
+  values: IFilterValue[];
+  queryKey: string;
+  metadata: IFilter['metadata'];
+}) => {
   if (metadata.key === 'size') {
     return values.map((filter) => (
       <FormControlLabel

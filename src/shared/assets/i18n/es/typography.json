@@ -11,7 +11,8 @@
     "templateDesigned": "Plantilla diseñada por Weestep",
     "allShoesIsOrtopedic": "Todos los zapatos de la tienda tienen una plantilla ortopedica y una suela anatomica.",
     "discount30": "Da la bienvenida al verano con -30% de descuento!",
-    "freeDelivery": "Entrega gratuita para compras superiores a 60 euros!"
+    "freeDelivery": "Entrega gratuita para compras superiores a 60 euros!",
+    "weSoldThis": "Lo siento, puede que hayamos vendido este modelo."
   },
   "labels": {
     "topSale": "Venta Superior",
@@ -57,7 +58,8 @@
     "followUs": "Síguenos en",
     "characteristics": "Características",
     "youMayLike": "También le puede interesar",
-    "howToMeasureFoot": "¿Cómo medir tu pie para elegir la talla correcta?"
+    "howToMeasureFoot": "¿Cómo medir tu pie para elegir la talla correcta?",
+    "oops": "OOPS!"
   },
   "links": {
     "home": "Inicio",

@@ -61,7 +61,7 @@ export const DetailsModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 'isOpen
     >
       <Grid container spacing={1}>
         {basket?.items?.map(({ product, quantity }) => (
-          <Grid item key={product.productId} xs={12}>
+          <Grid item key={product.size.id} xs={12}>
             <ProductBasketDetails
               product={product}
               quantity={quantity}

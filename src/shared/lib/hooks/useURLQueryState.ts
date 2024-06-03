@@ -19,5 +19,13 @@ export const useURLQueryState = (): [(path?: string, options?: NavigateOptions) 
     push(`${path || pathname}${query}`, { scroll: false, ...options });
   };
 
-  return [handlePushQuery, queryParams];
+  const extendedQueryParams = {
+    ...queryParams,
+    set: (name: string, value: string) => {
+      queryParams.set(name, value);
+      handlePushQuery();
+    },
+  };
+
+  return [handlePushQuery, extendedQueryParams];
 };

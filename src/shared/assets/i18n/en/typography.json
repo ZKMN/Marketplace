@@ -11,7 +11,8 @@
     "templateDesigned": "Template designed by Weestep",
     "allShoesIsOrtopedic": "All the shoes in the store have an orthopedic insole orthopedic insole and an anatomical sole.",
     "discount30": "Welcome the summer with a -30% discount!",
-    "freeDelivery": "Free delivery for purchases over 60 euros!"
+    "freeDelivery": "Free delivery for purchases over 60 euros!",
+    "weSoldThis": "Sorry, maybe we sold this model."
   },
   "labels": {
     "topSale": "Top Sale",
@@ -57,7 +58,8 @@
     "followUs": "Follow us",
     "characteristics": "Characteristics",
     "youMayLike": "You may also like",
-    "howToMeasureFoot": "How to measure your foot to choose the right size?"
+    "howToMeasureFoot": "How to measure your foot to choose the right size?",
+    "oops": "OOPS!"
   },
   "links": {
     "home": "Home",

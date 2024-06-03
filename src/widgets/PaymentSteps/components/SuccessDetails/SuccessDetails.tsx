@@ -5,7 +5,7 @@ import { useQueryState } from 'nuqs';
 
 import { IntlButton, IntlTypography, Loading } from '@/shared/components';
 import { useClickRedirect } from '@/shared/lib/hooks';
-import { resetBasketProductsAction } from '@/shared/lib/store';
+import { resetBasketAction } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
 import { checkoutStore } from '../../lib/store';
@@ -15,16 +15,15 @@ const SuccessDetailsComponent = () => {
 
   const [handleRedirect] = useClickRedirect();
 
-  const [paymentIntent] = useQueryState('payment_intent');
+  const [paymentStatus] = useQueryState('payment_status');
   const [redirectStatus] = useQueryState('redirect_status');
-  const [paymentIntentClientSecret] = useQueryState('payment_intent_client_secret');
 
   useEffect(() => {
-    if (paymentIntentClientSecret && paymentIntent && redirectStatus === 'succeeded') {
+    if (paymentStatus === 'succeeded' || redirectStatus === 'succeeded') {
       checkoutStore.setState({ step: 3 });
-      resetBasketProductsAction();
+      resetBasketAction();
     }
-  }, [redirectStatus, paymentIntent, paymentIntentClientSecret]);
+  }, [redirectStatus, paymentStatus]);
 
   if (step !== 3) {
     return null;
@@ -33,8 +32,8 @@ const SuccessDetailsComponent = () => {
   return (
     <Grid
       container
-      flexDirection="column"
       alignItems="center"
+      flexDirection="column"
     >
 
       <CheckCircleTwoTone color="success" sx={{ fontSize: '5rem' }} />

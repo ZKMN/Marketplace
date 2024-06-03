@@ -50,7 +50,7 @@ export const BasketDetailsStep = () => {
       <Grid item xs={12} md={8}>
         <Grid container mb={2} spacing={1}>
           {basket?.items?.map(({ product, quantity }) => (
-            <Grid item key={product.productId} xs={12}>
+            <Grid item key={product.size.id} xs={12}>
               <ProductBasketDetails
                 product={product}
                 quantity={quantity}

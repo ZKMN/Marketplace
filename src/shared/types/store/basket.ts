@@ -6,5 +6,6 @@ export interface IBasketStore {
 }
 
 export interface IBasketStoreActions {
+  resetBasketAction: () => void;
   initBasketSuccessAction: (data: IBasketResponse) => void;
 }

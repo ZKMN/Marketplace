@@ -1,12 +1,12 @@
 import { useElements, useStripe } from '@stripe/react-stripe-js';
 import { useBoolean } from 'ahooks';
-import { useQueryState } from 'nuqs';
 
 import { errorMessage } from '@/shared/lib/helpers';
-import { basketStore, resetBasketProductsAction } from '@/shared/lib/store';
+import { useURLQueryState } from '@/shared/lib/hooks';
+import { basketStore } from '@/shared/lib/store';
 
 import { getClientSecret } from '../api';
-import { checkoutStore, incrStepAction } from '../store';
+import { checkoutStore } from '../store';
 
 export const useSubmitStripePayment = (amount: string): [() => void, { loading: boolean; }] => {
   const products = basketStore((state) => state.basket?.items);
@@ -17,8 +17,9 @@ export const useSubmitStripePayment = (amount: string): [() => void, { loading: 
   const stripe = useStripe();
   const elements = useElements();
 
-  const [, setSuccessPayIntent] = useQueryState('payment_intent');
   const [loading, { setTrue, setFalse }] = useBoolean(false);
+
+  const [, queryParams] = useURLQueryState();
 
   const cardElement = elements?.getElement('cardNumber');
 
@@ -55,9 +56,7 @@ export const useSubmitStripePayment = (amount: string): [() => void, { loading: 
         return;
       }
 
-      incrStepAction();
-      setSuccessPayIntent(String(result.paymentIntent?.id));
-      resetBasketProductsAction();
+      queryParams.set('payment_status', 'succeeded');
     } catch (error) {
       errorMessage('Submit payment error');
     } finally {
