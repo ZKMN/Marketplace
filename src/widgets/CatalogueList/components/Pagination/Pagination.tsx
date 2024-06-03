@@ -24,7 +24,7 @@ export const Pagination = ({ total }: { total?: number; }) => {
       page={Number(page)}
       color="secondary"
       shape="rounded"
-      count={Math.trunc(Number(total) / PRODUCTS_COUNT)}
+      count={Math.ceil(Number(total) / PRODUCTS_COUNT)}
       onChange={(_, p) => handlePushQueryURL(`${Links.CATALOGUE}/${p}`, { scroll: true })}
     />
   );

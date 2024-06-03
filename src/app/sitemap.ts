@@ -8,7 +8,7 @@ import { Links, TLanguages } from '@/shared/types';
 const getCatalogSitemapPages = async (): Promise<MetadataRoute.Sitemap> => {
   const total = await getProductsTotal('es');
 
-  const baseCount = Math.trunc(Number(total) / PRODUCTS_COUNT);
+  const baseCount = Math.ceil(Number(total) / PRODUCTS_COUNT);
 
   return Array.from({ length: baseCount }).map((_, index) => ({
     url: `${config.urls.site}/es${Links.CATALOGUE}/${index + 1}`,

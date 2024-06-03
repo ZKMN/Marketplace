@@ -3,7 +3,7 @@ import { PRODUCTS_COUNT } from '@/shared/consts';
 import { INextPageParams } from '@/shared/types';
 
 const distributeElements = (total?: number) => {
-  const baseCount = Math.trunc(Number(total) / PRODUCTS_COUNT);
+  const baseCount = Math.ceil(Number(total) / PRODUCTS_COUNT);
 
   return Array.from({ length: baseCount }).map((_, index) => ({ page: String(index + 1) }));
 };
