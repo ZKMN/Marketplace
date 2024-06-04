@@ -15,7 +15,7 @@ export const getClientSecret = async (carrier: ICarrier | null, shippingDetails:
 
     return data.clientSecret;
   } catch (error) {
-    errorMessage('Client secret error.');
+    errorMessage('Error en el proceso de pago.');
 
     return '';
   }
