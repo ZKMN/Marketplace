@@ -62,7 +62,7 @@ export const BaseImage = ({
         onClick={onClick}
         priority={priority}
         style={{
-          objectFit: objectFit || 'cover',
+          objectFit: 'cover',
           cursor: (onClick || pointer) ? 'pointer' : '',
           width: '100%',
           height: 'auto',

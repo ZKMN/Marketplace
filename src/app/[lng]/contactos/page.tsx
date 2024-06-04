@@ -13,14 +13,14 @@ export async function generateMetadata({ params: { lng } }: INextPageParams): Pr
     return getEnMetadata({
       url: `${config.urls.site}/${lng}${Links.CONTACTS}`,
       title: 'Contacts - Weestep Kids',
-      description: "Get in touch with us anytime for any inquiries or requests regarding children's footwear. We're always here to assist you in making the right choice and answering your questions. Our contact information is provided below. We offer various communication channels: phone, email, and a contact form. Reach out to us, and we'll be happy to help you find the perfect shoes for you and your children.",
+      description: "Get in touch with us anytime for any inquiries or requests regarding children's footwear. We're always here to assist you in making the right choice and answering your questions. Our contact information is provided below. We offer various communication channels: phone, email, and a contact form. +34 611-82-25-84, Carrer Jerusalem, 24, 03001 Alacant, Alicante.",
     });
   }
 
   return getEsMetadata({
     url: `${config.urls.site}/${lng}${Links.CONTACTS}`,
     title: 'Contactos - Weestep Kids',
-    description: 'Contáctenos en cualquier momento para cualquier pregunta o solicitud sobre calzado infantil. Siempre estamos aquí para ayudarlo a tomar la decisión correcta y responder a sus preguntas. Nuestra información de contacto se encuentra a continuación. Ofrecemos varios canales de comunicación: teléfono, correo electrónico y un formulario de contacto. ¡No dude en contactarnos, estaremos encantados de ayudarlo a encontrar los zapatos perfectos para usted y sus hijos!',
+    description: 'Contáctenos en cualquier momento para cualquier pregunta o solicitud sobre calzado infantil. Siempre estamos aquí para ayudarlo a tomar la decisión correcta y responder a sus preguntas. Nuestra información de contacto se encuentra a continuación. Ofrecemos varios canales de comunicación: teléfono, correo electrónico y un formulario de contacto. +34 611-82-25-84, Carrer Jerusalem, 24, 03001 Alacant, Alicante',
   });
 }
 

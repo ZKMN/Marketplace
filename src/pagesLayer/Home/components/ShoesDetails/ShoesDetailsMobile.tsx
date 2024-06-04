@@ -3,7 +3,7 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
 
-import { IntlTypography } from '@/shared/components';
+import { BaseImage, IntlTypography } from '@/shared/components';
 
 import { SHOES_DETAILS } from '../../consts';
 
@@ -31,12 +31,15 @@ export const ShoesDetailsMobile = () => (
       </Grid>
     </Grid>
 
-    <Box
-      sx={{
-        height: 400,
-        background: ({ palette }) => `${palette.background.cyan} url(/images/shoes-details-mobile.png) center no-repeat`,
-      }}
-    />
+    <Box bgcolor="background.cyan">
+      <BaseImage
+        priority
+        src="/images/shoes-details-mobile.png"
+        alt="Todos los zapatos de la tienda tienen una plantilla ortopedica y una suela anatomica."
+        height={400}
+        objectFit="contain"
+      />
+    </Box>
 
     <Grid
       container

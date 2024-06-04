@@ -35,11 +35,13 @@ export const BlogItem = ({
       component="button"
       onClick={handlePush(`${Links.BLOG}/${link}`)}
     >
-      <Grid item xs={12} sm={6} md={5} minHeight={240}>
+      <Grid item xs={12} md={4.5}>
         <BaseImage
-          fullWidth
+          priority
+          height={247}
           alt={translate(intlTitle)}
           src={image}
+          objectFit="contain"
         />
       </Grid>
 
@@ -61,6 +63,7 @@ export const BlogItem = ({
         >
           <Grid item>
             <BaseImage
+              priority
               width={50}
               height={50}
               alt={translate(intlTitle)}
