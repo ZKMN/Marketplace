@@ -96,12 +96,13 @@ export const BaseImage = ({
       width={width}
       height={height}
       position="relative"
+      overflow="hidden"
     >
       <Image
         fill
         src={src}
         alt={alt}
-        sizes={`${width}px`}
+        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
         loader={imageLoader}
         onClick={onClick}
         priority={priority}
