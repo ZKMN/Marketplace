@@ -42,7 +42,7 @@ export const ProductBasketDetails = ({
       borderColor="border.main"
       borderRadius={2}
     >
-      <Grid position="absolute" right={0} zIndex={5}>
+      <Grid position="absolute" top={5} right={5} zIndex={5}>
         {actions}
       </Grid>
 
@@ -53,16 +53,16 @@ export const ProductBasketDetails = ({
             src={img}
             width={80}
             height={80}
-            onClick={handleRedirect(`${Links.PRODUCT}/${shoesType}/${productId}?sizeId=${size.id}`)}
+            onClick={handleRedirect(`${Links.PRODUCT}/${shoesType}/${productId}?sizeId=${size.id}&quantity=${quantity}`)}
             objectFit="contain"
           />
         </Grid>
       </Grid>
 
-      <Grid item flex={1} p={1}>
-        <Grid container>
+      <Grid item flex={1} p="8px 16px">
+        <Grid container mb={1}>
           <IntlLink
-            to={`${Links.PRODUCT}/${shoesType}/${productId}?sizeId=${size.id}`}
+            to={`${Links.PRODUCT}/${shoesType}/${productId}?sizeId=${size.id}&quantity=${quantity}`}
             color="text.black"
             fontSize="1.1rem"
             fontWeight={700}
@@ -71,7 +71,7 @@ export const ProductBasketDetails = ({
           </IntlLink>
         </Grid>
 
-        <Grid container>
+        <Grid container mb={1}>
           <Typography color="text.grey">
             {`${quantity} x ${getShoesType(shoesType)}`}
           </Typography>
