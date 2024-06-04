@@ -19,13 +19,14 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
   const stripe = useStripe();
   const { lng } = useTypedParams();
 
-  if (!stripe) {
+  if (!stripe || !shippingDetails) {
     return null;
   }
 
   const elements = stripe.elements({
     mode: 'payment',
     locale: lng,
+    // stripe working with cents
     amount: Number(amount) * 100,
     currency: 'eur',
     loader: 'always',
@@ -74,9 +75,7 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
 
   expressCheckoutElement.on('confirm', async () => {
     try {
-      const prods = products?.map((item) => ({ sizeId: item.product.size.id }));
-
-      const clientSecret = await getClientSecret(amount, carrier, prods, shippingDetails);
+      const clientSecret = await getClientSecret(carrier, shippingDetails);
 
       const { error } = await stripe.confirmPayment({
         elements,
@@ -86,9 +85,9 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
           return_url: `${config.urls.site}/${lng}${Links.CHECKOUT}`,
           payment_method_data: {
             billing_details: {
-              name: `${shippingDetails?.firstName} ${shippingDetails?.lastName}`,
-              email: shippingDetails?.email,
-              phone: shippingDetails?.phoneNumber,
+              name: `${shippingDetails.firstName} ${shippingDetails.lastName}`,
+              email: shippingDetails.email,
+              phone: shippingDetails.phoneNumber,
             },
           },
         },

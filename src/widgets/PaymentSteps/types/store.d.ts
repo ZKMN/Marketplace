@@ -1,4 +1,4 @@
-interface ICarrier {
+export interface ICarrier {
   id: number;
   name: string;
   price: number;

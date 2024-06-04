@@ -8,7 +8,7 @@ import { basketStore } from '@/shared/lib/store';
 import { getClientSecret } from '../api';
 import { checkoutStore } from '../store';
 
-export const useSubmitStripePayment = (amount: string): [() => void, { loading: boolean; }] => {
+export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] => {
   const products = basketStore((state) => state.basket?.items);
 
   const carrier = checkoutStore((state) => state.carrier);
@@ -23,7 +23,7 @@ export const useSubmitStripePayment = (amount: string): [() => void, { loading: 
 
   const cardElement = elements?.getElement('cardNumber');
 
-  if (!stripe || !cardElement) {
+  if (!stripe || !cardElement || !shippingDetails) {
     return [() => null, { loading: false }];
   }
 
@@ -33,7 +33,7 @@ export const useSubmitStripePayment = (amount: string): [() => void, { loading: 
     try {
       const prods = products?.map((item) => ({ sizeId: item.product.size.id }));
 
-      const clientSecret = await getClientSecret(amount, carrier, prods, shippingDetails);
+      const clientSecret = await getClientSecret(carrier, shippingDetails);
 
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -43,9 +43,9 @@ export const useSubmitStripePayment = (amount: string): [() => void, { loading: 
             shippingDetails: JSON.stringify(prods),
           },
           billing_details: {
-            name: `${shippingDetails?.firstName} ${shippingDetails?.lastName}`,
-            email: shippingDetails?.email,
-            phone: shippingDetails?.phoneNumber,
+            name: `${shippingDetails.firstName} ${shippingDetails.lastName}`,
+            email: shippingDetails.email,
+            phone: shippingDetails.phoneNumber,
           },
         },
       });

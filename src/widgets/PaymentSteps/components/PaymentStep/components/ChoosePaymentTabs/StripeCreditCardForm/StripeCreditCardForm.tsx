@@ -15,7 +15,7 @@ import { useClientTranslation } from '@/shared/lib/hooks';
 
 import { StripeInput } from './StripeInput';
 
-export const StripeCreditCardForm = ({ amount }: { amount: string; }) => {
+export const StripeCreditCardForm = () => {
   const {
     completed,
     cardCvcError,
@@ -24,7 +24,7 @@ export const StripeCreditCardForm = ({ amount }: { amount: string; }) => {
   } = useValidateCreditCardInputs();
 
   const [translate] = useClientTranslation('form');
-  const [handleSubmit, { loading }] = useSubmitStripePayment(amount);
+  const [handleSubmit, { loading }] = useSubmitStripePayment();
 
   return (
     <>
@@ -38,7 +38,6 @@ export const StripeCreditCardForm = ({ amount }: { amount: string; }) => {
             variant="outlined"
             error={!!cardNumberError}
             helperText={cardNumberError && translate(cardNumberError)}
-            InputLabelProps={{ shrink: true }}
             InputProps={{
               endAdornment: cardNumberError && <Warning color="error" />,
               inputComponent: StripeInput,
@@ -58,7 +57,6 @@ export const StripeCreditCardForm = ({ amount }: { amount: string; }) => {
             variant="outlined"
             error={!!cardExpiryError}
             helperText={cardExpiryError && translate(cardExpiryError)}
-            InputLabelProps={{ shrink: true }}
             InputProps={{
               endAdornment: cardExpiryError && <Warning color="error" />,
               inputComponent: StripeInput,
@@ -78,7 +76,6 @@ export const StripeCreditCardForm = ({ amount }: { amount: string; }) => {
             variant="outlined"
             error={!!cardCvcError}
             helperText={cardCvcError && translate(cardCvcError)}
-            InputLabelProps={{ shrink: true }}
             InputProps={{
               endAdornment: cardCvcError && <Warning color="error" />,
               inputComponent: StripeInput,

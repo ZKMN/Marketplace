@@ -62,10 +62,11 @@ export const BaseImage = ({
         onClick={onClick}
         priority={priority}
         style={{
-          objectFit: 'cover',
-          cursor: (onClick || pointer) ? 'pointer' : '',
+          borderRadius,
           width: '100%',
           height: 'auto',
+          cursor: (onClick || pointer) ? 'pointer' : '',
+          objectFit: 'cover',
         }}
       />
     );
@@ -81,10 +82,11 @@ export const BaseImage = ({
           src={src}
           onClick={onClick}
           style={{
-            objectFit: 'contain',
-            cursor: (onClick || pointer) ? 'pointer' : '',
+            borderRadius,
             width: '100%',
             height: 'auto',
+            cursor: (onClick || pointer) ? 'pointer' : '',
+            objectFit: 'contain',
           }}
         />
       </Box>

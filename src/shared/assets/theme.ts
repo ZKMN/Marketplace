@@ -60,6 +60,11 @@ const options = {
         },
       },
     },
+    MuiTextField: {
+      defaultProps: {
+        InputLabelProps: { shrink: true },
+      },
+    },
   },
   typography: {
     fontFamily: weestepFont.style.fontFamily,

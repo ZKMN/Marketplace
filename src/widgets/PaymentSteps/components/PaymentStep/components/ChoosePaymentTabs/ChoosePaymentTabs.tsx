@@ -1,12 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { CreditCard } from '@mui/icons-material';
-import {
-  Box,
-  Grid,
-  Tab,
-  Tabs,
-} from '@mui/material';
+import { Grid, Tab, Tabs } from '@mui/material';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -46,17 +41,17 @@ const BaseTabPanel = (props: TabPanelProps) => {
   } = props;
 
   return (
-    <Box
+    <Grid
       id={`pay-tabpanel-${index}`}
       role="tabpanel"
       hidden={value !== index}
       aria-labelledby={`pay-tab-${index}`}
       {...other}
     >
-      <Box>
+      <Grid>
         {children}
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
 
@@ -71,10 +66,12 @@ export const ChoosePaymentTabs = ({ amount }: { amount: string; }) => {
 
   const tabs = [{
     title: 'titles.card',
-    icon: <CreditCard
-      color="baseGrey"
-      fontSize="small"
-    />,
+    icon: (
+      <CreditCard
+        color="baseGrey"
+        fontSize="small"
+      />
+    ),
   }, {
     title: 'titles.express',
     icon: (
@@ -109,7 +106,7 @@ export const ChoosePaymentTabs = ({ amount }: { amount: string; }) => {
 
   return (
     <>
-      <Box mb={3}>
+      <Grid mb={3}>
         <Tabs
           value={value}
           onChange={(e, newValue) => setValue(newValue)}
@@ -154,14 +151,14 @@ export const ChoosePaymentTabs = ({ amount }: { amount: string; }) => {
             />
           ))}
         </Tabs>
-      </Box>
+      </Grid>
 
       <BaseTabPanel value={value} index={0}>
         <Elements
           stripe={getStripe()}
           options={{ locale: lng }}
         >
-          <StripeCreditCardForm amount={amount} />
+          <StripeCreditCardForm />
         </Elements>
       </BaseTabPanel>
 
