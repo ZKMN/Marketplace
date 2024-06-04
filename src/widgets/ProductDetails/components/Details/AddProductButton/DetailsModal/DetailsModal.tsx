@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Grid, Typography } from '@mui/material';
+import { useQueryState } from 'nuqs';
 
 import { DeleteBasketProductAction } from '@/features/DeleteBasketProductAction';
 
@@ -7,7 +8,7 @@ import { ProductBasketDetails } from '@/entities/Product';
 
 import { BaseDialog, IntlButton } from '@/shared/components';
 import { getPrice } from '@/shared/lib/helpers';
-import { useClickRedirect } from '@/shared/lib/hooks';
+import { useClickRedirect, useTypedParams } from '@/shared/lib/hooks';
 import { basketStore } from '@/shared/lib/store';
 import { IBaseDialogProps, Links } from '@/shared/types';
 
@@ -15,12 +16,13 @@ export const DetailsModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 'isOpen
   const basket = basketStore((state) => state.basket);
 
   const [handleRedirect] = useClickRedirect();
+  const [sizeId] = useQueryState('sizeId');
+
+  const { productId } = useTypedParams();
 
   useEffect(() => {
-    if (!basket?.items?.length) {
-      onClose?.();
-    }
-  }, [basket?.items?.length]);
+    onClose?.();
+  }, [productId, sizeId]);
 
   return (
     <BaseDialog
@@ -31,7 +33,7 @@ export const DetailsModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 'isOpen
       titleExtraNode={(
         <Typography
           color="text.white"
-          fontSize={18}
+          fontSize="1.1rem"
           fontWeight={700}
         >
           {`(${basket?.numItems})`}
@@ -65,7 +67,7 @@ export const DetailsModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 'isOpen
             <ProductBasketDetails
               product={product}
               quantity={quantity}
-              actions={<DeleteBasketProductAction sizeId={product.size.id} />}
+              actions={<DeleteBasketProductAction onSuccess={onClose} sizeId={product.size.id} />}
             />
           </Grid>
         ))}

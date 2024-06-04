@@ -38,7 +38,7 @@ export const RouteLink = ({
       locale={false}
     >
       <MUILink
-        sx={sx}
+        sx={{ ...sx, cursor: 'pointer' }}
         mb={mb}
         ml={ml}
         mr={mr}

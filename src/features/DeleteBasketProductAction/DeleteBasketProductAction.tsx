@@ -6,12 +6,18 @@ import { useDeleteRequest } from '@/shared/api/hooks';
 import { initBasketSuccessAction } from '@/shared/lib/store';
 import { IBasketResponse } from '@/shared/types';
 
-export const DeleteBasketProductAction = ({ sizeId }:{ sizeId: number; }) => {
+export const DeleteBasketProductAction = ({ sizeId, onSuccess }:{ sizeId: number; onSuccess?: () => void; }) => {
   const [handleDeleteProduct, { loading }] = useDeleteRequest<IBasketResponse>({
     url: `/basket/${sizeId}`,
     withCredentials: true,
     config: {
-      onSuccess: ({ data }) => initBasketSuccessAction(data),
+      onSuccess: ({ data }) => {
+        initBasketSuccessAction(data);
+
+        if (!data?.items?.length) {
+          onSuccess?.();
+        }
+      },
     },
   });
 

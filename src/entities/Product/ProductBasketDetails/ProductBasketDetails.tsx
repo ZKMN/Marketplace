@@ -1,9 +1,10 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 
-import { BaseImage, IntlTypography } from '@/shared/components';
+import { BaseImage, IntlLink, IntlTypography } from '@/shared/components';
 import { getShoesType } from '@/shared/lib/helpers';
-import { IBasketProduct } from '@/shared/types';
+import { useClickRedirect } from '@/shared/lib/hooks';
+import { IBasketProduct, Links } from '@/shared/types';
 
 import { ProductColor, ProductPrice } from '..';
 
@@ -24,8 +25,11 @@ export const ProductBasketDetails = ({
     color,
     discount,
     shoesType,
+    productId,
     priceInitial,
   } = product;
+
+  const [handleRedirect] = useClickRedirect();
 
   return (
     <Grid
@@ -33,10 +37,10 @@ export const ProductBasketDetails = ({
       height="100%"
       bgcolor="background.default"
       border="1px solid"
-      borderColor="border.main"
-      borderRadius={2}
       position="relative"
       overflow="hidden"
+      borderColor="border.main"
+      borderRadius={2}
     >
       <Grid position="absolute" right={0} zIndex={5}>
         {actions}
@@ -49,6 +53,7 @@ export const ProductBasketDetails = ({
             src={img}
             width={80}
             height={80}
+            onClick={handleRedirect(`${Links.PRODUCT}/${shoesType}/${productId}?sizeId=${size.id}`)}
             objectFit="contain"
           />
         </Grid>
@@ -56,14 +61,14 @@ export const ProductBasketDetails = ({
 
       <Grid item flex={1} p={1}>
         <Grid container>
-          <Grid item>
-            <Typography
-              fontSize="1.1rem"
-              fontWeight={700}
-            >
-              {code}
-            </Typography>
-          </Grid>
+          <IntlLink
+            to={`${Links.PRODUCT}/${shoesType}/${productId}?sizeId=${size.id}`}
+            color="text.black"
+            fontSize="1.1rem"
+            fontWeight={700}
+          >
+            {code}
+          </IntlLink>
         </Grid>
 
         <Grid container>

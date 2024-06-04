@@ -11,6 +11,7 @@ export interface IRoutePathParams {
   [key: string]: string;
   lng: TLanguages;
   page: string;
+  productId: string;
 }
 
 export interface INextPageParams {
