@@ -55,17 +55,15 @@
       "returnNote": "Note: Please do not send returns to the address on the package. This is not our return address and will affect the processing of your return.",
       "reason1": "Late Arrival",
       "solution1": "We promise to receive the goods within 14 days.",
-      "reason2": "Defects / manufacturing defects / quality issues",
-      "solution2": "Resend a new pair.",
-      "reason3": "Does not fit (wrong size / color)",
-      "solution3": "Refundable, but customer is responsible for return shipping costs.",
-      "reason4": "Change of mind (no longer required)",
-      "solution4": "Refundable, but customer is responsible for shipping costs.",
-      "reason5": "I received an incorrect item (incorrect item / missing from package)",
-      "solution5": "Refundable, we are responsible for return shipping costs.",
-      "reason6": "Incorrect shipping information",
-      "solution6": "Please confirm your shipping information when placing an order. If you wish to change shipping information, please let us know.",
-      "reason7": "Other (specify in additional instructions)"
+      "reason2": "Does not fit (wrong size / color)",
+      "solution2": "Refundable, but customer is responsible for return shipping costs.",
+      "reason3": "Change of mind (no longer required)",
+      "solution3": "Refundable, but customer is responsible for shipping costs.",
+      "reason4": "I received an incorrect item (incorrect item / missing from package)",
+      "solution4": "Refundable, we are responsible for return shipping costs.",
+      "reason5": "Incorrect shipping information",
+      "solution5": "Please confirm your shipping information when placing an order. If you wish to change shipping information, please let us know.",
+      "reason6": "Other (specify in additional instructions)"
     }
   },
   "footSize": {

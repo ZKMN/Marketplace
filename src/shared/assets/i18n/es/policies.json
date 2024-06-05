@@ -55,17 +55,15 @@
       "returnNote": "Nota: Por favor, no envíe devoluciones a la dirección en el paquete. Esta no es nuestra dirección de devolución y afectará el procesamiento de su devolución.",
       "reason1": "Llegada tardía",
       "solution1": "Prometemos recibir la mercancía dentro de 14 días.",
-      "reason2": "Defectos / defectos de fabricación / problemas de calidad",
-      "solution2": "Reenviar un nuevo par.",
-      "reason3": "No se ajusta (talla / color incorrecto)",
-      "solution3": "Reembolsable, pero el cliente es responsable de los costos de envío de devolución.",
-      "reason4": "Cambio de opinión (ya no requerido)",
-      "solution4": "Reembolsable, pero el cliente es responsable de los gastos de envío.",
-      "reason5": "Recibí un artículo incorrecto (artículo incorrecto / falta en el paquete)",
-      "solution5": "Reembolsable, nosotros nos hacemos cargo de los costos de envío de devolución.",
-      "reason6": "Información de envío incorrecta",
-      "solution6": "Por favor, confirme su información de envío al realizar un pedido. Si desea cambiar la información de envío, por favor avísenos.",
-      "reason7": "Otro (especifique en las instrucciones adicionales)"
+      "reason2": "No se ajusta (talla / color incorrecto)",
+      "solution2": "Reembolsable, pero el cliente es responsable de los costos de envío de devolución.",
+      "reason3": "Cambio de opinión (ya no requerido)",
+      "solution3": "Reembolsable, pero el cliente es responsable de los gastos de envío.",
+      "reason4": "Recibí un artículo incorrecto (artículo incorrecto / falta en el paquete)",
+      "solution4": "Reembolsable, nosotros nos hacemos cargo de los costos de envío de devolución.",
+      "reason5": "Información de envío incorrecta",
+      "solution5": "Por favor, confirme su información de envío al realizar un pedido. Si desea cambiar la información de envío, por favor avísenos.",
+      "reason6": "Otro (especifique en las instrucciones adicionales)"
     }
   },
   "footSize": {

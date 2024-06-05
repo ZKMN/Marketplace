@@ -117,7 +117,7 @@ export const ReturnsRefunds = () => {
           </TableHead>
 
           <TableBody sx={{ bgcolor: 'table.body' }}>
-            {[1, 2, 3, 4, 5, 6].map((pos) => (
+            {[1, 2, 3, 4, 5].map((pos) => (
               <TableRow key={pos}>
                 <TableCell align="left">
                   <Typography color="text.white">
@@ -134,7 +134,7 @@ export const ReturnsRefunds = () => {
             <TableRow>
               <TableCell align="left">
                 <Typography color="text.white">
-                  {translate('texts.reason7')}
+                  {translate('texts.reason6')}
                 </Typography>
               </TableCell>
               <TableCell align="left">

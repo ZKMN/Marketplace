@@ -1,11 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import {
-  AddHome,
-  Payment,
-  ShoppingCartCheckout,
-} from '@mui/icons-material';
+import { AddHome, Payment, ShoppingCartCheckout } from '@mui/icons-material';
 import { Grid } from '@mui/material';
 import { useUnmount } from 'ahooks';
 
