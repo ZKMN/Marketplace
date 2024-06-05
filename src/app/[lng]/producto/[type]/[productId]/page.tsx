@@ -31,6 +31,7 @@ export async function generateMetadata({ params: { lng, productId } }: INextPage
         type: 'website',
         title: `👟💖 Look at these cool ${getShoesType(product?.shoesType)}${discountText}`,
         locale: lng,
+        description: upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}🌟`).join(', ')),
         images: {
           url: product?.images[0] as string,
           width: 50,
