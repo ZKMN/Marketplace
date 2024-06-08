@@ -22,6 +22,18 @@ export async function generateStaticParams() {
 
 const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INextPageParams>) => (
   <html lang={lng} dir={dir(lng)}>
+    <head>
+      <Script id="ms-clarity">
+        {`
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "moqac0yyrw");
+        `}
+      </Script>
+    </head>
+
     <body className={weestepFont.className}>
       <SpeedInsights />
 
@@ -130,16 +142,6 @@ const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INext
       <App>
         {children}
       </App>
-
-      <Script id="ms-clarity">
-        {`
-          (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, "clarity", "script", "moqac0yyrw");
-        `}
-      </Script>
 
       {/* Clickjacking attack def */}
       <Script id="clickjack">
