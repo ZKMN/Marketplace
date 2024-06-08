@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 
 import { usePatchRequest, usePutRequest } from '@/shared/api/hooks';
 import { LoadingIntlButton } from '@/shared/components';
+import { getFBAEvent } from '@/shared/lib/helpers';
 import { initBasketSuccessAction } from '@/shared/lib/store';
 import { IBasketResponse } from '@/shared/types';
 
@@ -27,6 +28,7 @@ export const AddProductButton = () => {
     config: {
       onSuccess: ({ data }) => {
         setTrue();
+        getFBAEvent('Product Added', data);
         initBasketSuccessAction(data);
       },
     },

@@ -3,6 +3,7 @@ import { Delete } from '@mui/icons-material';
 import { CircularProgress, IconButton } from '@mui/material';
 
 import { useDeleteRequest } from '@/shared/api/hooks';
+import { getFBAEvent } from '@/shared/lib/helpers';
 import { initBasketSuccessAction } from '@/shared/lib/store';
 import { IBasketResponse } from '@/shared/types';
 
@@ -12,6 +13,7 @@ export const DeleteBasketProductAction = ({ sizeId, onSuccess }:{ sizeId: number
     withCredentials: true,
     config: {
       onSuccess: ({ data }) => {
+        getFBAEvent('Product Removed');
         initBasketSuccessAction(data);
 
         if (!data?.items?.length) {

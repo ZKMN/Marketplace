@@ -4,6 +4,7 @@ import { Grid } from '@mui/material';
 import { useQueryState } from 'nuqs';
 
 import { IntlButton, IntlTypography, Loading } from '@/shared/components';
+import { getFBAEvent } from '@/shared/lib/helpers';
 import { useClickRedirect } from '@/shared/lib/hooks';
 import { resetBasketAction } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
@@ -20,6 +21,7 @@ const SuccessDetailsComponent = () => {
 
   useEffect(() => {
     if (paymentStatus === 'succeeded' || redirectStatus === 'succeeded') {
+      getFBAEvent('Order Placed');
       checkoutStore.setState({ step: 3 });
       resetBasketAction();
     }
