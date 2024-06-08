@@ -22,19 +22,19 @@ export async function generateStaticParams() {
 
 const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INextPageParams>) => (
   <html lang={lng} dir={dir(lng)}>
-    <head>
-      <Script id="ms-clarity">
-        {`
+    <body className={weestepFont.className}>
+      {process.env.NEXT_PUBLIC_APP_ENV === 'production' && (
+        <Script id="ms-clarity">
+          {`
           (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
               t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
               y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
           })(window, document, "clarity", "script", "moqac0yyrw");
         `}
-      </Script>
-    </head>
+        </Script>
+      )}
 
-    <body className={weestepFont.className}>
       <SpeedInsights />
 
       <LogoJsonLd
