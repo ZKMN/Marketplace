@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { dir } from 'i18next';
 import Script from 'next/script';
@@ -24,8 +23,6 @@ export async function generateStaticParams() {
 const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INextPageParams>) => (
   <html lang={lng} dir={dir(lng)}>
     <body className={weestepFont.className}>
-      <GoogleAnalytics gaId={config.keys.GAID as string} />
-
       <SpeedInsights />
 
       <LogoJsonLd

@@ -27,6 +27,7 @@
     "axios": "^1.6.8",
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
+    "firebase": "^10.12.2",
     "i18next": "^23.7.18",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-resources-to-backend": "^1.2.0",
