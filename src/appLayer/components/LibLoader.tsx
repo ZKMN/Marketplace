@@ -1,13 +1,15 @@
 'use client';
 
 import { useEffect } from 'react';
-import { logEvent } from 'firebase/analytics';
+import { getAnalytics, logEvent } from 'firebase/analytics';
 
-import { FBAnalytics } from '@/shared/lib/firebase.config';
+import { FBApp } from '@/shared/lib/firebase.config';
 
 export const LibLoader = () => {
   useEffect(() => {
-    logEvent(FBAnalytics, 'App init');
+    const analytics = getAnalytics(FBApp);
+
+    logEvent(analytics, `App init ${process.env.NEXT_PUBLIC_APP_ENV}`);
   }, []);
 
   return null;
