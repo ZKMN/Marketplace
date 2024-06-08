@@ -2,6 +2,7 @@ const commonVars = {
   storageKeyName: 'r2-d2-kjkszpj',
   keys: {
     gAPI: process.env.NEXT_PUBLIC_GAPI_KEY,
+    GAID: process.env.NEXT_PUBLIC_GA_ID,
     stripePublish: process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY,
   },
   urls: {
