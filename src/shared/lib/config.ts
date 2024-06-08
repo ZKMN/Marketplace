@@ -1,7 +1,9 @@
+import { firebaseConfig } from './firebase.config';
+
 const commonVars = {
   storageKeyName: 'r2-d2-kjkszpj',
   keys: {
-    gAPI: process.env.NEXT_PUBLIC_GAPI_KEY,
+    gAPI: firebaseConfig.apiKey,
     stripePublish: process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY,
   },
   urls: {
