@@ -7,13 +7,15 @@ const fontsGStatic = ' https://fonts.gstatic.com';
 const appFTP = 'https://api.weestep-kids.es';
 const appAPI = 'https://api.weestep-kids.es';
 const GTag = 'https://www.googletagmanager.com';
-// eslint-disable-next-line max-len
-const FBAPIs = 'https://firebaseinstallations.googleapis.com https://firebase.googleapis.com https://region1.google-analytics.com https://www.google-analytics.com';
+const FBAPIs = 'https://firebaseinstallations.googleapis.com https://firebase.googleapis.com';
+const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytics.com';
+const ClarityAPI = 'https://www.clarity.ms';
+const ClarityConnect = 'https://r.clarity.ms';
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag};
-  script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag};
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${ClarityAPI};
+  script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${ClarityAPI};
   style-src 'self' 'unsafe-inline' ${fontsGoogleapis};
   style-src-elem 'self' 'unsafe-inline' ${fontsGoogleapis} ${vercelAPI};
   img-src 'self' ${appFTP} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} https://flagcdn.com/w40/ data:;
@@ -24,7 +26,7 @@ const cspHeader = `
   frame-ancestors 'none';
   block-all-mixed-content;
   upgrade-insecure-requests;
-  connect-src 'self' ${appAPI} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs};
+  connect-src 'self' ${appAPI} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${ClarityConnect};
   frame-src 'self' ${vercelAPI} ${stripeApi};
 `;
 
