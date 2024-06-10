@@ -10,7 +10,7 @@ export const useClickRedirect = (): [
   (url: string, options?: NavigateOptions) => () => void,
   AppRouterInstance
 ] => {
-  const [handlePush, router] = useLngRouter();
+  const [handlePush, router] = useLngPushRouter();
 
   const handleRedirect = useCallback((
     url: string,
@@ -22,7 +22,7 @@ export const useClickRedirect = (): [
   return [handleRedirect, router];
 };
 
-export const useLngRouter = (): [
+export const useLngPushRouter = (): [
   (url: string, options?: NavigateOptions) => void,
   AppRouterInstance
 ] => {
@@ -34,6 +34,23 @@ export const useLngRouter = (): [
     options?: NavigateOptions,
   ) => {
     router.push(`/${lng}${url}`, { scroll: true, ...options });
+  }, [router.push]);
+
+  return [handlePush, router];
+};
+
+export const useLngReplaceRouter = (): [
+  (url: string, options?: NavigateOptions) => void,
+  AppRouterInstance
+] => {
+  const { lng } = useTypedParams();
+  const router = useRouter();
+
+  const handlePush = useCallback((
+    url: string,
+    options?: NavigateOptions,
+  ) => {
+    router.replace(`/${lng}${url}`, { scroll: true, ...options });
   }, [router.push]);
 
   return [handlePush, router];

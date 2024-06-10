@@ -9,7 +9,7 @@ const commonVars = {
   urls: {
     API: 'https://api.weestep-kids.es', // process.env.APP_ENV,
     site: 'https://www.weestep-kids.vercel.app',
-    imgCDN: '',
+    imgCDN: 'https://api.weestep-kids.es',
   },
 };
 
@@ -20,7 +20,7 @@ export const config = {
     urls: {
       API: 'https://api.weestep-kids.es', // process.env.APP_ENV,
       site: 'https://www.weestep-kids.es',
-      imgCDN: '',
+      imgCDN: 'https://api.weestep-kids.es',
     },
   },
   development: commonVars,

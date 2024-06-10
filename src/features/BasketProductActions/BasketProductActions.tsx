@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 import { useDeleteRequest } from '@/shared/api/hooks';
 import { BasePopup, IntlButton } from '@/shared/components';
 import { addQueryParamsToURL } from '@/shared/lib/helpers';
-import { useLngRouter } from '@/shared/lib/hooks';
+import { useLngPushRouter } from '@/shared/lib/hooks';
 import { initBasketSuccessAction } from '@/shared/lib/store';
 import { IBasketProduct, IBasketResponse, Links } from '@/shared/types';
 
@@ -20,7 +20,7 @@ export const BasketProductActions = ({
   quantity: number;
   onEdit?: () => void;
 }) => {
-  const [handleRedirect] = useLngRouter();
+  const [handleRedirect] = useLngPushRouter();
 
   const [handleDeleteProduct] = useDeleteRequest<IBasketResponse>({
     url: `/basket/${sizeId}`,

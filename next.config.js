@@ -9,13 +9,13 @@ const appAPI = 'https://api.weestep-kids.es';
 const GTag = 'https://www.googletagmanager.com';
 const FBAPIs = 'https://firebaseinstallations.googleapis.com https://firebase.googleapis.com';
 const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytics.com';
-const ClarityAPI = 'https://www.clarity.ms';
-const ClarityConnect = 'https://r.clarity.ms';
+const clarityAPI = 'https://www.clarity.ms';
+const clarityConnect = 'https://r.clarity.ms';
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${ClarityAPI};
-  script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${ClarityAPI};
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI};
+  script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI};
   style-src 'self' 'unsafe-inline' ${fontsGoogleapis};
   style-src-elem 'self' 'unsafe-inline' ${fontsGoogleapis} ${vercelAPI};
   img-src 'self' ${appFTP} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} https://flagcdn.com/w40/ data:;
@@ -26,7 +26,7 @@ const cspHeader = `
   frame-ancestors 'none';
   block-all-mixed-content;
   upgrade-insecure-requests;
-  connect-src 'self' ${appAPI} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${ClarityConnect};
+  connect-src 'self' ${appAPI} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${clarityConnect};
   frame-src 'self' ${vercelAPI} ${stripeApi};
 `;
 

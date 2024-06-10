@@ -3,10 +3,10 @@
 import { NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useSearchParams } from 'next/navigation';
 
-import { useLngRouter, usePathnameWithoutLng } from '.';
+import { useLngPushRouter, usePathnameWithoutLng } from '.';
 
 export const useURLQueryState = (): [(path?: string, options?: NavigateOptions) => void, URLSearchParams] => {
-  const [push] = useLngRouter();
+  const [push] = useLngPushRouter();
   const pathname = usePathnameWithoutLng();
   const searchParams = useSearchParams();
 

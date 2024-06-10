@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useQueryStates } from 'nuqs';
 
 import { useGetSWR } from '@/shared/api/hooks';
-import { useTypedParams } from '@/shared/lib/hooks';
-import { IProductDetails } from '@/shared/types';
+import { useLngReplaceRouter, useTypedParams } from '@/shared/lib/hooks';
+import { IProductDetails, Links } from '@/shared/types';
 
 const stringParser = (defaultValue: string) => ({
   parse: (value: string) => value || defaultValue,
@@ -18,13 +18,18 @@ export const useGetProduct = (product?: IProductDetails) => {
 
   const [productResponse, setProductResponse] = useState<IProductDetails>();
 
-  const { productId } = useTypedParams();
+  const [push] = useLngReplaceRouter();
+  const { productId, type } = useTypedParams();
 
   const { data } = useGetSWR<IProductDetails>({
     url: `/products/${productId}`,
     config: {
       onSuccess: (prod) => {
         setProductResponse(prod);
+
+        if (prod.shoesType !== type) {
+          return push(`${Links.PRODUCT}/${prod.shoesType}/${productId}`);
+        }
 
         if (!queries.sizeId) {
           setQuery({ sizeId: String(prod.sizes[0].id) });
@@ -33,6 +38,8 @@ export const useGetProduct = (product?: IProductDetails) => {
         if (!queries.quantity) {
           setQuery({ quantity: '1' });
         }
+
+        return null;
       },
       fallbackData: productResponse || product,
     },

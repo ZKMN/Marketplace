@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-import { useLngRouter } from '@/shared/lib/hooks';
+import { useLngPushRouter } from '@/shared/lib/hooks';
 import { Links } from '@/shared/types';
 
 export const useChangeFilter = () => {
-  const [push] = useLngRouter();
+  const [push] = useLngPushRouter();
   const searchParams = useSearchParams();
 
   const handleChangeFilter = useCallback((category: string, value: string) => () => {

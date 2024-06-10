@@ -69,7 +69,7 @@ export async function generateMetadata({ params: { lng, productId } }: INextPage
       },
     },
     twitter: {
-      site: config.urls.site,
+      site: `${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
       title: `👟💖 Mira qué ${getShoesType(product?.shoesType)} tan chulos${discountText}`,
       description: upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}🌟`).join(', ')),
       images: {
