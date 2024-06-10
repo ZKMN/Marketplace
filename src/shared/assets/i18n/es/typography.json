@@ -59,7 +59,8 @@
     "characteristics": "Características",
     "youMayLike": "También le puede interesar",
     "howToMeasureFoot": "¿Cómo medir tu pie para elegir la talla correcta?",
-    "oops": "OOPS!"
+    "oops": "OOPS!",
+    "orderIdValue": "Número de pedido - #{{ value }}"
   },
   "links": {
     "home": "Inicio",

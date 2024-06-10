@@ -4,6 +4,7 @@ import { IBasketStore } from '@/shared/types';
 
 export const basketStoreValues: Readonly<IBasketStore> = {
   basket: null,
+  orderId: null,
   isBasketLoading: true,
 };
 

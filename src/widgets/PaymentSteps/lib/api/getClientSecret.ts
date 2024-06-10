@@ -1,22 +1,28 @@
 import { apiPost } from '@/shared/api/instance';
 import { errorMessage } from '@/shared/lib/helpers';
+import { TLanguages } from '@/shared/types';
 
-import { ICarrier, ICheckoutStore, IShippingDetails } from '../../types';
+import { ICarrier, IShippingDetails } from '../../types';
 
-export const getClientSecret = async (carrier: ICarrier | null, shippingDetails: IShippingDetails | null): Promise<string> => {
+export const getClientSecret = async (
+  lng: TLanguages,
+  carrier: ICarrier | null,
+  shippingDetails: IShippingDetails | null,
+): Promise<{ orderNumber: number; clientSecret: string; }> => {
   try {
-    const { data } = await apiPost<{ clientSecret: string; }, Pick<ICheckoutStore, 'carrier' | 'shippingDetails'>>({
-      url: '/v1/checkout/payment-intent/',
+    const { data } = await apiPost<{ clientSecret: string; orderNumber: number;}, { carrier: string; shippingDetails: string; }>({
+      url: `/${lng}/v1/checkout/payment-intent/`,
+      withCredentials: true,
       payload: {
-        carrier,
-        shippingDetails,
+        carrier: JSON.stringify(carrier),
+        shippingDetails: JSON.stringify(shippingDetails),
       },
     });
 
-    return data.clientSecret;
+    return { orderNumber: data.orderNumber, clientSecret: data.clientSecret };
   } catch (error) {
-    errorMessage('Error en el proceso de pago.');
+    errorMessage('Error en el proceso de pago.', { toastId: 'pay-error' });
 
-    return '';
+    return { orderNumber: 0, clientSecret: '' };
   }
 };

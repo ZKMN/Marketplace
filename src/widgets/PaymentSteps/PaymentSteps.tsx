@@ -3,11 +3,10 @@
 import React, { useEffect } from 'react';
 import { AddHome, Payment, ShoppingCartCheckout } from '@mui/icons-material';
 import { Grid } from '@mui/material';
-import { useUnmount } from 'ahooks';
 
 import { BaseStepper } from '@/shared/components';
 
-import { checkoutStore, resetPaymentStoreAction } from './lib/store';
+import { checkoutStore } from './lib/store';
 import {
   BasketDetailsStep,
   PaymentStep,
@@ -32,10 +31,6 @@ export const PaymentSteps = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, [step]);
-
-  useUnmount(() => {
-    resetPaymentStoreAction();
-  });
 
   return (
     <Grid container>

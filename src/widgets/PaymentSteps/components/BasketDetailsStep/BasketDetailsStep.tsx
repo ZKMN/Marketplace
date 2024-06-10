@@ -88,7 +88,7 @@ export const BasketDetailsStep = () => {
             justifyContent="space-between"
           >
             <IntlTypography
-              intl={{ label: 'titles.totalQty', values: { quantity: basket?.numItems } }}
+              intl={{ label: 'titles.totalQty', values: { quantity: basket?.numItems || 0 } }}
               color="text.grey"
               fontSize="1.2rem"
               fontWeight={700}

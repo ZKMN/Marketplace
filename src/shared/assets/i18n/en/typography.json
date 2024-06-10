@@ -59,7 +59,8 @@
     "characteristics": "Characteristics",
     "youMayLike": "You may also like",
     "howToMeasureFoot": "How to measure your foot to choose the right size?",
-    "oops": "OOPS!"
+    "oops": "OOPS!",
+    "orderIdValue": "Order ID - #{{ value }}"
   },
   "links": {
     "home": "Home",

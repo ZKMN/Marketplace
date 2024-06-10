@@ -2,8 +2,8 @@ import { useElements, useStripe } from '@stripe/react-stripe-js';
 import { useBoolean } from 'ahooks';
 
 import { errorMessage } from '@/shared/lib/helpers';
-import { useURLQueryState } from '@/shared/lib/hooks';
-import { basketStore } from '@/shared/lib/store';
+import { useTypedParams, useURLQueryState } from '@/shared/lib/hooks';
+import { basketStore, setOrderIdAction } from '@/shared/lib/store';
 
 import { getClientSecret } from '../api';
 import { checkoutStore } from '../store';
@@ -16,6 +16,7 @@ export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] =>
 
   const stripe = useStripe();
   const elements = useElements();
+  const { lng } = useTypedParams();
 
   const [loading, { setTrue, setFalse }] = useBoolean(false);
 
@@ -33,7 +34,9 @@ export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] =>
     try {
       const prods = products?.map((item) => ({ sizeId: item.product.size.id }));
 
-      const clientSecret = await getClientSecret(carrier, shippingDetails);
+      const { clientSecret, orderNumber } = await getClientSecret(lng, carrier, shippingDetails);
+
+      setOrderIdAction(orderNumber);
 
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -58,7 +61,7 @@ export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] =>
 
       queryParams.set('payment_status', 'succeeded');
     } catch (error) {
-      errorMessage('Submit payment error');
+      errorMessage('Error en el proceso de pago.', { toastId: 'pay-error' });
     } finally {
       setFalse();
     }

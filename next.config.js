@@ -11,11 +11,12 @@ const FBAPIs = 'https://firebaseinstallations.googleapis.com https://firebase.go
 const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytics.com';
 const clarityAPI = 'https://www.clarity.ms';
 const clarityConnect = 'https://r.clarity.ms';
+const stripeUI = 'https://merchant-ui-api.stripe.com';
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI};
-  script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI};
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI};
+  script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI};
   style-src 'self' 'unsafe-inline' ${fontsGoogleapis};
   style-src-elem 'self' 'unsafe-inline' ${fontsGoogleapis} ${vercelAPI};
   img-src 'self' ${appFTP} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} https://flagcdn.com/w40/ data:;
@@ -26,12 +27,13 @@ const cspHeader = `
   frame-ancestors 'none';
   block-all-mixed-content;
   upgrade-insecure-requests;
-  connect-src 'self' ${appAPI} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${clarityConnect};
+  connect-src 'self' ${appAPI} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${clarityConnect} ${stripeUI};
   frame-src 'self' ${vercelAPI} ${stripeApi};
 `;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // reactStrictMode: false,
   staticPageGenerationTimeout: 180,
   async headers() {
     return [

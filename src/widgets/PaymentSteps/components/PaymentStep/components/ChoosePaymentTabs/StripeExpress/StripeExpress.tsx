@@ -7,7 +7,7 @@ import { checkoutStore } from '@/widgets/PaymentSteps/lib/store';
 import { config } from '@/shared/lib/config';
 import { errorMessage, getShoesType } from '@/shared/lib/helpers';
 import { useTypedParams } from '@/shared/lib/hooks';
-import { basketStore } from '@/shared/lib/store';
+import { basketStore, setOrderIdAction } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
 export const StripeExpress = ({ amount }: { amount: string; }) => {
@@ -52,7 +52,7 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
 
   expressCheckoutElement.mount('#express-checkout-element');
 
-  expressCheckoutElement.on('click', async ({ resolve }) => {
+  expressCheckoutElement.on('click', ({ resolve }) => {
     const lineItems = products?.map(({ product, quantity, itemsTotal }) => ({
       name: `${quantity} x ${getShoesType(product.shoesType)}`,
       // stripe working with cents
@@ -75,7 +75,9 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
 
   expressCheckoutElement.on('confirm', async () => {
     try {
-      const clientSecret = await getClientSecret(carrier, shippingDetails);
+      const { clientSecret, orderNumber } = await getClientSecret(lng, carrier, shippingDetails);
+
+      setOrderIdAction(orderNumber);
 
       const { error } = await stripe.confirmPayment({
         elements,
@@ -97,7 +99,7 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
         errorMessage(error.message, { style: { top: '100px', maxWidth: '450px' } });
       }
     } catch (error) {
-      errorMessage('Express payment confirm error.');
+      errorMessage('Error en el proceso de pago.', { toastId: 'pay-error' });
     }
   });
 

@@ -33,7 +33,8 @@ export const apiPost = <D, P>({
   payload,
   baseURL,
   headers,
-}: IAPIRequestParams<P>) => APIInstance.post<D, AxiosResponse<D, P>, P>(url, payload, { baseURL, headers });
+  withCredentials,
+}: IAPIRequestParams<P>) => APIInstance.post<D, AxiosResponse<D, P>, P>(url, payload, { baseURL, headers, withCredentials });
 
 export const apiPatch = <D, P>({
   url,

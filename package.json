@@ -46,7 +46,7 @@
     "react-toastify": "^10.0.4",
     "sass": "^1.69.5",
     "slick-carousel": "^1.8.1",
-    "stripe": "^14.18.0",
+    "stripe": "^15.10.0",
     "swr": "^2.2.5",
     "zustand": "^4.4.7"
   },

@@ -1,4 +1,4 @@
-import { startCase, toLower } from 'lodash';
+import { toLower, upperFirst } from 'lodash';
 
 import { ILocalBasketProduct } from '@/shared/types';
 
@@ -18,4 +18,4 @@ export const getProductsQuantity = (products?: ILocalBasketProduct[]) => product
   return qty;
 }, 0) as number;
 
-export const getShoesType = (shoesType?: string) => startCase(toLower(shoesType));
+export const getShoesType = (shoesType?: string) => upperFirst(toLower(shoesType)).replaceAll('-', ' ');

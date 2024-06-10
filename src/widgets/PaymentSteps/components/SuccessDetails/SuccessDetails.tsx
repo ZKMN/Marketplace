@@ -1,18 +1,21 @@
 import React, { Suspense, useEffect } from 'react';
 import { CheckCircleTwoTone } from '@mui/icons-material';
-import { Grid } from '@mui/material';
+import { Divider, Grid, Typography } from '@mui/material';
+import { useUnmount } from 'ahooks';
 import { useQueryState } from 'nuqs';
 
 import { IntlButton, IntlTypography, Loading } from '@/shared/components';
 import { getFBAEvent } from '@/shared/lib/helpers';
 import { useClickRedirect } from '@/shared/lib/hooks';
-import { resetBasketAction } from '@/shared/lib/store';
+import { basketStore, resetBasketAction } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
-import { checkoutStore } from '../../lib/store';
+import { checkoutStore, resetPaymentStoreAction } from '../../lib/store';
 
 const SuccessDetailsComponent = () => {
   const step = checkoutStore((state) => state.step);
+  const email = checkoutStore((state) => state.shippingDetails?.email);
+  const orderId = basketStore((state) => state.orderId);
 
   const [handleRedirect] = useClickRedirect();
 
@@ -20,42 +23,60 @@ const SuccessDetailsComponent = () => {
   const [redirectStatus] = useQueryState('redirect_status');
 
   useEffect(() => {
-    if (paymentStatus === 'succeeded' || redirectStatus === 'succeeded') {
+    if (orderId && (paymentStatus === 'succeeded' || redirectStatus === 'succeeded')) {
       getFBAEvent('Order Placed');
       checkoutStore.setState({ step: 3 });
       resetBasketAction();
     }
-  }, [redirectStatus, paymentStatus]);
+  }, [orderId, redirectStatus, paymentStatus]);
 
-  if (step !== 3) {
+  useUnmount(() => {
+    resetPaymentStoreAction();
+  });
+
+  if (!orderId && step !== 3) {
     return null;
   }
 
   return (
     <Grid
       container
+      mb={5}
       alignItems="center"
       flexDirection="column"
     >
 
-      <CheckCircleTwoTone color="success" sx={{ fontSize: '5rem' }} />
+      <CheckCircleTwoTone color="success" sx={{ fontSize: '4rem' }} />
 
       <IntlTypography
+        mb={1}
         intl={{ label: 'titles.orderConfirmed' }}
         fontSize="2rem"
         fontWeight={700}
       />
 
+      <IntlTypography
+        mb={2}
+        intl={{ label: 'titles.orderIdValue', values: { value: orderId } }}
+        fontSize="1.2rem"
+        fontWeight={700}
+      />
+
       <IntlTypography intl={{ label: 'texts.confirmDetailsOnMail' }} />
 
-      <Grid item mt={3}>
+      <Typography fontWeight={700}>
+        {email}
+      </Typography>
+
+      <Divider sx={{ width: '100%', margin: '24px 0' }} />
+
+      <Grid item>
         <IntlButton
           intl={{ label: 'continueShopping' }}
           color="secondary"
           onClick={handleRedirect(Links.CATALOGUE)}
         />
       </Grid>
-
     </Grid>
   );
 };

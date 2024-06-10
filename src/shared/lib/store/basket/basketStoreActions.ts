@@ -6,6 +6,10 @@ export const initBasketSuccessAction: IBasketStoreActions['initBasketSuccessActi
   basketStore.setState({ basket, isBasketLoading: false });
 };
 
+export const setOrderIdAction: IBasketStoreActions['setOrderIdAction'] = (orderId) => {
+  basketStore.setState({ orderId });
+};
+
 export const resetBasketAction: IBasketStoreActions['resetBasketAction'] = () => {
   basketStore.setState({ basket: null });
 };
