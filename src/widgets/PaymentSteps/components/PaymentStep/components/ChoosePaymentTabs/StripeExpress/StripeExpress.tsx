@@ -77,8 +77,6 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
     try {
       const { clientSecret, orderNumber } = await getClientSecret(lng, carrier, shippingDetails);
 
-      setOrderIdAction(orderNumber);
-
       const { error } = await stripe.confirmPayment({
         elements,
         clientSecret,
@@ -97,7 +95,11 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
 
       if (error?.message) {
         errorMessage(error.message, { style: { top: '100px', maxWidth: '450px' } });
+
+        return;
       }
+
+      setOrderIdAction(orderNumber);
     } catch (error) {
       errorMessage('Error en el proceso de pago.', { toastId: 'pay-error' });
     }

@@ -34,7 +34,7 @@ const SuccessDetailsComponent = () => {
     resetPaymentStoreAction();
   });
 
-  if (!orderId && step !== 3) {
+  if (!orderId || step !== 3) {
     return null;
   }
 
@@ -45,7 +45,6 @@ const SuccessDetailsComponent = () => {
       alignItems="center"
       flexDirection="column"
     >
-
       <CheckCircleTwoTone color="success" sx={{ fontSize: '4rem' }} />
 
       <IntlTypography

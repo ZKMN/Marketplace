@@ -36,8 +36,6 @@ export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] =>
 
       const { clientSecret, orderNumber } = await getClientSecret(lng, carrier, shippingDetails);
 
-      setOrderIdAction(orderNumber);
-
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: cardElement,
@@ -58,6 +56,8 @@ export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] =>
 
         return;
       }
+
+      setOrderIdAction(orderNumber);
 
       queryParams.set('payment_status', 'succeeded');
     } catch (error) {
