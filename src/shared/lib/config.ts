@@ -8,7 +8,7 @@ const commonVars = {
   },
   urls: {
     API: process.env.NEXT_PUBLIC_API_URL, // process.env.APP_ENV,
-    site: 'https://weestep-kids-sgo8-zkmns-projects.vercel.app',
+    site: 'https://weestep-kids.vercel.app/',
     imgCDN: process.env.NEXT_PUBLIC_API_URL,
   },
 };
