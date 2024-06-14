@@ -15,12 +15,15 @@ import { checkoutStore, resetPaymentStoreAction } from '../../lib/store';
 const SuccessDetailsComponent = () => {
   const step = checkoutStore((state) => state.step);
   const email = checkoutStore((state) => state.shippingDetails?.email);
-  const orderId = basketStore((state) => state.orderId);
+  const basketOrderId = basketStore((state) => state.orderId);
 
   const [handleRedirect] = useClickRedirect();
 
   const [paymentStatus] = useQueryState('payment_status');
   const [redirectStatus] = useQueryState('redirect_status');
+  const [redirectOrderId] = useQueryState('orderId');
+
+  const orderId = basketOrderId || redirectOrderId;
 
   useEffect(() => {
     if (orderId && (paymentStatus === 'succeeded' || redirectStatus === 'succeeded')) {
@@ -45,7 +48,10 @@ const SuccessDetailsComponent = () => {
       alignItems="center"
       flexDirection="column"
     >
-      <CheckCircleTwoTone color="success" sx={{ fontSize: '4rem' }} />
+      <CheckCircleTwoTone
+        sx={{ fontSize: '4rem' }}
+        color="success"
+      />
 
       <IntlTypography
         mb={1}

@@ -7,7 +7,7 @@ import { checkoutStore } from '@/widgets/PaymentSteps/lib/store';
 import { config } from '@/shared/lib/config';
 import { errorMessage, getShoesType } from '@/shared/lib/helpers';
 import { useTypedParams } from '@/shared/lib/hooks';
-import { basketStore, setOrderIdAction } from '@/shared/lib/store';
+import { basketStore } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
 export const StripeExpress = ({ amount }: { amount: string; }) => {
@@ -82,7 +82,7 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
         clientSecret,
         confirmParams: {
           // return_url: 'https://3da0-91-242-149-25.ngrok-free.app/en/checkout',
-          return_url: `${config.urls.site}/${lng}${Links.CHECKOUT}`,
+          return_url: `${config.urls.site}/${lng}${Links.CHECKOUT}?orderId=${orderNumber}`,
           payment_method_data: {
             billing_details: {
               name: `${shippingDetails.firstName} ${shippingDetails.lastName}`,
@@ -95,11 +95,7 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
 
       if (error?.message) {
         errorMessage(error.message, { style: { top: '100px', maxWidth: '450px' } });
-
-        return;
       }
-
-      setOrderIdAction(orderNumber);
     } catch (error) {
       errorMessage('Error en el proceso de pago.', { toastId: 'pay-error' });
     }
