@@ -4,8 +4,8 @@ const mapsGoogleapis = 'https://maps.googleapis.com';
 const fontsGoogleapis = 'https://fonts.googleapis.com';
 const mapsGStatic = 'https://maps.gstatic.com';
 const fontsGStatic = ' https://fonts.gstatic.com';
-const appFTP = 'https://api.weestep-kids.es';
 const appAPI = 'https://api.weestep-kids.es';
+const appAPIDev = 'https://apidev.weestep-kids.es';
 const GTag = 'https://www.googletagmanager.com';
 const FBAPIs = 'https://firebaseinstallations.googleapis.com https://firebase.googleapis.com';
 const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytics.com';
@@ -19,7 +19,7 @@ const cspHeader = `
   script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI};
   style-src 'self' 'unsafe-inline' ${fontsGoogleapis};
   style-src-elem 'self' 'unsafe-inline' ${fontsGoogleapis} ${vercelAPI};
-  img-src 'self' ${appFTP} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} https://flagcdn.com/w40/ data:;
+  img-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} https://flagcdn.com/w40/ data:;
   font-src 'self' ${fontsGStatic};
   object-src 'none';
   base-uri 'self';
@@ -27,7 +27,7 @@ const cspHeader = `
   frame-ancestors 'none';
   block-all-mixed-content;
   upgrade-insecure-requests;
-  connect-src 'self' ${appAPI} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${clarityConnect} ${stripeUI};
+  connect-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${clarityConnect} ${stripeUI};
   frame-src 'self' ${vercelAPI} ${stripeApi};
 `;
 

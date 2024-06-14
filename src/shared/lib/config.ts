@@ -7,9 +7,9 @@ const commonVars = {
     stripePublish: process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY,
   },
   urls: {
-    API: 'https://api.weestep-kids.es', // process.env.APP_ENV,
-    site: 'https://www.weestep-kids.vercel.app',
-    imgCDN: 'https://api.weestep-kids.es',
+    API: process.env.NEXT_PUBLIC_API_URL, // process.env.APP_ENV,
+    site: 'https://weestep-kids-sgo8-zkmns-projects.vercel.app',
+    imgCDN: process.env.NEXT_PUBLIC_API_URL,
   },
 };
 
@@ -18,9 +18,8 @@ export const config = {
   production: {
     ...commonVars,
     urls: {
-      API: 'https://api.weestep-kids.es', // process.env.APP_ENV,
+      ...commonVars.urls,
       site: 'https://www.weestep-kids.es',
-      imgCDN: 'https://api.weestep-kids.es',
     },
   },
   development: commonVars,

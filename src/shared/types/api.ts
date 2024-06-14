@@ -8,6 +8,10 @@ import {
 import { StringifiableRecord } from 'query-string';
 import { SWRConfiguration } from 'swr';
 
+type TRequestOptions<R, TParams> = Omit<Options<AxiosResponse<R>, [TParams]>, 'onError' | 'defaultParams' | 'manual'> & {
+  onError?: (e: AxiosError<R> | Error, params: [TParams]) => void;
+};
+
 export interface IAPIRequestParams<P = undefined> {
   url: string;
   baseURL?: string;
@@ -24,10 +28,6 @@ export interface IAPIHookOptions<R, TParams = undefined> {
   queryParams?: StringifiableRecord;
   withCredentials?: boolean;
 }
-
-type TRequestOptions<R, TParams> = Omit<Options<AxiosResponse<R>, [TParams]>, 'onError' | 'defaultParams' | 'manual'> & {
-  onError?: (e: AxiosError<unknown, R> | Error, params: [TParams]) => void;
-};
 
 export interface IRequestCallbackParams<P = undefined> {
   payload?: P;
