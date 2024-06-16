@@ -19,10 +19,10 @@ i18next
   .init({
     ...getI18IntlOptions(),
     lng: undefined, // let detect the language on client side
-    detection: {
-      order: ['path', 'htmlTag', 'cookie', 'navigator'],
-    },
     preload: runsOnServerSide ? LANGUAGES : [],
+    detection: {
+      order: ['path', 'cookie', 'htmlTag', 'navigator'],
+    },
   });
 
 export const useClientTranslation = (

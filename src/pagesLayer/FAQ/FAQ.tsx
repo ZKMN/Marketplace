@@ -2,12 +2,13 @@
 
 import React from 'react';
 import { Trans, TransProps } from 'react-i18next';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import { FootSizeButton } from '@/entities/Buttons';
 
 import { BaseCollapse, BaseContainer, IntlLink } from '@/shared/components';
 import { FAQ_QUESTIONS } from '@/shared/consts';
+import { config } from '@/shared/lib/config';
 import { useClientTranslation } from '@/shared/lib/hooks';
 import { Links } from '@/shared/types';
 
@@ -72,14 +73,10 @@ export const FAQ = () => {
               t={translate as TransProps<string>['t']}
               ns="faq"
               i18nKey={`texts.answer${q}`}
+              values={{ email: config.email }}
               components={{
-                br: <Box component="br" />,
+                MailLink: <IntlLink href={`mailto:${config.email}`} />,
                 FootSizeButton: <FootSizeButton color="primary" />,
-                mailLink: (
-                  <IntlLink href="mailto:kidsweestep@gmail.com">
-                    kidsweestep@gmail.com
-                  </IntlLink>
-                ),
               }}
             />
           </Typography>

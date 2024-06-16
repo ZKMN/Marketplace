@@ -31,7 +31,7 @@ const ContactsPage = () => (
       url={config.urls.site}
       logo="https://img.ankorstore.com/brands/rounded/16969-47df8e2d48b214.jpg?auto=compress&fm=pjpg&h=158&dpr=2"
       contactPoint={[{
-        email: 'kidsweestep@gmail.com',
+        email: config.email,
         telephone: '+34611822584',
         areaServed: 'ES',
         contactType: 'atención al cliente',

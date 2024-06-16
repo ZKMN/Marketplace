@@ -66,7 +66,7 @@ const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INext
           addressCountry: 'ES',
         }}
         contactPoint={[{
-          email: 'kidsweestep@gmail.com',
+          email: config.email,
           telephone: '+34611822584',
           areaServed: 'ES',
           contactType: 'atención al cliente',

@@ -1,6 +1,7 @@
 import { firebaseConfig } from './firebase.config';
 
 const commonVars = {
+  email: 'kidsweestep@gmail.com',
   storageKeyName: 'r2-d2-kjkszpj',
   keys: {
     gAPI: firebaseConfig.apiKey,

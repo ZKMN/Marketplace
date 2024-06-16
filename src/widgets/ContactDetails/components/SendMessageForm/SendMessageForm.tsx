@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { Form, IntlTypography } from '@/shared/components';
+import { config } from '@/shared/lib/config';
 
 import { FIELDS } from '../../consts';
 import { validationSchema } from '../../lib';
@@ -29,7 +30,7 @@ export const SendMessageForm = () => (
         message: '',
       }}
       onSubmit={({ subject, message }) => {
-        window.location.href = `mailto:kidsweestep@gmail.com?subject=${subject}&body=${message}`;
+        window.location.href = `mailto:${config.email}?subject=${subject}&body=${message}`;
       }}
     />
   </>

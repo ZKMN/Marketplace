@@ -1,8 +1,10 @@
+'use client';
+
 /* eslint-disable max-len */
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Divider, Grid, Typography } from '@mui/material';
 
-import { BaseContainer } from '@/shared/components';
+import { BaseContainer, BaseImage } from '@/shared/components';
 
 export const AboutUsEs = () => (
   <BaseContainer mt={3} mb={3} maxWidth={1000}>
@@ -39,13 +41,30 @@ export const AboutUsEs = () => (
       </Grid>
 
       <Grid item xs={12}>
-        <Typography>
-          Tenemos zapatos para cada pequeño, desde los primeros pasos hasta la adolescencia, con tallas que van desde la 18 hasta la 37. Amplia selección tanto para niños como para sus madres (¡si mamá tiene pies pequeños: hasta la talla 37!) - ¡Más de 180 modelos en stock! ¡Traemos la mercancía de la próxima temporada a la tienda un mes antes que otros establecimientos! Por ejemplo: ¡tenemos sandalias de verano en nuestras estanterías desde finales de febrero! Mientras que los slip-ons, las zapatillas y las deportivas están disponibles durante todo el año.
-        </Typography>
-      </Grid>
+        <Grid
+          sx={({ breakpoints }) => ({
+            mr: 1,
+            float: 'left',
+            [breakpoints.down('sm')]: {
+              mb: 1,
+              float: 'none',
+              display: 'flex',
+              justifyContent: 'center',
+            },
+          })}
+        >
+          <BaseImage
+            alt="Tienda Weestep Kids"
+            src="/images/articles/about-us/store.jpg"
+            width={300}
+            height={300}
+          />
+        </Grid>
 
-      <Grid item xs={12}>
         <Typography>
+          Tenemos zapatos para cada pequeño, desde los primeros pasos hasta la adolescencia, con tallas que van desde la 18 hasta la 37. Amplia selección tanto para niños como para sus madres (¡si mamá tiene pies pequeños: hasta la talla 37!) - ¡Más de 200 modelos en stock! ¡Traemos la mercancía de la próxima temporada a la tienda un mes antes que otros establecimientos! Por ejemplo: ¡tenemos sandalias de verano en nuestras estanterías desde finales de febrero! Mientras que los slip-ons, las zapatillas y las deportivas están disponibles durante todo el año.
+          <br />
+          <br />
           En nuestra tienda, encontrarás de todo, desde coloridas zapatillas deportivas hasta cómodas pantuflas y calzado para paseos por la playa. Nos preocupamos por la comodidad de tu hijo todo el día.
         </Typography>
       </Grid>
@@ -101,7 +120,7 @@ export const AboutUsEs = () => (
           </Grid>
           <Grid mb={1} component="li">
             <Typography>
-              <strong>Slip-ons:</strong>
+              <strong>Slipons:</strong>
               {' '}
               Comodidad y estilo en un solo producto, perfectos para niños activos.
             </Typography>
@@ -117,32 +136,126 @@ export const AboutUsEs = () => (
 
       <Grid item xs={12}>
         <Typography
-          variant="h6"
           mb={2}
-          fontSize="1.2rem"
+          variant="h6"
+          fontSize="1.5rem"
           fontWeight={700}
         >
           Modelos Únicos:
         </Typography>
 
-        <Grid component="ol" pl={4}>
-          <Grid mb={1} component="li">
+        <Divider sx={{ margin: '16px 0' }}>
+          <Typography
+            variant="h3"
+            fontSize="1rem"
+            fontWeight={700}
+          >
+            Zapatillas
+          </Typography>
+        </Divider>
+
+        <Grid container>
+          <Grid item xs={12}>
+            <Grid
+              sx={({ breakpoints }) => ({
+                mr: 1,
+                float: 'left',
+                [breakpoints.down('sm')]: {
+                  mb: 1,
+                  float: 'none',
+                  display: 'flex',
+                  justifyContent: 'center',
+                },
+              })}
+            >
+              <BaseImage
+                alt="Weestep Kids Zapatillas"
+                src="/images/articles/about-us/sneakers.jpg"
+                width={200}
+                height={200}
+              />
+            </Grid>
+
             <Typography>
               Imagina cómo se maravillarán tus hijos al ver sus zapatos cambiar de color con el sol. Sí, ¡lo leíste bien! Tenemos zapatos que cambian de color al sol. En interiores, son blancos, pero al sol, se vuelven azules (para modelos de niños) o rosas (para modelos de niñas). Estos zapatos están marcados en nuestro catálogo con una imagen azul o rosa en una esquina, ¡los encontrarás fácilmente! También puedes encontrar estos zapatos en nuestro catálogo especial &quot;Camaleones&quot;.
             </Typography>
           </Grid>
-          <Grid mb={1} component="li">
-            <Typography>
+        </Grid>
+
+        <Divider sx={{ margin: '16px 0' }}>
+          <Typography
+            variant="h3"
+            fontSize="1rem"
+            fontWeight={700}
+          >
+            Slipons
+          </Typography>
+        </Divider>
+
+        <Grid container>
+          <Grid item xs={12}>
+            <Grid
+              sx={({ breakpoints }) => ({
+                mr: 1,
+                float: 'left',
+                [breakpoints.down('sm')]: {
+                  mb: 1,
+                  float: 'none',
+                  display: 'flex',
+                  justifyContent: 'center',
+                },
+              })}
+            >
+              <BaseImage
+                alt="Weestep Kids Slipons"
+                src="/images/articles/about-us/slipons.jpg"
+                width={200}
+                height={200}
+              />
+            </Grid>
+
+            <Typography mb={1}>
               ¿Sabías que tenemos zapatos en nuestra tienda que los niños pueden pintar ellos mismos? Los marcadores se venden junto con este calzado. Cuando tu hijo llega a casa con zapatos de nuestra tienda o cuando llega un paquete de nuestra tienda, ¡tu hijo puede decorar su calzado a su gusto y tener un par de zapatos único que nadie más tiene!
-            </Typography>
-          </Grid>
-          <Grid mb={1} component="li">
-            <Typography>
+              <br />
+              <br />
               -¿Qué pasa si se cansan del diseño? - podrías preguntar.
               -¡No hay problema! - responderemos. ¡Solo tíralos a la lavadora y los zapatos estarán limpios de nuevo! ¡Tu hijo puede repintarlos hasta 5 veces!
             </Typography>
           </Grid>
-          <Grid mb={1} component="li">
+        </Grid>
+
+        <Divider sx={{ margin: '16px 0' }}>
+          <Typography
+            variant="h3"
+            fontSize="1rem"
+            fontWeight={700}
+          >
+            Zapatillas Hameleon
+          </Typography>
+        </Divider>
+
+        <Grid container>
+          <Grid item xs={12}>
+            <Grid
+              sx={({ breakpoints }) => ({
+                mr: 1,
+                float: 'left',
+                [breakpoints.down('sm')]: {
+                  mb: 1,
+                  float: 'none',
+                  display: 'flex',
+                  justifyContent: 'center',
+                },
+              })}
+            >
+              <BaseImage
+                alt="Weestep Kids Zapatillas"
+                src="/images/articles/about-us/sneakers-high.jpg"
+                width={200}
+                height={200}
+              />
+            </Grid>
+
             <Typography>
               Si tu hijo es adolescente y busca su propio estilo, ¡tenemos modelos que brillan en la oscuridad! Esto hará que tu hijo se destaque y aumentará su seguridad al regresar a casa por la noche. La ropa brillante es fácilmente visible para peatones, conductores y ciclistas, añadiendo confianza a las aventuras nocturnas de tu hijo.
             </Typography>
@@ -160,7 +273,11 @@ export const AboutUsEs = () => (
       </Grid>
 
       <Grid item xs={12}>
-        <Typography variant="h6" fontWeight={700}>
+        <Typography
+          mb={2}
+          variant="h6"
+          fontWeight={700}
+        >
           En nuestro calzado, encontrarás:
         </Typography>
         <Typography mb={1}>
@@ -228,16 +345,18 @@ export const AboutUsEs = () => (
       </Grid>
 
       <Grid item xs={12}>
-        <Typography variant="h6" fontWeight={700}>
+        <Typography fontWeight={700}>
           Suela Anatómica:
         </Typography>
+
         <Typography>
           Es una solución innovadora en el mundo del calzado que proporciona la máxima comodidad y soporte a los pies durante todo el día. Su diseño está pensado con las características del pie humano en mente, haciendo que los zapatos con este tipo de suela sean una elección ideal para un estilo de vida activo y saludable.
         </Typography>
         <Typography>
           ¿Qué distingue a una suela anatómica? - podrías preguntar.
         </Typography>
-        <Typography mb={1} fontWeight={700}>
+
+        <Typography mt={2} mb={1} fontWeight={700}>
           Y te responderemos:
         </Typography>
 

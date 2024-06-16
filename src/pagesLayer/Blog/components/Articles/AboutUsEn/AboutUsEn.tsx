@@ -1,8 +1,10 @@
+'use client';
+
 /* eslint-disable max-len */
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Divider, Grid, Typography } from '@mui/material';
 
-import { BaseContainer } from '@/shared/components';
+import { BaseContainer, BaseImage } from '@/shared/components';
 
 export const AboutUsEn = () => (
   <BaseContainer mt={3} mb={3} maxWidth={1000}>
@@ -39,13 +41,30 @@ export const AboutUsEn = () => (
       </Grid>
 
       <Grid item xs={12}>
-        <Typography>
-          We have shoes for every little one, from first steps to adolescence, with sizes ranging from 18 to 37. Wide selection for both kids and their mothers (if mom has small feet: up to 37!) - Over 180 models in stock! We bring next season&apos;s merchandise to the store a month before other establishments! For example: we have summer sandals and sandals on our shelves since late February! While slip-ons, sneakers, and sneakers are available year-round.
-        </Typography>
-      </Grid>
+        <Grid
+          sx={({ breakpoints }) => ({
+            mr: 1,
+            float: 'left',
+            [breakpoints.down('sm')]: {
+              mb: 1,
+              float: 'none',
+              display: 'flex',
+              justifyContent: 'center',
+            },
+          })}
+        >
+          <BaseImage
+            alt="Tienda Weestep Kids"
+            src="/images/articles/about-us/store.jpg"
+            width={300}
+            height={300}
+          />
+        </Grid>
 
-      <Grid item xs={12}>
         <Typography>
+          We have shoes for every little one, from first steps to adolescence, with sizes ranging from 18 to 37. Wide selection for both kids and their mothers (if mom has small feet: up to 37!) - Over 200 models in stock! We bring next season&apos;s merchandise to the store a month before other establishments! For example: we have summer sandals and sandals on our shelves since late February! While slip-ons, sneakers, and sneakers are available year-round.
+          <br />
+          <br />
           In our store, you&apos;ll find everything from colorful sports sneakers to comfortable house slippers and beach walks. We care about your child&apos;s comfort all day long.
         </Typography>
       </Grid>
@@ -101,7 +120,7 @@ export const AboutUsEn = () => (
           </Grid>
           <Grid mb={1} component="li">
             <Typography>
-              <strong>Slip-ons:</strong>
+              <strong>Slipons:</strong>
               {' '}
               Comfort and style in one product, perfect for active kids.
             </Typography>
@@ -117,32 +136,125 @@ export const AboutUsEn = () => (
 
       <Grid item xs={12}>
         <Typography
-          variant="h6"
-          mb={2}
-          fontSize="1.2rem"
+          variant="h2"
+          fontSize="1.5rem"
           fontWeight={700}
         >
           Unique Models:
         </Typography>
 
-        <Grid component="ol" pl={4}>
-          <Grid mb={1} component="li">
+        <Divider sx={{ margin: '16px 0' }}>
+          <Typography
+            variant="h3"
+            fontSize="1rem"
+            fontWeight={700}
+          >
+            Sneakers
+          </Typography>
+        </Divider>
+
+        <Grid container>
+          <Grid item xs={12}>
+            <Grid
+              sx={({ breakpoints }) => ({
+                mr: 1,
+                float: 'left',
+                [breakpoints.down('sm')]: {
+                  mb: 1,
+                  float: 'none',
+                  display: 'flex',
+                  justifyContent: 'center',
+                },
+              })}
+            >
+              <BaseImage
+                alt="Weestep Kids Sneakers"
+                src="/images/articles/about-us/sneakers.jpg"
+                width={200}
+                height={200}
+              />
+            </Grid>
+
             <Typography>
               Imagine how your kids will marvel at seeing their shoes change color with the sun. Yes, you read that right! We have shoes that change color in the sun. Indoors, they&apos;re white, but in the sun, they turn blue (for boys&apos; models) or pink (for girls&apos; models). These shoes are marked in our catalog with a blue or pink image in a corner, you&apos;ll find them easily! You can also find these shoes in our special &quot;Chameleons&quot; catalog.
             </Typography>
           </Grid>
-          <Grid mb={1} component="li">
-            <Typography>
+        </Grid>
+
+        <Divider sx={{ margin: '16px 0' }}>
+          <Typography
+            variant="h3"
+            fontSize="1rem"
+            fontWeight={700}
+          >
+            Slipons
+          </Typography>
+        </Divider>
+
+        <Grid container>
+          <Grid item xs={12}>
+            <Grid
+              sx={({ breakpoints }) => ({
+                mr: 1,
+                float: 'left',
+                [breakpoints.down('sm')]: {
+                  mb: 1,
+                  float: 'none',
+                  display: 'flex',
+                  justifyContent: 'center',
+                },
+              })}
+            >
+              <BaseImage
+                alt="Weestep Kids Slipons"
+                src="/images/articles/about-us/slipons.jpg"
+                width={200}
+                height={200}
+              />
+            </Grid>
+
+            <Typography mb={1}>
               Did you know that we have shoes in our store that kids can paint themselves? Markers are sold along with this footwear. When your child comes home with shoes from our store or when a package arrives from our store, your child can decorate their footwear to their liking and own a unique pair of shoes that no one else has!
-            </Typography>
-          </Grid>
-          <Grid mb={1} component="li">
-            <Typography>
+              <br />
+              <br />
               -What if they get tired of the design? - you might ask.
               -No problem! - we&apos;ll answer. Just throw them in the washing machine, and the shoes will be clean again! Your child can repaint them up to 5 times!
             </Typography>
           </Grid>
-          <Grid mb={1} component="li">
+        </Grid>
+
+        <Divider sx={{ margin: '16px 0' }}>
+          <Typography
+            variant="h3"
+            fontSize="1rem"
+            fontWeight={700}
+          >
+            Sneakers Hameleon
+          </Typography>
+        </Divider>
+
+        <Grid container>
+          <Grid item xs={12}>
+            <Grid
+              sx={({ breakpoints }) => ({
+                mr: 1,
+                float: 'left',
+                [breakpoints.down('sm')]: {
+                  mb: 1,
+                  float: 'none',
+                  display: 'flex',
+                  justifyContent: 'center',
+                },
+              })}
+            >
+              <BaseImage
+                alt="Weestep Kids Sneakers Hameleon"
+                src="/images/articles/about-us/sneakers-high.jpg"
+                width={200}
+                height={200}
+              />
+            </Grid>
+
             <Typography>
               If your child is a teenager and is looking for their own style, we have models that glow in the dark! This will make your child stand out and increase their safety when coming home at night! Bright clothing is easily visible to pedestrians, drivers, and cyclists, adding confidence to your child&apos;s nocturnal adventures.
             </Typography>
@@ -160,9 +272,14 @@ export const AboutUsEn = () => (
       </Grid>
 
       <Grid item xs={12}>
-        <Typography variant="h6" fontWeight={700}>
+        <Typography
+          mb={2}
+          variant="h6"
+          fontWeight={700}
+        >
           In our footwear, you&apos;ll find:
         </Typography>
+
         <Typography mb={1}>
           <strong>Orthopedic insole:</strong>
           {' '}
@@ -228,16 +345,18 @@ export const AboutUsEn = () => (
       </Grid>
 
       <Grid item xs={12}>
-        <Typography variant="h6" fontWeight={700}>
+        <Typography fontWeight={700}>
           Anatomical Sole:
         </Typography>
+
         <Typography>
           It&apos;s an innovative solution in the world of footwear that provides maximum comfort and support to the feet throughout the day. Its design is intended with the characteristics of the human foot in mind, making shoes with this type of sole an ideal choice for an active and healthy lifestyle.
         </Typography>
         <Typography>
           What distinguishes an anatomical sole? - you might ask.
         </Typography>
-        <Typography mb={1} fontWeight={700}>
+
+        <Typography mt={2} mb={1} fontWeight={700}>
           And we&apos;ll answer:
         </Typography>
 

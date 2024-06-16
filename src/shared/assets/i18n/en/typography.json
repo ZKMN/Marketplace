@@ -2,7 +2,7 @@
   "texts": {
     "headerUnderLogo": "For children as for adults. even better.",
     "paymentInfo": "Payment is made and secured using Stripe. Privacy Center: ",
-    "confirmDetailsOnMail": "You will receive confiramtion details on email!",
+    "confirmDetailsOnMail": "You will receive confirmation details to the specified email address!",
     "rightReserved": "© 2024 Weestep All Rights Reserved.",
     "spainDelivery": "Delivery throughout Spain",
     "workingDays": "{{ days }} working days",
