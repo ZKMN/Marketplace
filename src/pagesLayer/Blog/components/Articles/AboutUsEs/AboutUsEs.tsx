@@ -150,7 +150,7 @@ export const AboutUsEs = () => (
             fontSize="1rem"
             fontWeight={700}
           >
-            Zapatillas
+            Zapatillas Hameleon
           </Typography>
         </Divider>
 
@@ -169,7 +169,7 @@ export const AboutUsEs = () => (
               })}
             >
               <BaseImage
-                alt="Weestep Kids Zapatillas"
+                alt="Weestep Kids Zapatillas Hameleon"
                 src="/images/articles/about-us/sneakers.jpg"
                 width={200}
                 height={200}
@@ -188,7 +188,7 @@ export const AboutUsEs = () => (
             fontSize="1rem"
             fontWeight={700}
           >
-            Slipons
+            Slipons para colorear
           </Typography>
         </Divider>
 
@@ -207,7 +207,7 @@ export const AboutUsEs = () => (
               })}
             >
               <BaseImage
-                alt="Weestep Kids Slipons"
+                alt="Weestep Kids Slipons para colorear"
                 src="/images/articles/about-us/slipons.jpg"
                 width={200}
                 height={200}
@@ -230,7 +230,7 @@ export const AboutUsEs = () => (
             fontSize="1rem"
             fontWeight={700}
           >
-            Zapatillas Hameleon
+            Zapatillas Luminosas
           </Typography>
         </Divider>
 
@@ -249,7 +249,7 @@ export const AboutUsEs = () => (
               })}
             >
               <BaseImage
-                alt="Weestep Kids Zapatillas"
+                alt="Weestep Kids Zapatillas Luminosas"
                 src="/images/articles/about-us/sneakers-high.jpg"
                 width={200}
                 height={200}
@@ -352,7 +352,8 @@ export const AboutUsEs = () => (
         <Typography>
           Es una solución innovadora en el mundo del calzado que proporciona la máxima comodidad y soporte a los pies durante todo el día. Su diseño está pensado con las características del pie humano en mente, haciendo que los zapatos con este tipo de suela sean una elección ideal para un estilo de vida activo y saludable.
         </Typography>
-        <Typography>
+
+        <Typography mt={2} fontWeight={700}>
           ¿Qué distingue a una suela anatómica? - podrías preguntar.
         </Typography>
 

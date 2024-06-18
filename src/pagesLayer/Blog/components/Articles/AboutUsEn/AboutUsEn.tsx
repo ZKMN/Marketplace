@@ -149,7 +149,7 @@ export const AboutUsEn = () => (
             fontSize="1rem"
             fontWeight={700}
           >
-            Sneakers
+            Sneakers Hameleon
           </Typography>
         </Divider>
 
@@ -168,7 +168,7 @@ export const AboutUsEn = () => (
               })}
             >
               <BaseImage
-                alt="Weestep Kids Sneakers"
+                alt="Weestep Kids Sneakers Hameleon"
                 src="/images/articles/about-us/sneakers.jpg"
                 width={200}
                 height={200}
@@ -187,7 +187,7 @@ export const AboutUsEn = () => (
             fontSize="1rem"
             fontWeight={700}
           >
-            Slipons
+            Coloring Slipons
           </Typography>
         </Divider>
 
@@ -229,7 +229,7 @@ export const AboutUsEn = () => (
             fontSize="1rem"
             fontWeight={700}
           >
-            Sneakers Hameleon
+            Luminous Sneakers
           </Typography>
         </Divider>
 
@@ -248,7 +248,7 @@ export const AboutUsEn = () => (
               })}
             >
               <BaseImage
-                alt="Weestep Kids Sneakers Hameleon"
+                alt="Weestep Kids Luminous Sneakers"
                 src="/images/articles/about-us/sneakers-high.jpg"
                 width={200}
                 height={200}
@@ -352,7 +352,8 @@ export const AboutUsEn = () => (
         <Typography>
           It&apos;s an innovative solution in the world of footwear that provides maximum comfort and support to the feet throughout the day. Its design is intended with the characteristics of the human foot in mind, making shoes with this type of sole an ideal choice for an active and healthy lifestyle.
         </Typography>
-        <Typography>
+
+        <Typography mt={2} fontWeight={700}>
           What distinguishes an anatomical sole? - you might ask.
         </Typography>
 
