@@ -26,17 +26,21 @@ export const useGetProduct = (product?: IProductDetails) => {
     config: {
       onSuccess: (prod) => {
         setProductResponse(prod);
-
-        if (prod.shoesType !== type) {
-          return push(`${Links.PRODUCT}/${prod.shoesType}/${productId}`);
-        }
-
-        if (!queries.sizeId) {
+        if (prod.shoesType === type && !queries.sizeId) {
           setQuery({ sizeId: String(prod.sizes[0].id) });
         }
 
-        if (!queries.quantity) {
+        if (prod.shoesType === type && !queries.quantity) {
           setQuery({ quantity: '1' });
+        }
+
+        if (prod.shoesType && type && prod.shoesType !== type) {
+          push(`${Links.PRODUCT}/${prod.shoesType}/${productId}`);
+
+          setQuery({ quantity: '1' });
+          setQuery({ sizeId: String(prod.sizes[0].id) });
+
+          return null;
         }
 
         return null;
