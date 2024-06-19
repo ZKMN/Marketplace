@@ -5,7 +5,7 @@ import { getClientSecret } from '@/widgets/PaymentSteps/lib/api';
 import { checkoutStore } from '@/widgets/PaymentSteps/lib/store';
 
 import { config } from '@/shared/lib/config';
-import { errorMessage, getShoesType } from '@/shared/lib/helpers';
+import { errorMessage, getFBAEvent, getShoesType } from '@/shared/lib/helpers';
 import { useTypedParams } from '@/shared/lib/hooks';
 import { basketStore } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
@@ -93,11 +93,13 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
         },
       });
 
+      getFBAEvent('Order Placed');
+
       if (error?.message) {
         errorMessage(error.message, { style: { top: '100px', maxWidth: '450px' } });
       }
     } catch (error) {
-      errorMessage('Error en el proceso de pago.', { toastId: 'pay-error' });
+      errorMessage('Error en el proceso de pago. Express', { toastId: 'pay-error' });
     }
   });
 

@@ -21,7 +21,7 @@ export const getClientSecret = async (
 
     return { orderNumber: data.orderNumber, clientSecret: data.clientSecret };
   } catch (error) {
-    errorMessage('Error en el proceso de pago.', { toastId: 'pay-error' });
+    errorMessage('Error en el proceso de pago. Client secret', { toastId: 'pay-error' });
 
     return { orderNumber: 0, clientSecret: '' };
   }

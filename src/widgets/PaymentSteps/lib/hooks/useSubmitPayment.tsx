@@ -1,7 +1,7 @@
 import { useElements, useStripe } from '@stripe/react-stripe-js';
 import { useBoolean } from 'ahooks';
 
-import { errorMessage } from '@/shared/lib/helpers';
+import { errorMessage, getFBAEvent } from '@/shared/lib/helpers';
 import { useTypedParams, useURLQueryState } from '@/shared/lib/hooks';
 import { basketStore, setOrderIdAction } from '@/shared/lib/store';
 
@@ -57,11 +57,12 @@ export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] =>
         return;
       }
 
+      getFBAEvent('Order Placed');
       setOrderIdAction(orderNumber);
 
       queryParams.set('payment_status', 'succeeded');
     } catch (error) {
-      errorMessage('Error en el proceso de pago.', { toastId: 'pay-error' });
+      errorMessage('Error en el proceso de pago. Credit card', { toastId: 'pay-error' });
     } finally {
       setFalse();
     }
