@@ -1,5 +1,5 @@
 import { apiPost } from '@/shared/api/instance';
-import { errorMessage } from '@/shared/lib/helpers';
+import { errorMessage, getFBAEvent } from '@/shared/lib/helpers';
 import { TLanguages } from '@/shared/types';
 
 import { ICarrier, IShippingDetails } from '../../types';
@@ -19,8 +19,12 @@ export const getClientSecret = async (
       },
     });
 
+    getFBAEvent('Client Secret created');
+
     return { orderNumber: data.orderNumber, clientSecret: data.clientSecret };
   } catch (error) {
+    getFBAEvent('Client Secret create error');
+
     errorMessage('Error en el proceso de pago. Client secret', { toastId: 'pay-error' });
 
     return { orderNumber: 0, clientSecret: '' };
