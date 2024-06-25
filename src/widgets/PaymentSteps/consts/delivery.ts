@@ -87,6 +87,6 @@ export const CARRIERS: ICarrier[] = [{
 }, {
   id: 2,
   name: 'MRW',
-  price: 5,
+  price: 10,
   image: '/images/mrw-logo.png',
 }];
