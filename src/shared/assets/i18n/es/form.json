@@ -15,6 +15,7 @@
     "postalCode": "Código Postal",
     "street": "Calle",
     "streetNumber": "Número de la Calle",
+    "apNumber": "Número de apartamento",
     "additionalInformation": "Información Adicional"
   },
   "errors": {
@@ -27,9 +28,7 @@
     "cardExpiryInvalid": "La fecha de caducidad no es válida",
     "cardExpiryIncomplete": "La caducidad de la tarjeta está incompleta",
     "cardCVCIncomplete": "CVC incompleta",
-    "firstNameMax": "El nombre debe tener un máximo de 50 caracteres",
     "firstNameRequired": "El nombre es obligatorio",
-    "lastNameMax": "El apellido debe tener un máximo de 50 caracteres",
     "lastNameRequired": "Apellido obligatorio",
     "phoneNumberRequired": "Número de teléfono obligatorio",
     "phoneNumberInvalid": "El número de teléfono no es válido. Debería tener el formato de España",
@@ -37,7 +36,11 @@
     "postalCodeInvalid": "Código postal no es válido",
     "cityRequired": "Ciudad es requerida",
     "streetRequired": "Calle es requerida",
-    "streetNumberRequired": "Número de calle es requerido"
+    "streetNumberRequired": "Número de calle es requerido",
+    "shouldBeNumber": "Debe ser un número",
+    "maxLength10": "Debe tener un máximo de 10 caracteres",
+    "maxLength50": "Debe tener un máximo de 50 caracteres",
+    "maxLength100": "Debe tener un máximo de 100 caracteres"
   },
   "texts": {
     "useSearchAddress": "Utilice la búsqueda para simplificar la entrada de su dirección"

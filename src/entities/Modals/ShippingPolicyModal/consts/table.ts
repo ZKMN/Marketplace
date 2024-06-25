@@ -12,5 +12,5 @@ export const DATA: { intl: IIntlProps<`${'texts.'}${string}`>['intl']; }[] = [
   { intl: { label: 'texts.spainDelivery' } },
   { intl: { label: 'texts.workingDays', values: { days: '1-2' } } },
   { intl: { label: 'texts.workingDays', values: { days: '2-4' } } },
-  { intl: { label: 'texts.shippingCost', values: { cost: getPrice(5) } } },
+  { intl: { label: 'texts.shippingCost', values: { cost: `${getPrice(5)}-${getPrice(10)}` } } },
 ];

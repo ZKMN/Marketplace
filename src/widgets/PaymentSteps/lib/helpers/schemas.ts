@@ -6,10 +6,10 @@ import { validateSpainPostalCode } from './validateSpainPostalCode';
 const pickupFormValidation = {
   firstName: Yup.string()
     .required('errors.firstNameRequired')
-    .max(50, 'errors.firstNameMax'),
+    .max(50, 'errors.maxLength50'),
   lastName: Yup.string()
     .required('errors.lastNameRequired')
-    .max(50, 'errors.lastNameMax'),
+    .max(50, 'errors.maxLength50'),
   email: Yup.string()
     .trim()
     .email('errors.emailInvalid')
@@ -53,6 +53,12 @@ export const DELIVERY_FORM_SCHEMA = Yup.object().shape({
   street: Yup.string()
     .required('errors.streetRequired'),
   streetNumber: Yup.string()
-    .required('errors.streetNumberRequired'),
+    .required('errors.streetNumberRequired')
+    .max(10, 'error.maxLength10')
+    .matches(/^[0-9\-\\/]+$/, 'errors.shouldBeNumber'),
+  apNumber: Yup.string()
+    .nullable()
+    .max(10, 'error.maxLength10')
+    .matches(/^[0-9\-\\/]*$/, 'errors.shouldBeNumber'),
   additional: Yup.string(),
 });

@@ -14,6 +14,7 @@ export interface IShippingDetails {
   postalCode?: string;
   city?: string;
   street?: string;
+  apNumber?: string;
   streetNumber?: string;
 }
 

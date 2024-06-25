@@ -15,6 +15,7 @@
     "postalCode": "Postal Code",
     "street": "Street",
     "streetNumber": "Street Number",
+    "apNumber": "Apartment Number",
     "additionalInformation": "Additional Information"
   },
   "errors": {
@@ -27,9 +28,7 @@
     "cardExpiryInvalid": "Expiration date is invalid",
     "cardExpiryIncomplete": "Card expiry is incomplete",
     "cardCVCIncomplete": "CVC is incomplete",
-    "firstNameMax": "First name should be max 50 characters",
     "firstNameRequired": "First name is required",
-    "lastNameMax": "Last name should be max 50 characters",
     "lastNameRequired": "Last name is required",
     "phoneNumberRequired": "Phone number is required",
     "phoneNumberInvalid": "Phone number is invalid! Should be ES format",
@@ -37,7 +36,11 @@
     "postalCodeInvalid": "Postal code is invalid",
     "cityRequired": "City is required",
     "streetRequired": "Street is required",
-    "streetNumberRequired": "Street is number required"
+    "streetNumberRequired": "Street is number required",
+    "shouldBeNumber": "Should be a number",
+    "maxLength10": "Should be max 10 characters",
+    "maxLength50": "Should be max 50 characters",
+    "maxLength100": "Should be max 100 characters"
   },
   "texts": {
     "useSearchAddress": "Use the search to simplify your address entry"

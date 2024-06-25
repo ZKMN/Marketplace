@@ -52,15 +52,17 @@ export const ADDRESS_FIELDS: IFieldProps[] = [{
   name: 'street',
   intl: { label: 'labels.street' },
   required: true,
-  md: 8,
-  xs: 9,
 }, {
   type: IFieldProps.type.TEXT,
   name: 'streetNumber',
   intl: { label: 'labels.streetNumber' },
   required: true,
-  xs: 3,
-  md: 4,
+  xs: 6,
+}, {
+  type: IFieldProps.type.TEXT,
+  name: 'apNumber',
+  intl: { label: 'labels.apNumber' },
+  xs: 6,
 }];
 
 export const PICKUP_INITIAL_VALUES = {
