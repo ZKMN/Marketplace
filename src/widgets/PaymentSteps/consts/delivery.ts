@@ -73,12 +73,26 @@ export const PICKUP_INITIAL_VALUES = {
   additional: '',
 };
 
-export const DELIVERY_INITIAL_VALUES = {
+type TDELIVERY_INITIAL_VALUES = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  additional?: string;
+  postalCode?: string;
+  city?: string;
+  street?: string;
+  streetNumber?: string;
+  apNumber?: string | null;
+};
+
+export const DELIVERY_INITIAL_VALUES: TDELIVERY_INITIAL_VALUES = {
   ...PICKUP_INITIAL_VALUES,
   postalCode: '',
   city: '',
   street: '',
   streetNumber: '',
+  apNumber: '',
 };
 
 export const CARRIERS: ICarrier[] = [{
