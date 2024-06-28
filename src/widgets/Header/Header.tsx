@@ -69,6 +69,7 @@ export const Header = () => {
               <Grid item position="relative">
                 <BaseImage
                   pointer
+                  priority
                   src="/images/logo-short.svg"
                   alt="Weestep Kids"
                   onClick={handleRedirect('/')}

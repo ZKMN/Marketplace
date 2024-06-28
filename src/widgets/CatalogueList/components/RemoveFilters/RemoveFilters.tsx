@@ -21,14 +21,15 @@ export const RemoveFilters = () => {
   const parsedParams = queryString.parse(searchParams.toString(), { arrayFormat: 'comma' });
 
   const parsedKeys = keys(parsedParams);
+  const filteredKeys = parsedKeys.filter((key) => key !== 'sort-by' && key !== 'ordenar-por');
 
-  if (!parsedKeys.length) {
+  if (!filteredKeys.length) {
     return null;
   }
 
   return (
     <Grid container spacing={1}>
-      {map(parsedKeys, (key) => {
+      {map(filteredKeys, (key) => {
         if (Array.isArray(parsedParams[key])) {
           return map(parsedParams[key], (value) => (
             <Grid item key={value}>

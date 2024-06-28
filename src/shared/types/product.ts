@@ -40,24 +40,36 @@ export interface IProductDetails extends Omit<IProduct, 'img'> {
   }[]; // Array of details
 }
 
-export interface IFilterValue {
+interface IQueryValues {
   title: string; // Male, name depends on language
-  queryValue: string; // depends on language
-  count: number;
+  queryKey: string; // depends on language
 }
 
-export interface IFilter {
-  title: string; // Gender, title depends on language
-  queryKey: string; // depends on language
+export interface IFilterValue extends IQueryValues {
+  count: number;
+  queryValue: string;
+}
+
+export interface IFilter extends IQueryValues {
+  values: IFilterValue[]; // Array of category options
   metadata: {
     id: number;
     key: string; // static english value same as queryKey but only on english
   };
-  values: IFilterValue[]; // Array of category options
+}
+
+export interface IOrdering extends IQueryValues {
+  values: {
+    id: number;
+    title: string;
+    active: boolean;
+    queryValue: string;
+  }[];
 }
 
 export interface IProductsResponse {
   total?: number;
   items: IProduct[];
   filters: IFilter[];
+  ordering: IOrdering | null;
 }

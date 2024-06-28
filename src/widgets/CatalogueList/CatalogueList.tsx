@@ -8,7 +8,7 @@ import { useGetSWR } from '@/shared/api/hooks';
 import { Loading } from '@/shared/components';
 import { PRODUCTS_COUNT } from '@/shared/consts';
 import { useTypedParams } from '@/shared/lib/hooks';
-import { IFilter, IProduct, IProductsResponse } from '@/shared/types';
+import { IProduct, IProductsResponse } from '@/shared/types';
 
 import {
   CardSkeleton,
@@ -21,7 +21,7 @@ import {
   SortBy,
 } from './components';
 
-const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; products: IProduct[]; }) => {
+const CatalogueListComponent = ({ filters, items, ordering }: IProductsResponse) => {
   const [dataResponse, setResponse] = useState<IProduct[]>();
 
   const { page } = useTypedParams();
@@ -39,7 +39,12 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
     },
     config: {
       onSuccess: (response) => setResponse(response.items),
-      fallbackData: { items: dataResponse || products, filters, total: 10 },
+      fallbackData: {
+        items: dataResponse || items,
+        total: 10,
+        filters,
+        ordering,
+      },
     },
   });
 
@@ -60,7 +65,7 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
         </Grid>
 
         <Grid item xs={2}>
-          <SortBy />
+          <SortBy ordering={data?.ordering} />
         </Grid>
       </Grid>
 
@@ -122,7 +127,7 @@ const CatalogueListComponent = ({ filters, products }: { filters: IFilter[]; pro
   );
 };
 
-export const CatalogueList = ({ filters, products }: { filters: IFilter[]; products: IProduct[]; }) => (
+export const CatalogueList = ({ filters, items, ordering }: IProductsResponse) => (
   <Suspense
     fallback={(
       <Grid container spacing={3} columns={24}>
@@ -158,6 +163,10 @@ export const CatalogueList = ({ filters, products }: { filters: IFilter[]; produ
       </Grid>
   )}
   >
-    <CatalogueListComponent filters={filters} products={products} />
+    <CatalogueListComponent
+      items={items}
+      filters={filters}
+      ordering={ordering}
+    />
   </Suspense>
 );

@@ -15,7 +15,9 @@ export const getServerProducts = async (lng: TLanguages, page: string) => {
   } catch (error) {
     console.warn(error);
 
-    return { items: [], filters: [], total: 0 };
+    return {
+      items: [], filters: [], ordering: null, total: 0,
+    };
   }
 };
 

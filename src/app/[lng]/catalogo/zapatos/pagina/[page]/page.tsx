@@ -26,7 +26,7 @@ export async function generateMetadata({ params: { lng, page } }: INextPageParam
 }
 
 const CataloguePage = async ({ params: { lng, page } }: INextPageParams) => {
-  const { items, filters } = await getServerProducts(lng, page);
+  const { items, filters, ordering } = await getServerProducts(lng, page);
 
   const images = items.map((product) => ({
     contentUrl: product.img,
@@ -75,6 +75,7 @@ const CataloguePage = async ({ params: { lng, page } }: INextPageParams) => {
       <Catalogue
         items={items}
         filters={filters}
+        ordering={ordering}
       />
     </>
   );

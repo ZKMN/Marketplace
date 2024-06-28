@@ -5,19 +5,20 @@ import {
   MenuItem,
   Select,
 } from '@mui/material';
+import { upperFirst } from 'lodash';
 
-import { useClientTranslation } from '@/shared/lib/hooks';
+import { useClientTranslation, useURLQueryState } from '@/shared/lib/hooks';
+import { IOrdering } from '@/shared/types';
 
-export const SortBy = () => {
-  const sorters = [{
-    name: 'Relevance',
-    value: 'relevance',
-  }, {
-    name: 'Newest',
-    value: 'newest',
-  }];
-
+export const SortBy = ({ ordering }: { ordering?: IOrdering | null; }) => {
   const [translate] = useClientTranslation('form');
+  const [, queryParams] = useURLQueryState();
+
+  if (!ordering) {
+    return null;
+  }
+
+  const value = ordering.values.find((item) => item.active)?.queryValue;
 
   return (
     <FormControl fullWidth>
@@ -28,22 +29,22 @@ export const SortBy = () => {
       <Select
         name="sortBy"
         size="small"
-        value="newest"
+        value={value}
         labelId="sort-by-label"
         aria-labelledby="sort-by-label"
-        // onChange={handleChange}
         label={translate('labels.sortBy')}
+        onChange={({ target }) => queryParams.set(ordering.queryKey, target.value)}
       >
-        {sorters.map(({ name, value }) => (
+        {ordering.values.map(({ title, queryValue }) => (
           <MenuItem
-            key={name}
-            value={value}
+            key={title}
+            value={queryValue}
             sx={{
               padding: '5px',
               fontSize: '14px',
             }}
           >
-            {name}
+            {upperFirst(title)}
           </MenuItem>
         ))}
       </Select>

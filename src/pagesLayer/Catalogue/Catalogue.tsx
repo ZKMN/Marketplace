@@ -10,13 +10,15 @@ import { Title } from './components';
 export const Catalogue = ({
   items,
   filters,
+  ordering,
 }: IProductsResponse) => (
   <BaseContainer mt={3} mb={3} maxWidth={1500}>
     <Title />
 
     <CatalogueList
+      items={items}
       filters={filters}
-      products={items}
+      ordering={ordering}
     />
   </BaseContainer>
 );
