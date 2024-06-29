@@ -13,7 +13,7 @@ import { DeleteBasketProductAction } from '@/features/DeleteBasketProductAction'
 import { ProductBasketDetails } from '@/entities/Product';
 
 import { IntlButton, IntlTypography } from '@/shared/components';
-import { getPrice } from '@/shared/lib/helpers';
+import { getFBAEvent, getPrice } from '@/shared/lib/helpers';
 import { useClickRedirect } from '@/shared/lib/hooks';
 import { basketStore } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
@@ -121,8 +121,11 @@ export const BasketDetailsStep = () => {
               intl={{ label: 'next' }}
               size="small"
               color="primary"
-              onClick={incrStepAction}
               disabled={!basket?.items?.length}
+              onClick={() => {
+                incrStepAction();
+                getFBAEvent('Basket Confirmed');
+              }}
             />
           </Grid>
         </Grid>
