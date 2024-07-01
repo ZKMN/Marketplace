@@ -1,13 +1,13 @@
 /* eslint-disable max-len */
 import { Metadata } from 'next';
-import { ImageJsonLd } from 'next-seo';
+import { BreadcrumbJsonLd, ImageJsonLd } from 'next-seo';
 
 import { Home } from '@/pagesLayer/Home';
 
 import { getServerProducts } from '@/shared/api/helpers';
 import { config } from '@/shared/lib/config';
 import { getEnMetadata, getEsMetadata } from '@/shared/lib/helpers';
-import { INextPageParams } from '@/shared/types';
+import { INextPageParams, Links } from '@/shared/types';
 
 export async function generateMetadata({ params: { lng } }: INextPageParams): Promise<Metadata> {
   if (lng === 'en') {
@@ -38,11 +38,46 @@ const HomePage = async ({ params: { lng } }: INextPageParams) => {
     },
   })) as ImageJsonLd[];
 
+  const esBreadcrumbs = [{
+    position: 1,
+    name: 'Incio',
+    item: `${config.urls.site}/es`,
+  }, {
+    position: 1,
+    name: 'Catalogo',
+    item: `${config.urls.site}/es${Links.CATALOGUE}/1`,
+  }, {
+    position: 3,
+    name: 'Contactos',
+    item: `${config.urls.site}/es${Links.CONTACTS}`,
+  }];
+
+  const enBreadcrumbs = [{
+    position: 1,
+    name: 'Home',
+    item: `${config.urls.site}/en`,
+  }, {
+    position: 2,
+    name: 'Catalogue',
+    item: `${config.urls.site}/en${Links.CATALOGUE}/1`,
+  }, {
+    position: 3,
+    name: 'Contacts',
+    item: `${config.urls.site}/en${Links.CONTACTS}`,
+  }];
+
+  const itemListBreadcrumbs = lng === 'es' ? esBreadcrumbs : enBreadcrumbs;
+
   return (
     <>
       <ImageJsonLd
         useAppDir
         images={images}
+      />
+
+      <BreadcrumbJsonLd
+        useAppDir
+        itemListElements={itemListBreadcrumbs}
       />
 
       <Home />

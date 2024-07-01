@@ -40,22 +40,22 @@ const CataloguePage = async ({ params: { lng, page } }: INextPageParams) => {
 
   const esBreadcrumbs = [{
     position: 1,
-    name: 'Catalogo',
-    item: `${config.urls.site}/catalogo`,
+    name: 'Incio',
+    item: `${config.urls.site}/es`,
   }, {
     position: 2,
-    name: 'Zapatos',
-    item: `${config.urls.site}/catalogo/zapatos/pagina/${page}`,
+    name: 'Catalogo',
+    item: `${config.urls.site}/es${Links.CATALOGUE}/1`,
   }];
 
   const enBreadcrumbs = [{
     position: 1,
-    name: 'Catalogue',
-    item: `${config.urls.site}/catalogo`,
+    name: 'Home',
+    item: `${config.urls.site}/en`,
   }, {
     position: 2,
-    name: 'Shoes',
-    item: `${config.urls.site}/catalogo/zapatos/pagina/${page}`,
+    name: 'Catalogue',
+    item: `${config.urls.site}/en${Links.CATALOGUE}/1`,
   }];
 
   const itemListBreadcrumbs = lng === 'es' ? esBreadcrumbs : enBreadcrumbs;

@@ -95,30 +95,30 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
 
   const esBreadcrumbs = [{
     position: 1,
-    name: 'Producto',
-    item: `${config.urls.site}/producto`,
+    name: 'Catalogo',
+    item: `${config.urls.site}/es${Links.CATALOGUE}/1`,
   }, {
     position: 2,
     name: getShoesType(type),
-    item: `${config.urls.site}/producto/${type}`,
+    item: `${config.urls.site}/es${Links.PRODUCT}/${type}`,
   }, {
     position: 3,
     name: 'Producto ID',
-    item: `${config.urls.site}/producto/${type}/${productId}`,
+    item: `${config.urls.site}/es${Links.PRODUCT}/${type}/${productId}`,
   }];
 
   const enBreadcrumbs = [{
     position: 1,
-    name: 'Product',
-    item: `${config.urls.site}/producto`,
+    name: 'Catalogue',
+    item: `${config.urls.site}/en${Links.CATALOGUE}/1`,
   }, {
     position: 2,
     name: getShoesType(type),
-    item: `${config.urls.site}/producto/${type}`,
+    item: `${config.urls.site}/en${Links.PRODUCT}/${type}`,
   }, {
     position: 3,
     name: 'Product ID',
-    item: `${config.urls.site}/producto/${type}/${productId}`,
+    item: `${config.urls.site}/en${Links.PRODUCT}/${type}/${productId}`,
   }];
 
   const itemListBreadcrumbs = lng === 'es' ? esBreadcrumbs : enBreadcrumbs;
