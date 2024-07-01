@@ -47,6 +47,7 @@ interface IQueryValues {
 
 export interface IFilterValue extends IQueryValues {
   count: number;
+  value?: string;
   queryValue: string;
 }
 

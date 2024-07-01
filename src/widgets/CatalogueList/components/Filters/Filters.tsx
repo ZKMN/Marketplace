@@ -71,7 +71,7 @@ const FilterItem = ({
                 {upperFirst(filter.title)}
               </Typography>
 
-              <ProductColor color={filter.queryValue} />
+              <ProductColor color={filter.value} />
             </Grid>
           )}
           control={(
