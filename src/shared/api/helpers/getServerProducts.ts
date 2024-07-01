@@ -7,11 +7,11 @@ import { apiGet } from '../instance';
 
 export const getServerProducts = async (lng: TLanguages, page: string) => {
   try {
-    const response = await apiGet<IProductsResponse>({
-      url: `/${lng}/v1/products/list?page=${page || 1}&limit=${PRODUCTS_COUNT || 16}`,
+    const { data } = await apiGet<IProductsResponse>({
+      url: `/${lng}/v1/products/list?page=${page || 1}&limit=${PRODUCTS_COUNT}`,
     });
 
-    return response.data;
+    return data;
   } catch (error) {
     console.warn(error);
 
