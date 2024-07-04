@@ -7,11 +7,9 @@ import { basketStore } from '@/shared/lib/store';
 
 import { ChoosePaymentTabs, OrderTotal } from './components';
 
-import { checkoutStore } from '../../lib/store';
-
 export const PaymentStep = () => {
   const basket = basketStore((state) => state.basket);
-  const carrier = checkoutStore((state) => state.carrier);
+  const carrier = basketStore((state) => state.carrier);
 
   if (!basket) {
     return null;

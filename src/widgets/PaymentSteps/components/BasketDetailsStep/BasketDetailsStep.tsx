@@ -15,12 +15,10 @@ import { ProductBasketDetails } from '@/entities/Product';
 import { IntlButton, IntlTypography } from '@/shared/components';
 import { getFBAEvent, getPrice } from '@/shared/lib/helpers';
 import { useClickRedirect } from '@/shared/lib/hooks';
-import { basketStore } from '@/shared/lib/store';
+import { basketStore, incrStepAction } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
 import { ProductSkeleton } from './ProductSkeleton';
-
-import { incrStepAction } from '../../lib/store';
 
 export const BasketDetailsStep = () => {
   const basket = basketStore((state) => state.basket);

@@ -2,6 +2,7 @@ import React from 'react';
 import { Divider, Grid } from '@mui/material';
 
 import { IntlTypography } from '@/shared/components';
+import { basketStore } from '@/shared/lib/store';
 
 import {
   AddressDetailsButton,
@@ -11,11 +12,9 @@ import {
   ShippingForm,
 } from './components';
 
-import { CARRIERS } from '../../consts';
-import { checkoutStore } from '../../lib/store';
-
 export const ShippingDetailsStep = () => {
-  const carrier = checkoutStore((state) => state.carrier);
+  const carrier = basketStore((state) => state.carrier);
+  const carriers = basketStore((state) => state.carriers);
 
   return (
     <Grid container justifyContent="center">
@@ -40,7 +39,7 @@ export const ShippingDetailsStep = () => {
             </Grid>
           </Grid>
 
-          {CARRIERS.map((carr) => (
+          {carriers.map((carr) => (
             <Grid item key={carr.id} xs={6} sm={3}>
               <CarrierButton
                 active={carrier?.id === carr.id}

@@ -6,10 +6,9 @@ import {
   Typography,
 } from '@mui/material';
 
-import { checkoutStore } from '@/widgets/PaymentSteps/lib/store';
-
 import { IntlTypography } from '@/shared/components';
 import { getPrice } from '@/shared/lib/helpers';
+import { basketStore } from '@/shared/lib/store';
 
 import { AddressDetailsButton } from '../../../ShippingDetailsStep/components';
 
@@ -20,7 +19,7 @@ export const OrderTotal = ({
   price: number;
   quantity: number;
 }) => {
-  const carrier = checkoutStore((state) => state.carrier);
+  const carrier = basketStore((state) => state.carrier);
 
   return (
     <Grid container mt={3}>
@@ -93,12 +92,20 @@ export const OrderTotal = ({
                 fontWeight={700}
               />
 
-              <Typography
-                color="text.grey"
-                fontWeight={700}
-              >
-                {getPrice(carrier.price)}
-              </Typography>
+              {carrier.price ? (
+                <Typography
+                  color="text.grey"
+                  fontWeight={700}
+                >
+                  {getPrice(carrier.price)}
+                </Typography>
+              ) : (
+                <IntlTypography
+                  intl={{ label: 'labels.free' }}
+                  color="text.grey"
+                  fontWeight={700}
+                />
+              )}
             </Grid>
           )}
 

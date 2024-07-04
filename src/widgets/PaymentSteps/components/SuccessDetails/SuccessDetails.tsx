@@ -1,7 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import { CheckCircleTwoTone } from '@mui/icons-material';
 import { Divider, Grid, Typography } from '@mui/material';
-import { useUnmount } from 'ahooks';
 import { useQueryState } from 'nuqs';
 
 import { IntlButton, IntlTypography, Loading } from '@/shared/components';
@@ -9,11 +8,9 @@ import { useClickRedirect } from '@/shared/lib/hooks';
 import { basketStore, resetBasketAction } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
-import { checkoutStore, resetPaymentStoreAction } from '../../lib/store';
-
 const SuccessDetailsComponent = () => {
-  const step = checkoutStore((state) => state.step);
-  const email = checkoutStore((state) => state.shippingDetails?.email);
+  const step = basketStore((state) => state.step);
+  const email = basketStore((state) => state.shippingDetails?.email);
   const basketOrderId = basketStore((state) => state.orderId);
 
   const [handleRedirect] = useClickRedirect();
@@ -26,14 +23,10 @@ const SuccessDetailsComponent = () => {
 
   useEffect(() => {
     if (orderId && (paymentStatus === 'succeeded' || redirectStatus === 'succeeded')) {
-      checkoutStore.setState({ step: 3 });
+      basketStore.setState({ step: 3 });
       resetBasketAction();
     }
   }, [orderId, redirectStatus, paymentStatus]);
-
-  useUnmount(() => {
-    resetPaymentStoreAction();
-  });
 
   if (!orderId || step !== 3) {
     return null;

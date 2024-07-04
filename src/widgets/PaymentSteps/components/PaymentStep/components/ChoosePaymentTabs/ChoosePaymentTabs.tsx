@@ -5,12 +5,11 @@ import { Grid, Tab, Tabs } from '@mui/material';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-import { decrStepAction } from '@/widgets/PaymentSteps/lib/store';
-
 import { BaseImage, IntlButton, IntlTypography } from '@/shared/components';
 import { config } from '@/shared/lib/config';
 import { errorMessage } from '@/shared/lib/helpers';
 import { useTypedParams } from '@/shared/lib/hooks';
+import { decrStepAction } from '@/shared/lib/store';
 
 import { StripeCreditCardForm } from './StripeCreditCardForm';
 import { StripeExpress } from './StripeExpress';

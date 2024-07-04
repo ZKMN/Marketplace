@@ -2,7 +2,6 @@ import { useStripe } from '@stripe/react-stripe-js';
 import { StripeExpressCheckoutElementOptions } from '@stripe/stripe-js';
 
 import { getClientSecret } from '@/widgets/PaymentSteps/lib/api';
-import { checkoutStore } from '@/widgets/PaymentSteps/lib/store';
 
 import { config } from '@/shared/lib/config';
 import { errorMessage, getFBAEvent, getShoesType } from '@/shared/lib/helpers';
@@ -11,10 +10,9 @@ import { basketStore } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
 export const StripeExpress = ({ amount }: { amount: string; }) => {
+  const carrier = basketStore((state) => state.carrier);
   const products = basketStore((state) => state.basket?.items);
-
-  const carrier = checkoutStore((state) => state.carrier);
-  const shippingDetails = checkoutStore((state) => state.shippingDetails);
+  const shippingDetails = basketStore((state) => state.shippingDetails);
 
   const stripe = useStripe();
   const { lng } = useTypedParams();

@@ -2,12 +2,11 @@ import React from 'react';
 import { TransferWithinAStation } from '@mui/icons-material';
 import { Box, Grid } from '@mui/material';
 
-import { setCarrierAction } from '@/widgets/PaymentSteps/lib/store';
-import { ICheckoutStore } from '@/widgets/PaymentSteps/types';
-
 import { IntlTypography } from '@/shared/components';
+import { setCarrierAction } from '@/shared/lib/store';
+import { ICarrier } from '@/shared/types';
 
-export const PickupButton = ({ carrier }: { carrier: ICheckoutStore['carrier']; }) => (
+export const PickupButton = ({ carrier }: { carrier: ICarrier | null; }) => (
   <Box
     width="100%"
     component="button"

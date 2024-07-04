@@ -1,7 +1,5 @@
 import { IFieldProps } from '@/shared/types';
 
-import { ICarrier } from '../types';
-
 export const ADDITIONAL_FIELD: IFieldProps = {
   type: IFieldProps.type.TEXT,
   name: 'additional',
@@ -94,15 +92,3 @@ export const DELIVERY_INITIAL_VALUES: TDELIVERY_INITIAL_VALUES = {
   streetNumber: '',
   apNumber: '',
 };
-
-export const CARRIERS: ICarrier[] = [{
-  id: 1,
-  name: 'Correos',
-  price: 5,
-  image: '/images/correos-logo.jpeg',
-}, {
-  id: 2,
-  name: 'MRW',
-  price: 10,
-  image: '/images/mrw-logo.png',
-}];

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
-import { setCarrierAction } from '@/widgets/PaymentSteps/lib/store';
-import { ICarrier } from '@/widgets/PaymentSteps/types';
-
-import { BaseImage } from '@/shared/components';
+import { BaseImage, IntlTypography } from '@/shared/components';
 import { getPrice } from '@/shared/lib/helpers';
+import { setCarrierAction } from '@/shared/lib/store';
+import { ICarrier } from '@/shared/types';
 
 export const CarrierButton = ({
   active,
@@ -35,12 +34,20 @@ export const CarrierButton = ({
           {carrier.name}
         </Typography>
 
-        <Typography
-          fontSize="0.8rem"
-          textAlign="left"
-        >
-          {getPrice(carrier.price)}
-        </Typography>
+        {carrier.price ? (
+          <Typography
+            fontSize="0.8rem"
+            textAlign="left"
+          >
+            {getPrice(carrier.price)}
+          </Typography>
+        ) : (
+          <IntlTypography
+            intl={{ label: 'labels.free' }}
+            fontSize="0.8rem"
+            textAlign="left"
+          />
+        )}
       </Grid>
 
       <Grid item>

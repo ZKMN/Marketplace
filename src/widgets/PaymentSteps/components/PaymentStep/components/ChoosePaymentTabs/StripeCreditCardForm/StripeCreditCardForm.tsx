@@ -8,10 +8,10 @@ import {
 } from '@stripe/react-stripe-js';
 
 import { useSubmitStripePayment, useValidateCreditCardInputs } from '@/widgets/PaymentSteps/lib/hooks';
-import { decrStepAction } from '@/widgets/PaymentSteps/lib/store';
 
 import { IntlButton, LoadingIntlButton } from '@/shared/components';
 import { useClientTranslation } from '@/shared/lib/hooks';
+import { decrStepAction } from '@/shared/lib/store';
 
 import { StripeInput } from './StripeInput';
 

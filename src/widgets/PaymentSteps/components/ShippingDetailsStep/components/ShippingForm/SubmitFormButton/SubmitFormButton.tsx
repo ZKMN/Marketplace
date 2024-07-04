@@ -2,18 +2,14 @@ import React, { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { PICKUP_INITIAL_VALUES } from '@/widgets/PaymentSteps/consts';
-import {
-  checkoutStore,
-  incrStepAction,
-  setShippingDetailsAction,
-} from '@/widgets/PaymentSteps/lib/store';
-import { IShippingDetails } from '@/widgets/PaymentSteps/types';
 
 import { IntlButton } from '@/shared/components';
 import { getFBAEvent } from '@/shared/lib/helpers';
+import { basketStore, incrStepAction, setShippingDetailsAction } from '@/shared/lib/store';
+import { IShippingDetails } from '@/shared/types';
 
 export const SubmitFormButton = () => {
-  const shippingDetails = checkoutStore((state) => state.shippingDetails);
+  const shippingDetails = basketStore((state) => state.shippingDetails);
 
   const { formState, getValues, reset } = useFormContext<IShippingDetails>();
 

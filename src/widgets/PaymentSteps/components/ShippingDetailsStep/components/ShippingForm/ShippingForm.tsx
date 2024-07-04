@@ -9,16 +9,16 @@ import {
   PICKUP_INITIAL_VALUES,
 } from '@/widgets/PaymentSteps/consts';
 import { DELIVERY_FORM_SCHEMA, PICKUP_FORM_SCHEMA } from '@/widgets/PaymentSteps/lib/helpers';
-import { checkoutStore, decrStepAction } from '@/widgets/PaymentSteps/lib/store';
 
 import { FieldByType, Form, IntlButton } from '@/shared/components';
+import { basketStore, decrStepAction } from '@/shared/lib/store';
 
 import { AutocompleteInput } from './AutocompleteInput';
 import { SubmitFormButton } from './SubmitFormButton';
 
 export const ShippingForm = () => {
-  const carrier = checkoutStore((state) => state.carrier);
-  const shippingDetails = checkoutStore((state) => state.shippingDetails);
+  const carrier = basketStore((state) => state.carrier);
+  const shippingDetails = basketStore((state) => state.shippingDetails);
 
   const formActions = (
     <>

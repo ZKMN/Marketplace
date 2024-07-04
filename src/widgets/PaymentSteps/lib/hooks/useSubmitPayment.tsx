@@ -6,13 +6,11 @@ import { useTypedParams, useURLQueryState } from '@/shared/lib/hooks';
 import { basketStore, setOrderIdAction } from '@/shared/lib/store';
 
 import { getClientSecret } from '../api';
-import { checkoutStore } from '../store';
 
 export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] => {
+  const carrier = basketStore((state) => state.carrier);
   const products = basketStore((state) => state.basket?.items);
-
-  const carrier = checkoutStore((state) => state.carrier);
-  const shippingDetails = checkoutStore((state) => state.shippingDetails);
+  const shippingDetails = basketStore((state) => state.shippingDetails);
 
   const stripe = useStripe();
   const elements = useElements();
