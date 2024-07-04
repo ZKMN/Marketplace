@@ -1,7 +1,9 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { useBoolean } from 'ahooks';
+import { keys } from 'lodash';
 import { useSearchParams } from 'next/navigation';
+import queryString from 'query-string';
 
 import { BaseDrawer, IntlButton } from '@/shared/components';
 import { IFilter } from '@/shared/types';
@@ -15,7 +17,10 @@ export const FiltersDrawer = ({ filters }: { filters?: IFilter[]; }) => {
 
   const searchParams = useSearchParams();
 
-  const appliedFilters = searchParams.toString().split('&').filter(Boolean).length;
+  const parsedParams = queryString.parse(searchParams.toString(), { arrayFormat: 'comma' });
+  const parsedKeys = keys(parsedParams);
+
+  const appliedFiltersLn = parsedKeys?.filter((key) => key !== 'sort-by' && key !== 'ordenar-por').length;
 
   return (
     <Box
@@ -27,7 +32,7 @@ export const FiltersDrawer = ({ filters }: { filters?: IFilter[]; }) => {
     >
       <IntlButton
         sx={{ height: '100%' }}
-        intl={{ label: 'filtersValue', values: { value: appliedFilters ? `(${appliedFilters})` : '' } }}
+        intl={{ label: 'filtersValue', values: { value: appliedFiltersLn ? `(${appliedFiltersLn})` : '' } }}
         color="secondary"
         onClick={setTrue}
       />

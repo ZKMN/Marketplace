@@ -95,7 +95,7 @@ const CatalogueListComponent = ({ filters, items, ordering }: IProductsResponse)
                 },
               })}
             >
-              <SortBy />
+              <SortBy ordering={data?.ordering} />
             </Grid>
           </Grid>
         </Grid>
