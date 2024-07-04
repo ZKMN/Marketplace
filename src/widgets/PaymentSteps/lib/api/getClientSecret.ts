@@ -1,8 +1,6 @@
 import { apiPost } from '@/shared/api/instance';
 import { errorMessage, getFBAEvent } from '@/shared/lib/helpers';
-import { TLanguages } from '@/shared/types';
-
-import { ICarrier, IShippingDetails } from '../../types';
+import { ICarrier, IShippingDetails, TLanguages } from '@/shared/types';
 
 export const getClientSecret = async (
   lng: TLanguages,
