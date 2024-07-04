@@ -29,7 +29,6 @@ export const initBasketSuccessAction: IBasketStoreActions['initBasketSuccessActi
 };
 
 export const resetBasketAction: IBasketStoreActions['resetBasketAction'] = () => {
-  resetPaymentInfoAction();
   basketStore.setState({ basket: null });
 };
 
