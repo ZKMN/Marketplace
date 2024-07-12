@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQueryStates } from 'nuqs';
 
 import { useGetSWR } from '@/shared/api/hooks';
-import { getFBPixelEvents } from '@/shared/lib/helpers';
+import { FBPixelEvents } from '@/shared/lib/helpers';
 import { useLngReplaceRouter, useTypedParams } from '@/shared/lib/hooks';
 import { IProductDetails, Links } from '@/shared/types';
 
@@ -26,7 +26,7 @@ export const useGetProduct = (product?: IProductDetails) => {
     url: `/products/${productId}`,
     config: {
       onSuccess: (prod) => {
-        getFBPixelEvents().pageView();
+        FBPixelEvents.pageView();
 
         setProductResponse(prod);
 

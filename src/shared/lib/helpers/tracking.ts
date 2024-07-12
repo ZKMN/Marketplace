@@ -1,6 +1,8 @@
-import ReactPixel from 'react-facebook-pixel';
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable global-require */
 import { EventNameString, getAnalytics, logEvent } from 'firebase/analytics';
 
+import { config } from '../config';
 import { FBApp } from '../firebase.config';
 
 type EventParams = {
@@ -19,10 +21,25 @@ export const getFBAEvent = (
   }
 };
 
-export const getFBPixelEvents = () => ({
-  pageView: () => {
-    if (typeof window !== 'undefined') {
-      ReactPixel.pageView();
-    }
+export const FBPixelEvents = {
+  init: () => {
+    const ReactPixel = require('react-facebook-pixel');
+
+    ReactPixel.default.init(config.keys.FBPixelKey, null, { debug: true });
   },
-});
+  pageView: () => {
+    const ReactPixel = require('react-facebook-pixel');
+
+    ReactPixel.default.pageView();
+  },
+  track: (name: string, data: Record<string, unknown>) => {
+    const ReactPixel = require('react-facebook-pixel');
+
+    ReactPixel.default.track(name, data);
+  },
+  trackCustom: (name: string, data: Record<string, unknown>) => {
+    const ReactPixel = require('react-facebook-pixel');
+
+    ReactPixel.default.trackCustom(name, data);
+  },
+};

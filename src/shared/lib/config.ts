@@ -5,6 +5,7 @@ const commonVars = {
   storageKeyName: 'r2-d2-kjkszpj',
   keys: {
     gAPI: firebaseConfig.apiKey,
+    FBPixelKey: process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID,
     stripePublish: process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY,
   },
   urls: {
