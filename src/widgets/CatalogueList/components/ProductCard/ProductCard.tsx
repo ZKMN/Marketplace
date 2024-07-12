@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  Box,
-  Card,
-  Grid,
-  Typography,
-} from '@mui/material';
+import { Card, Grid, Typography } from '@mui/material';
 
 import { ProductTopSale } from '@/entities/Product';
 
-import { BaseImage } from '@/shared/components';
+import { BaseImage, RouteLink } from '@/shared/components';
 import { getShoesType } from '@/shared/lib/helpers';
-import { useClickRedirect } from '@/shared/lib/hooks';
 import { IProduct, Links } from '@/shared/types';
 
 import { ProductColors } from './ProductColors';
@@ -30,16 +24,12 @@ export const ProductCard = ({ product }: { product: IProduct; }) => {
     discount,
   } = product;
 
-  const [handleRedirect] = useClickRedirect();
-
   return (
-    <Box
-      width="100%"
-      height="100%"
-      position="relative"
+    <RouteLink
+      to={`${Links.PRODUCT}/${shoesType}/${productId}`}
+      underline="none"
     >
       <Card
-        onClick={handleRedirect(`${Links.PRODUCT}/${shoesType}/${productId}`)}
         component="button"
         elevation={0}
         sx={{
@@ -48,6 +38,7 @@ export const ProductCard = ({ product }: { product: IProduct; }) => {
           cursor: 'pointer',
           border: '1px solid',
           display: 'flex',
+          position: 'relative',
           borderColor: 'border.main',
           borderRadius: '12px',
           flexDirection: 'column',
@@ -125,6 +116,6 @@ export const ProductCard = ({ product }: { product: IProduct; }) => {
           </Grid>
         </Grid>
       </Card>
-    </Box>
+    </RouteLink>
   );
 };

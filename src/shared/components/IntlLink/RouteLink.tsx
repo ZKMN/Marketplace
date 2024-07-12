@@ -16,7 +16,6 @@ export const RouteLink = ({
   color,
   display,
   variant,
-  onClick,
   fontSize,
   children,
   textAlign,
@@ -45,7 +44,6 @@ export const RouteLink = ({
         width={width}
         color={color}
         display={display}
-        onClick={onClick}
         variant={variant}
         fontSize={fontSize}
         underline={underline}
