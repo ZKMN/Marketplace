@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import ReactPixel from 'react-facebook-pixel';
 
-import { getFBAEvent } from '@/shared/lib/helpers/getFBAEvent';
+import { getFBAEvent } from '@/shared/lib/helpers';
 
 export const LibLoader = () => {
   useEffect(() => {

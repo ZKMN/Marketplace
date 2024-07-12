@@ -1,13 +1,13 @@
 'use client';
 
 import React, { Suspense, useState } from 'react';
-import ReactPixel from 'react-facebook-pixel';
 import { Grid, Skeleton } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 
 import { useGetSWR } from '@/shared/api/hooks';
 import { Loading } from '@/shared/components';
 import { PRODUCTS_COUNT } from '@/shared/consts';
+import { getFBPixelEvents } from '@/shared/lib/helpers';
 import { useTypedParams } from '@/shared/lib/hooks';
 import { IProduct, IProductsResponse } from '@/shared/types';
 
@@ -42,7 +42,7 @@ const CatalogueListComponent = ({ filters, items, ordering }: IProductsResponse)
       onSuccess: (response) => {
         setResponse(response.items);
 
-        ReactPixel.pageView();
+        getFBPixelEvents().pageView();
       },
       fallbackData: {
         items: dataResponse || items,

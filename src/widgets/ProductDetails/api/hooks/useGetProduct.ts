@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import ReactPixel from 'react-facebook-pixel';
 import { useQueryStates } from 'nuqs';
 
 import { useGetSWR } from '@/shared/api/hooks';
+import { getFBPixelEvents } from '@/shared/lib/helpers';
 import { useLngReplaceRouter, useTypedParams } from '@/shared/lib/hooks';
 import { IProductDetails, Links } from '@/shared/types';
 
@@ -26,7 +26,7 @@ export const useGetProduct = (product?: IProductDetails) => {
     url: `/products/${productId}`,
     config: {
       onSuccess: (prod) => {
-        ReactPixel.pageView();
+        getFBPixelEvents().pageView();
 
         setProductResponse(prod);
 

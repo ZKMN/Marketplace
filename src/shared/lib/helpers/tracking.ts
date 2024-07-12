@@ -1,3 +1,4 @@
+import ReactPixel from 'react-facebook-pixel';
 import { EventNameString, getAnalytics, logEvent } from 'firebase/analytics';
 
 import { FBApp } from '../firebase.config';
@@ -17,3 +18,11 @@ export const getFBAEvent = (
     logEvent(analytics, event, { ...eventParams, environment: process.env.NEXT_PUBLIC_APP_ENV });
   }
 };
+
+export const getFBPixelEvents = () => ({
+  pageView: () => {
+    if (typeof window !== 'undefined') {
+      ReactPixel.pageView();
+    }
+  },
+});
