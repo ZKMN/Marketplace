@@ -12,11 +12,12 @@ const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytic
 const clarityAPI = 'https://www.clarity.ms';
 const clarityConnect = 'https://r.clarity.ms';
 const stripeUI = 'https://merchant-ui-api.stripe.com';
+const FBPixel = 'https://connect.facebook.net/en_US/fbevents.js';
 
 const cspHeader = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI};
-  script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI};
+  script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI} ${FBPixel};
   style-src 'self' 'unsafe-inline' ${fontsGoogleapis};
   style-src-elem 'self' 'unsafe-inline' ${fontsGoogleapis} ${vercelAPI};
   img-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} https://flagcdn.com/w40/ data:;
