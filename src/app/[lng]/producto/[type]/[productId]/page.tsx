@@ -132,6 +132,7 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
 
       <ProductJsonLd
         useAppDir
+        id={product?.productId}
         productName={getShoesType(product?.shoesType)}
         images={product?.images}
         description={upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}`).join(', '))}
@@ -141,7 +142,7 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
         reviews={[
           {
             author: 'Jim',
-            datePublished: '2017-01-06T03:37:40Z',
+            datePublished: '2024-05-06T03:37:40Z',
             reviewBody: 'This is my favorite product yet!',
             name: 'So awesome!!!',
             reviewRating: {
