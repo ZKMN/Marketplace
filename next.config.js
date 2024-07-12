@@ -12,7 +12,7 @@ const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytic
 const clarityAPI = 'https://www.clarity.ms';
 const clarityConnect = 'https://r.clarity.ms';
 const stripeUI = 'https://merchant-ui-api.stripe.com';
-const FBPixel = 'https://connect.facebook.net/en_US/fbevents.js';
+const FBPixel = 'https://connect.facebook.net';
 
 const cspHeader = `
   default-src 'self';

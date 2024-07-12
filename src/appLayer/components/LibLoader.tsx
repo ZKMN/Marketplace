@@ -8,9 +8,7 @@ export const LibLoader = () => {
   useEffect(() => {
     getFBAEvent('App Init');
 
-    if (process.env.NEXT_PUBLIC_APP_ENV === 'production') {
-      FBPixelEvents.init();
-    }
+    FBPixelEvents.init();
   }, []);
 
   return null;
