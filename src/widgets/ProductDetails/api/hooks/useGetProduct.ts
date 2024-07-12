@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ReactPixel from 'react-facebook-pixel';
 import { useQueryStates } from 'nuqs';
 
 import { useGetSWR } from '@/shared/api/hooks';
@@ -25,7 +26,10 @@ export const useGetProduct = (product?: IProductDetails) => {
     url: `/products/${productId}`,
     config: {
       onSuccess: (prod) => {
+        ReactPixel.pageView();
+
         setProductResponse(prod);
+
         if (prod.shoesType === type && !queries.sizeId) {
           setQuery({ sizeId: String(prod.sizes[0].id) });
         }

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { Suspense, useState } from 'react';
+import ReactPixel from 'react-facebook-pixel';
 import { Grid, Skeleton } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 
@@ -38,7 +39,11 @@ const CatalogueListComponent = ({ filters, items, ordering }: IProductsResponse)
       limit: PRODUCTS_COUNT,
     },
     config: {
-      onSuccess: (response) => setResponse(response.items),
+      onSuccess: (response) => {
+        setResponse(response.items);
+
+        ReactPixel.pageView();
+      },
       fallbackData: {
         items: dataResponse || items,
         total: 10,
@@ -161,7 +166,7 @@ export const CatalogueList = ({ filters, items, ordering }: IProductsResponse) =
           </Grid>
         </Grid>
       </Grid>
-  )}
+    )}
   >
     <CatalogueListComponent
       items={items}

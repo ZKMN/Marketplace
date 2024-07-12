@@ -7,7 +7,7 @@ import { getEnMetadata, getEsMetadata } from '@/shared/lib/helpers';
 import { INextPageParams, Links } from '@/shared/types';
 
 export async function generateMetadata({ params: { lng } }: INextPageParams): Promise<Metadata> {
-  if (lng === 'es') {
+  if (lng === 'en') {
     return getEnMetadata({
       url: `${config.urls.site}/${lng}${Links.CHECKOUT}`,
       title: 'Checkout - Weestep Kids',
