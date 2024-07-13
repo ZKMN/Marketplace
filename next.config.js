@@ -13,6 +13,7 @@ const clarityAPI = 'https://www.clarity.ms';
 const clarityConnect = 'https://r.clarity.ms';
 const stripeUI = 'https://merchant-ui-api.stripe.com';
 const FBPixel = 'https://connect.facebook.net';
+const facebook = 'https://www.facebook.com';
 
 const cspHeader = `
   default-src 'self';
@@ -20,7 +21,7 @@ const cspHeader = `
   script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI} ${FBPixel};
   style-src 'self' 'unsafe-inline' ${fontsGoogleapis};
   style-src-elem 'self' 'unsafe-inline' ${fontsGoogleapis} ${vercelAPI};
-  img-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} https://flagcdn.com/w40/ data:;
+  img-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} ${facebook} https://flagcdn.com/w40/ data:;
   font-src 'self' ${fontsGStatic};
   object-src 'none';
   base-uri 'self';
