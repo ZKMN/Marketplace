@@ -138,6 +138,9 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
         description={upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}`).join(', '))}
         brand="Weestep"
         color={product?.color.value}
+        sizes={product?.sizes.map((size) => size.value)}
+        colors={product?.colors}
+        discount={product?.discount ? `${product?.discount.toFixed(0)}%` : undefined}
         mpn={product?.productId}
         reviews={[
           {
