@@ -20,7 +20,7 @@ export async function generateMetadata({ params: { lng } }: INextPageParams): Pr
       ...getEnMetadata({
         url: config.urls.site,
         title: "Weestep Kids - Taking care of children's feet!",
-        description: '👟💖 Immerse yourself in the world of comfort with our children\'s footwear! 💫 300+ models of orthopedic footwear - caring for your child\'s health. Find the perfect pair right now and get a -30% discount! 👣🌟. Our footwear is perforated, anti-shock, ergonomic, removable, leather, comfortable, anatomical, breathable and orthopedic.',
+        description: '👟💖 Dive into the world of comfort with our children\'s shoes! 💫 300+ models of orthopedic footwear - caring for your child\'s health. Find the perfect pair right now and get a -30% discount! 👣🌟. Our footwear is perforated, anti-shock, ergonomic, removable, leather, comfortable, anatomical, breathable and orthopedic.',
       }),
     };
   }
@@ -34,7 +34,7 @@ export async function generateMetadata({ params: { lng } }: INextPageParams): Pr
     ...getEsMetadata({
       url: config.urls.site,
       title: 'Weestep Kids - Cuidar los pies de los niños!',
-      description: '👟💖 ¡Sumérgete en el mundo del confort con nuestro calzado infantil! 💫 Más de 300+ modelos de calzado ortopédico: cuidado de la salud de tu hijo. ¡Encuentra el par perfecto ahora y obtén un descuento del -30%! 👣🌟. Nuestro calzado es perforado, antichoque, ergonómico, extraíble, de piel, cómodo, anatómico, transpirable y ortopédico.',
+      description: '👟💖 ¡Sumérgete en el mundo de la comodidad con nuestros zapatos para niños! 💫 Más de 300+ modelos de calzado ortopédico: cuidado de la salud de tu hijo. ¡Encuentra el par perfecto ahora y obtén un descuento del -30%! 👣🌟. Nuestro calzado es perforado, antichoque, ergonómico, extraíble, de piel, cómodo, anatómico, transpirable y ortopédico.',
     }),
   };
 }
