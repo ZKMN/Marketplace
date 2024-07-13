@@ -83,7 +83,6 @@ export const ProductCard = ({ product }: { product: IProduct; }) => {
           justifyContent="center"
         >
           <BaseImage
-            priority
             src={img}
             alt={code}
             width={230}
