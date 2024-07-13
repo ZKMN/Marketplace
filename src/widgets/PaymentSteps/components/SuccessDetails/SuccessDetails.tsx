@@ -70,7 +70,7 @@ const SuccessDetailsComponent = () => {
         <IntlButton
           intl={{ label: 'continueShopping' }}
           color="secondary"
-          onClick={handleRedirect(Links.CATALOGUE)}
+          onClick={handleRedirect(`${Links.CATALOGUE}/1`)}
         />
       </Grid>
     </Grid>

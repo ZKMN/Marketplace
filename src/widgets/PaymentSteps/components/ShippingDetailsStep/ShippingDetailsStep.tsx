@@ -1,8 +1,14 @@
 import React from 'react';
-import { Divider, Grid } from '@mui/material';
+import {
+  Checkbox,
+  Divider,
+  FormControlLabel,
+  FormHelperText,
+  Grid,
+} from '@mui/material';
 
 import { IntlTypography } from '@/shared/components';
-import { basketStore } from '@/shared/lib/store';
+import { basketStore, setFastDelivery } from '@/shared/lib/store';
 
 import {
   AddressDetailsButton,
@@ -15,6 +21,7 @@ import {
 export const ShippingDetailsStep = () => {
   const carrier = basketStore((state) => state.carrier);
   const carriers = basketStore((state) => state.carriers);
+  const isFastDelivery = basketStore((state) => state.isFastDelivery);
 
   return (
     <Grid container justifyContent="center">
@@ -47,12 +54,33 @@ export const ShippingDetailsStep = () => {
               />
             </Grid>
           ))}
+
           <Grid item xs={6} sm={3}>
             <PickupButton carrier={carrier} />
           </Grid>
+
+          <Grid item xs={12}>
+            <FormControlLabel
+              label={<IntlTypography intl={{ label: 'labels.fastDelivery' }} />}
+              control={(
+                <Checkbox
+                  checked={isFastDelivery}
+                  disabled={!carrier}
+                  onChange={({ target }) => setFastDelivery(target.checked)}
+                />
+              )}
+            />
+            <FormHelperText sx={{ mt: '-10px' }}>
+              <IntlTypography
+                intl={{ label: 'texts.fastDeliveryOnlyFullPrice' }}
+                color="text.grey"
+                fontSize="0.8rem"
+              />
+            </FormHelperText>
+          </Grid>
         </Grid>
 
-        <Divider sx={{ margin: '24px 0' }} />
+        <Divider sx={{ margin: '10px 0 24px 0' }} />
 
         <ShippingForm />
       </Grid>

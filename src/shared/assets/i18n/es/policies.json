@@ -26,8 +26,23 @@
     "texts": {
       "ourEstimatedDelivery": "Nuestros tiempos de entrega estimados se basan en varios factores, incluida la dirección de destino, las opciones de envío que elijas y la rapidez con la que podemos preparar tu pedido, el clima, etc. Puedes calcular la fecha de entrega estimada tomando el tiempo de procesamiento de tu pedido y añadiendo el tiempo de entrega según el método de envío que elijas.",
       "totalDeliveryTime": "Tiempo total de entrega = tiempo de procesamiento + tiempo de envío",
-      "processingTime": "El tiempo de procesamiento es el tiempo desde la recepción de tu pedido hasta el envío físico de la mercancía. Después de recibir tu pedido, realizaremos un riguroso control de calidad y pruebas para garantizar la calidad del producto antes del envío. El tiempo de respuesta total variará según la complejidad, el diseño y el tamaño del producto específico. Los pedidos más grandes suelen llevar más tiempo. Por lo general, tardamos entre 1 y 2 días hábiles en procesar tu pedido. Sin embargo, ten en cuenta que el tiempo de procesamiento también puede verse afectado por el inventario de artículos individuales, la época del año, los días festivos, etc. Si tu pedido contiene artículos muy populares que tienen problemas de disponibilidad de stock, el procesamiento y envío del pedido demorará entre 5 y 12 días hábiles.",
+      "processingTime": "El tiempo de procesamiento es el tiempo desde la recepción de tu pedido hasta el envío físico de la mercancía. Después de recibir tu pedido, realizaremos un riguroso control de calidad y pruebas para garantizar la calidad del producto antes del envío. El tiempo de respuesta total variará según la complejidad, el diseño y el tamaño del producto específico. Los pedidos más grandes suelen llevar más tiempo.",
       "shippingTime": "El tiempo de envío es estimado y comienza desde la fecha de envío, no desde la fecha del pedido. Debido a una dirección no válida, al proceso de despacho de aduanas u otras razones, el tiempo de envío puede demorar más de lo esperado."
+    },
+    "table": {
+      "titles": {
+        "shippingMethod": "Forma de Envío",
+        "processingTime": "Tiempo de Procesamiento",
+        "shippingTime": "Tiempo de Envío",
+        "shippingCost": "Gastos de Envío"
+      },
+      "texts": {
+        "spainDeliveryNormal": "Entrega en toda España (normal)",
+        "spainDeliveryExpres": "Entrega en toda España (exprés)",
+        "sameDay": "Tramitación del pedido el mismo día",
+        "workingDays": "{{ days }} día laborable",
+        "shippingCost": "Los gastos de envío son {{ cost }}"
+      }
     }
   },
   "returnRefund": {

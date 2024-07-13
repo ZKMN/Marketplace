@@ -6,6 +6,7 @@ export interface IBasketStore {
   orderId: number | null;
   carrier: ICarrier | null;
   carriers: ICarrier[];
+  isFastDelivery: boolean;
   isBasketLoading: boolean;
   shippingDetails: IShippingDetails | null;
 }
@@ -36,6 +37,7 @@ export interface IBasketStoreActions {
   resetBasketAction: () => void;
   resetPaymentInfoAction: () => void;
   resetPaymentStoreAction: () => void;
+  setFastDelivery: (isFastDelivery: boolean) => void;
   setOrderIdAction: (orderId: number) => void;
   setCarrierAction: (carrier: ICarrier | null) => void;
   initBasketSuccessAction: (data: IBasketResponse) => void;

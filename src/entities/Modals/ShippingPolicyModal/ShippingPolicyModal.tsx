@@ -13,11 +13,11 @@ import {
 
 import { ContactUs } from '@/entities/ContactUs';
 
-import { BaseDialog, IntlTypography } from '@/shared/components';
+import { BaseDialog } from '@/shared/components';
 import { useClientTranslation } from '@/shared/lib/hooks';
 import { IBaseDialogProps } from '@/shared/types';
 
-import { COLUMNS, DATA } from './consts';
+import { COLUMNS, ROW_ONE, ROW_TWO } from './consts';
 
 export const ShippingPolicyModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 'isOpen' | 'onClose'>) => {
   const [translate] = useClientTranslation('policies', { keyPrefix: 'shippingPolicy' });
@@ -60,22 +60,29 @@ export const ShippingPolicyModal = ({ isOpen, onClose }: Pick<IBaseDialogProps, 
                 <TableRow>
                   {COLUMNS.map((column) => (
                     <TableCell key={column.intl.label} align="left">
-                      <IntlTypography
-                        intl={{ label: column.intl.label }}
-                        color="text.white"
-                      />
+                      <Typography mb={2} color="text.white">
+                        {translate(column.intl.label)}
+                      </Typography>
                     </TableCell>
                   ))}
                 </TableRow>
               </TableHead>
               <TableBody sx={{ bgcolor: 'table.body' }}>
                 <TableRow>
-                  {DATA.map((column) => (
+                  {ROW_ONE.map((column) => (
                     <TableCell key={`${column.intl.label}${column.intl.values?.days}`} align="left">
-                      <IntlTypography
-                        intl={{ label: column.intl.label, values: column.intl.values }}
-                        color="text.white"
-                      />
+                      <Typography mb={2} color="text.white">
+                        {translate(column.intl.label, column.intl.values)}
+                      </Typography>
+                    </TableCell>
+                  ))}
+                </TableRow>
+                <TableRow>
+                  {ROW_TWO.map((column) => (
+                    <TableCell key={`${column.intl.label}${column.intl.values?.days}`} align="left">
+                      <Typography mb={2} color="text.white">
+                        {translate(column.intl.label, column.intl.values)}
+                      </Typography>
                     </TableCell>
                   ))}
                 </TableRow>

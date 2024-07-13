@@ -4,15 +4,13 @@
     "paymentInfo": "Payment is made and secured using Stripe. Privacy Center: ",
     "confirmDetailsOnMail": "You will receive confirmation details to the specified email address!",
     "rightReserved": "© 2024 Weestep All Rights Reserved.",
-    "spainDelivery": "Delivery throughout Spain",
-    "workingDays": "{{ days }} working days",
-    "shippingCost": "Shipping cost are {{ cost }}",
     "ifYouHaveQuestions": "If you have any other questions, please <link /> and we will do our best to help you.",
     "templateDesigned": "Template designed by Weestep",
     "allShoesIsOrtopedic": "All the shoes in the store have an orthopedic insole orthopedic insole and an anatomical sole.",
     "discount30": "Welcome the summer with a -30% discount!",
     "freeDelivery": "Free delivery for purchases over 60 euros!",
-    "weSoldThis": "Sorry, maybe we sold this model."
+    "weSoldThis": "Sorry, maybe we sold this model.",
+    "fastDeliveryOnlyFullPrice": "Fast delivery only full price"
   },
   "labels": {
     "topSale": "Top Sale",
@@ -28,7 +26,8 @@
     "anatomical": "Anatomical",
     "breathable": "Breathable",
     "clickOpenMap": "Clik for open map",
-    "free": "Free"
+    "free": "Free",
+    "fastDelivery": "Fast Delivery"
   },
   "titles": {
     "color": "Color",
@@ -53,9 +52,6 @@
     "express": "Express",
     "pickupAddress": "Pickup Address",
     "shippingPolicy": "Shipping Policy",
-    "processingTime": "Processing Time",
-    "shippingTime": "Shipping Time",
-    "shippingCost": "Shipping Cost",
     "followUs": "Follow us",
     "characteristics": "Characteristics",
     "youMayLike": "You may also like",

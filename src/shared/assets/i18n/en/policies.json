@@ -26,8 +26,23 @@
     "texts": {
       "ourEstimatedDelivery": "Our estimated delivery times are based on a number of factors, including the destination address, the shipping options you choose and how quickly we can prepare your order, weather, etc. You can calculate your estimated delivery date by taking the processing time of your order and adding the delivery time based on the shipping method you choose.",
       "totalDeliveryTime": "Total delivery time = processing time + shipping time",
-      "processingTime": "Processing time is the time from receipt of your order to the physical shipment of the goods. After receiving your order, we will perform rigorous quality control and testing to ensure product quality prior to shipment. Total turnaround time will vary depending on the complexity, design and size of the specific product. Larger orders usually take longer. We usually take 1-2 business days to process your order. However, please note that processing time may also be affected by the inventory of individual items, time of year, holidays, etc. If your order contains popular items that have stock availability issues, it will take 5-12 business days to process and ship your order.",
+      "processingTime": "Processing time is the time from receipt of your order to the physical shipment of the goods. After receiving your order, we will perform rigorous quality control and testing to ensure product quality prior to shipment. Total turnaround time will vary depending on the complexity, design and size of the specific product. Larger orders usually take longer.",
       "shippingTime": "Shipping time is estimated and starts from the date of shipment, not the date of order. Due to an invalid address, customs clearance process or other reasons, shipping time may take longer than expected."
+    },
+    "table": {
+      "titles": {
+        "shippingMethod": "Shipping Method",
+        "processingTime": "Processing Time",
+        "shippingTime": "Shipping Time",
+        "shippingCost": "Shipping Cost"
+      },
+      "texts": {
+        "spainDeliveryNormal": "Delivery throughout Spain (normal)",
+        "spainDeliveryExpres": "Delivery throughout Spain (expres)",
+        "sameDay": "Same day order processing",
+        "workingDays": "{{ days }} working day",
+        "shippingCost": "Shipping cost are {{ cost }}"
+      }
     }
   },
   "returnRefund": {

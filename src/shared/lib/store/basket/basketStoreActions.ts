@@ -1,4 +1,4 @@
-import { CARRIERS } from '@/shared/consts';
+import { CARRIERS, FREE_DELIVERY_PRICE } from '@/shared/consts';
 import { IBasketStoreActions } from '@/shared/types';
 
 import { basketStore } from './basketStore';
@@ -22,10 +22,30 @@ export const setOrderIdAction: IBasketStoreActions['setOrderIdAction'] = (orderI
 export const initBasketSuccessAction: IBasketStoreActions['initBasketSuccessAction'] = (basket) => {
   basketStore.setState({
     basket,
-    carrier: basket.total >= 60 ? { ...CARRIERS[0], price: 0 } : CARRIERS[0],
-    carriers: basket.total >= 60 ? CARRIERS.map((carrier) => ({ ...carrier, price: 0 })) : CARRIERS,
+    carrier: basket.total >= FREE_DELIVERY_PRICE ? { ...CARRIERS[0], price: 0 } : CARRIERS[0],
+    carriers: basket.total >= FREE_DELIVERY_PRICE ? CARRIERS.map((carrier) => ({ ...carrier, price: 0 })) : CARRIERS,
     isBasketLoading: false,
   });
+};
+
+export const setFastDelivery: IBasketStoreActions['setFastDelivery'] = (isFastDelivery) => {
+  if (isFastDelivery) {
+    return basketStore.setState((state) => ({
+      isFastDelivery,
+      carrier: state.carrier
+        ? { ...state.carrier, price: Number(CARRIERS.find(({ id }) => id === state.carrier?.id)?.price) + 5 }
+        : null,
+      carriers: CARRIERS.map((carrier) => ({ ...carrier, price: carrier.price + 5 })),
+    }));
+  }
+
+  return basketStore.setState((state) => ({
+    isFastDelivery,
+    carrier: Number(state.basket?.total) >= FREE_DELIVERY_PRICE ? { ...CARRIERS[0], price: 0 } : CARRIERS[0],
+    carriers: Number(state.basket?.total) >= FREE_DELIVERY_PRICE
+      ? CARRIERS.map((carrier) => ({ ...carrier, price: 0 }))
+      : CARRIERS,
+  }));
 };
 
 export const resetBasketAction: IBasketStoreActions['resetBasketAction'] = () => {
@@ -36,13 +56,19 @@ export const resetPaymentInfoAction: IBasketStoreActions['resetPaymentInfoAction
   basketStore.setState({
     step: 0,
     carrier: CARRIERS[0],
+    isFastDelivery: false,
     shippingDetails: null,
   });
 };
 
 export const setCarrierAction: IBasketStoreActions['setCarrierAction'] = (carrier) => {
+  if (!carrier) {
+    setFastDelivery(false);
+  }
+
   basketStore.setState((state) => ({
     carrier,
+    isFastDelivery: !carrier ? false : state.isFastDelivery,
     shippingDetails: !carrier ? null : state.shippingDetails,
   }));
 };

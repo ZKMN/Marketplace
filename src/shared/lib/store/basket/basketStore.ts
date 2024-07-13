@@ -10,6 +10,7 @@ export const basketStoreValues: Readonly<IBasketStore> = {
   carrier: CARRIERS[0],
   carriers: CARRIERS,
   shippingDetails: null,
+  isFastDelivery: false,
   isBasketLoading: true,
 };
 

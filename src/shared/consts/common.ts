@@ -1,8 +1,8 @@
 import { ICarrier } from '../types';
 
 export const PRODUCTS_COUNT = 16;
-
 export const FAQ_QUESTIONS = 28;
+export const FREE_DELIVERY_PRICE = 60;
 
 export const CARRIERS: ICarrier[] = [{
   id: 1,
