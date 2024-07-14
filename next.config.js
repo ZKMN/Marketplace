@@ -37,16 +37,16 @@ const cspHeader = `
 const nextConfig = {
   // reactStrictMode: false,
   staticPageGenerationTimeout: 180,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'apidev.weestep-kids.es',
-        port: '',
-        pathname: '/media/images/products/**',
-      },
-    ],
-  },
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: 'https',
+  //       hostname: 'apidev.weestep-kids.es',
+  //       port: '',
+  //       pathname: '/media/images/products/**',
+  //     },
+  //   ],
+  // },
   async headers() {
     return [
       {
