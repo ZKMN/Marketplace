@@ -30,7 +30,6 @@ export const ProductCard = ({ product }: { product: IProduct; }) => {
       underline="none"
     >
       <Card
-        component="button"
         elevation={0}
         sx={{
           width: '100%',
