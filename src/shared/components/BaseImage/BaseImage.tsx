@@ -52,25 +52,23 @@ export const BaseImage = ({
 
   if (fullWidth) {
     return (
-      <Box display="flex" flexDirection="column">
-        <Image
-          src={src}
-          alt={alt}
-          width={0}
-          height={0}
-          sizes="100vw"
-          loader={imageLoader}
-          onClick={onClick}
-          priority={priority}
-          style={{
-            borderRadius,
-            width: '100%',
-            height: 'auto',
-            cursor: (onClick || pointer) ? 'pointer' : '',
-            objectFit: 'cover',
-          }}
-        />
-      </Box>
+      <Image
+        src={src}
+        alt={alt}
+        sizes="100vw"
+        width={0}
+        height={0}
+        loader={imageLoader}
+        onClick={onClick}
+        priority={priority}
+        style={{
+          borderRadius,
+          width: '100%',
+          height: 'auto',
+          cursor: (onClick || pointer) ? 'pointer' : '',
+          objectFit: 'cover',
+        }}
+      />
     );
   }
 
@@ -93,22 +91,28 @@ export const BaseImage = ({
   }
 
   return (
-    <Image
-      src={src}
-      alt={alt}
+    <Box
       width={width}
       height={height}
-      sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      loader={imageLoader}
-      onClick={onClick}
-      priority={priority}
-      placeholder="blur"
-      blurDataURL={`data:image/svg+xml;base64,${getBase64(shimmer(width, height))}`}
-      style={{
-        borderRadius,
-        cursor: (onClick || pointer) ? 'pointer' : '',
-        objectFit: objectFit || 'cover',
-      }}
-    />
+      position="relative"
+      overflow="hidden"
+    >
+      <Image
+        fill
+        src={src}
+        alt={alt}
+        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        loader={imageLoader}
+        onClick={onClick}
+        priority={priority}
+        placeholder="blur"
+        blurDataURL={`data:image/svg+xml;base64,${getBase64(shimmer(width, height))}`}
+        style={{
+          borderRadius,
+          cursor: (onClick || pointer) ? 'pointer' : '',
+          objectFit: objectFit || 'cover',
+        }}
+      />
+    </Box>
   );
 };

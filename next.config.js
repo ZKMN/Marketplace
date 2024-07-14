@@ -1,3 +1,11 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const config = require('./src/shared/lib/config.common.js');
+
 const vercelAPI = 'https://vercel.live';
 const stripeApi = 'https://js.stripe.com';
 const mapsGoogleapis = 'https://maps.googleapis.com';
@@ -37,16 +45,16 @@ const cspHeader = `
 const nextConfig = {
   // reactStrictMode: false,
   staticPageGenerationTimeout: 180,
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: 'https',
-  //       hostname: 'apidev.weestep-kids.es',
-  //       port: '',
-  //       pathname: '/media/images/products/**',
-  //     },
-  //   ],
-  // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: config.urls.API.replace('https://', ''),
+        port: '',
+        pathname: '/media/images/products/**',
+      },
+    ],
+  },
   async headers() {
     return [
       {
@@ -81,10 +89,5 @@ const nextConfig = {
     ];
   },
 };
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
 
 module.exports = withBundleAnalyzer(nextConfig);
