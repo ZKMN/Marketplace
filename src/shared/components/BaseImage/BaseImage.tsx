@@ -80,6 +80,7 @@ export const BaseImage = ({
           alt={alt}
           src={src}
           onClick={onClick}
+          priority={priority}
           style={{
             borderRadius,
             cursor: (onClick || pointer) ? 'pointer' : '',
