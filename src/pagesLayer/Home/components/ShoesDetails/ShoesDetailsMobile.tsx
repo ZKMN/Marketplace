@@ -34,9 +34,9 @@ export const ShoesDetailsMobile = () => (
     <Box bgcolor="background.cyan">
       <BaseImage
         priority
+        fullWidth
         src="/images/shoes-details-mobile.png"
         alt="Todos los zapatos de la tienda tienen una plantilla ortopedica y una suela anatomica."
-        height={400}
         objectFit="contain"
       />
     </Box>

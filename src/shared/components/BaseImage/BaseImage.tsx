@@ -56,6 +56,8 @@ export const BaseImage = ({
         <Image
           src={src}
           alt={alt}
+          width={0}
+          height={0}
           sizes="100vw"
           loader={imageLoader}
           onClick={onClick}
