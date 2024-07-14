@@ -52,23 +52,23 @@ export const BaseImage = ({
 
   if (fullWidth) {
     return (
-      <Image
-        src={src}
-        alt={alt}
-        sizes="100vw"
-        width={0}
-        height={0}
-        loader={imageLoader}
-        onClick={onClick}
-        priority={priority}
-        style={{
-          borderRadius,
-          width: '100%',
-          height: 'auto',
-          cursor: (onClick || pointer) ? 'pointer' : '',
-          objectFit: 'cover',
-        }}
-      />
+      <Box display="flex" flexDirection="column">
+        <Image
+          src={src}
+          alt={alt}
+          sizes="100vw"
+          loader={imageLoader}
+          onClick={onClick}
+          priority={priority}
+          style={{
+            borderRadius,
+            width: '100%',
+            height: 'auto',
+            cursor: (onClick || pointer) ? 'pointer' : '',
+            objectFit: 'cover',
+          }}
+        />
+      </Box>
     );
   }
 
@@ -76,15 +76,12 @@ export const BaseImage = ({
     return (
       <Box className={className}>
         <Image
-          width={0}
-          height={0}
+          fill
           alt={alt}
           src={src}
           onClick={onClick}
           style={{
             borderRadius,
-            width: '100%',
-            height: 'auto',
             cursor: (onClick || pointer) ? 'pointer' : '',
             objectFit: 'contain',
           }}
@@ -94,28 +91,22 @@ export const BaseImage = ({
   }
 
   return (
-    <Box
+    <Image
+      src={src}
+      alt={alt}
       width={width}
       height={height}
-      position="relative"
-      overflow="hidden"
-    >
-      <Image
-        fill
-        src={src}
-        alt={alt}
-        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        loader={imageLoader}
-        onClick={onClick}
-        priority={priority}
-        placeholder="blur"
-        blurDataURL={`data:image/svg+xml;base64,${getBase64(shimmer(width, height))}`}
-        style={{
-          borderRadius,
-          cursor: (onClick || pointer) ? 'pointer' : '',
-          objectFit: objectFit || 'cover',
-        }}
-      />
-    </Box>
+      sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      loader={imageLoader}
+      onClick={onClick}
+      priority={priority}
+      placeholder="blur"
+      blurDataURL={`data:image/svg+xml;base64,${getBase64(shimmer(width, height))}`}
+      style={{
+        borderRadius,
+        cursor: (onClick || pointer) ? 'pointer' : '',
+        objectFit: objectFit || 'cover',
+      }}
+    />
   );
 };

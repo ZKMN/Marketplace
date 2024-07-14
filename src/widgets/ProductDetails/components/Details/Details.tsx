@@ -64,6 +64,9 @@ const DetailsComponent = ({ product }: { product?: IProductDetails; }) => {
           [breakpoints.up('md')]: {
             ml: 8,
           },
+          [breakpoints.down('md')]: {
+            mt: 3,
+          },
         })}
       >
         <Grid container>
