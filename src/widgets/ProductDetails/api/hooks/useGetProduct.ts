@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useQueryStates } from 'nuqs';
 
 import { useGetSWR } from '@/shared/api/hooks';
@@ -17,8 +16,6 @@ export const useGetProduct = (product?: IProductDetails) => {
     quantity: stringParser(''),
   });
 
-  const [productResponse, setProductResponse] = useState<IProductDetails>();
-
   const [push] = useLngReplaceRouter();
   const { productId, type } = useTypedParams();
 
@@ -27,8 +24,6 @@ export const useGetProduct = (product?: IProductDetails) => {
     config: {
       onSuccess: (prod) => {
         FBPixelEvents.pageView();
-
-        setProductResponse(prod);
 
         if (prod.shoesType === type && !queries.sizeId) {
           setQuery({ sizeId: String(prod.sizes[0].id) });
@@ -49,7 +44,7 @@ export const useGetProduct = (product?: IProductDetails) => {
 
         return null;
       },
-      fallbackData: productResponse || product,
+      fallbackData: product,
     },
   });
 
