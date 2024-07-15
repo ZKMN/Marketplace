@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -19,6 +20,7 @@ const FBAPIs = 'https://firebaseinstallations.googleapis.com https://firebase.go
 const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytics.com';
 const clarityAPI = 'https://www.clarity.ms';
 const clarityConnect = 'https://r.clarity.ms';
+const clarityIMG = 'https://c.clarity.ms';
 const stripeUI = 'https://merchant-ui-api.stripe.com';
 const FBPixel = 'https://connect.facebook.net';
 const facebook = 'https://www.facebook.com';
@@ -29,7 +31,7 @@ const cspHeader = `
   script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI} ${FBPixel};
   style-src 'self' 'unsafe-inline' ${fontsGoogleapis};
   style-src-elem 'self' 'unsafe-inline' ${fontsGoogleapis} ${vercelAPI};
-  img-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} ${facebook} https://flagcdn.com/w40/ data:;
+  img-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} ${facebook} ${clarityIMG} https://flagcdn.com/w40/ data:;
   font-src 'self' ${fontsGStatic};
   object-src 'none';
   base-uri 'self';
