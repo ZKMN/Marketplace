@@ -104,7 +104,15 @@ const FilterItem = ({
 export const Filters = ({ filters }: { filters?: IFilter[]; }) => {
   const searchParams = useSearchParams();
 
-  return filters?.map(({
+  const noSeason = filters?.filter((filter) => {
+    if (filter.metadata.key === 'season') {
+      return null;
+    }
+
+    return filter;
+  });
+
+  return noSeason?.map(({
     title,
     values,
     queryKey,

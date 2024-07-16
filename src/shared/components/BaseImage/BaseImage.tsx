@@ -76,15 +76,13 @@ export const BaseImage = ({
     return (
       <Box className={className}>
         <Image
-          width={0}
-          height={0}
+          fill
           alt={alt}
           src={src}
           onClick={onClick}
+          priority={priority}
           style={{
             borderRadius,
-            width: '100%',
-            height: 'auto',
             cursor: (onClick || pointer) ? 'pointer' : '',
             objectFit: 'contain',
           }}

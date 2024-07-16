@@ -5,7 +5,6 @@ import { Grid, Skeleton } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 
 import { useGetSWR } from '@/shared/api/hooks';
-import { Loading } from '@/shared/components';
 import { PRODUCTS_COUNT } from '@/shared/consts';
 import { FBPixelEvents } from '@/shared/lib/helpers';
 import { useTypedParams } from '@/shared/lib/hooks';
@@ -106,24 +105,22 @@ const CatalogueListComponent = ({ filters, items, ordering }: IProductsResponse)
         </Grid>
 
         <Grid item flex={1} position="relative" component="section">
-          <Loading toTop blurred height="100%" loading={isLoading}>
-            <Grid container spacing={2}>
-              {!data?.items.length && !isLoading && <EmptyResult />}
+          <Grid container spacing={2}>
+            {!data?.items.length && !isLoading && <EmptyResult />}
 
-              {data?.items.map((product) => (
-                <Grid
-                  item
-                  key={product.productId}
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                >
-                  <ProductCard product={product} />
-                </Grid>
-              ))}
-            </Grid>
-          </Loading>
+            {data?.items.map((product) => (
+              <Grid
+                item
+                key={product.productId}
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+              >
+                <ProductCard product={product} />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
 

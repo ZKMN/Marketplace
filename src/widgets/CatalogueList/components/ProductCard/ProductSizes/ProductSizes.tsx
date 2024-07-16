@@ -28,7 +28,10 @@ export const ProductSizes = ({ sizes }: { sizes: IProduct['sizes']; }) => (
               bgcolor="background.paper"
               borderRadius="4px"
             >
-              <Typography fontSize="0.9rem">
+              <Typography
+                fontSize="0.9rem"
+                textAlign="center"
+              >
                 {value}
               </Typography>
             </Grid>

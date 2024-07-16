@@ -5,12 +5,10 @@ import Slider from 'react-slick';
 import { Box, Grid } from '@mui/material';
 
 import { BaseContainer, BaseImage } from '@/shared/components';
-import { useClickRedirect, useTypedParams } from '@/shared/lib/hooks';
+import { useClickRedirect } from '@/shared/lib/hooks';
 import { Links } from '@/shared/types';
 
 export const MainCarousel = () => {
-  const { lng } = useTypedParams();
-
   const [handleRedirect] = useClickRedirect();
 
   const banners = [1, 2, 3, 4, 5, 6];
@@ -52,7 +50,7 @@ export const MainCarousel = () => {
                 pointer
                 fullWidth
                 alt={`Banner-${index}`}
-                src={`/images/banners/banner-${'es' || lng}-${index + 1}.png`}
+                src={`/images/banners/banner-es-${index + 1}.png`}
               />
             </Grid>
           ))}

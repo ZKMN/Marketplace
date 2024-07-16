@@ -2,9 +2,11 @@
 
 import React from 'react';
 import Slider from 'react-slick';
-import { Box } from '@mui/material';
+import { Grid } from '@mui/material';
 
 import { BaseImage } from '@/shared/components';
+
+import styles from './Carousel.module.scss';
 
 export const Carousel = ({ images }: { images?: string[]; }) => (
   <Slider
@@ -27,25 +29,17 @@ export const Carousel = ({ images }: { images?: string[]; }) => (
       />
     )}
   >
-
     {images?.map((imgSrc) => (
-      <Box
-        key={imgSrc}
-        sx={({ breakpoints }) => ({
-          minHeight: 500,
-          width: '100%',
-          [breakpoints.down('sm')]: {
-            minHeight: 200,
-          },
-        })}
-      >
-        <BaseImage
-          fullWidth
-          src={imgSrc}
-          alt="Zapatos"
-        />
-      </Box>
+      <Grid key={imgSrc}>
+        <Grid container justifyContent="center">
+          <BaseImage
+            priority
+            src={imgSrc}
+            alt="Zapatos"
+            className={styles.carouselItem}
+          />
+        </Grid>
+      </Grid>
     ))}
-
   </Slider>
 );

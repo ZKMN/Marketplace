@@ -28,7 +28,7 @@ export const AddProductButton = () => {
     config: {
       onSuccess: ({ data }) => {
         setTrue();
-        getFBAEvent('Product Added', data);
+        getFBAEvent('Product Added', { id: sizeId, quantity });
         initBasketSuccessAction(data);
       },
     },

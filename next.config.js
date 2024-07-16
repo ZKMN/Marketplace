@@ -1,6 +1,15 @@
+/* eslint-disable max-len */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const config = require('./src/shared/lib/config.common.js');
+
 const vercelAPI = 'https://vercel.live';
 const stripeApi = 'https://js.stripe.com';
-const stripeUI = 'https://merchant-ui-api.stripe.com/link/set-cookie';
+const stripeUI = 'https://merchant-ui-api.stripe.com';
 const mapsGoogleapis = 'https://maps.googleapis.com';
 const fontsGoogleapis = 'https://fonts.googleapis.com';
 const mapsGStatic = 'https://maps.gstatic.com';
@@ -12,6 +21,7 @@ const FBAPIs = 'https://firebaseinstallations.googleapis.com https://firebase.go
 const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytics.com';
 const clarityAPI = 'https://www.clarity.ms';
 const clarityConnect = 'https://r.clarity.ms';
+const clarityIMG = 'https://c.clarity.ms';
 const FBPixel = 'https://connect.facebook.net';
 const facebook = 'https://www.facebook.com';
 
@@ -21,7 +31,7 @@ const cspHeader = `
   script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${GTag} ${clarityAPI} ${stripeUI} ${FBPixel};
   style-src 'self' 'unsafe-inline' ${fontsGoogleapis};
   style-src-elem 'self' 'unsafe-inline' ${fontsGoogleapis} ${vercelAPI};
-  img-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} ${facebook} https://flagcdn.com/w40/ data:;
+  img-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${mapsGStatic} ${vercelAPI} ${facebook} ${clarityIMG} https://flagcdn.com/w40/ data:;
   font-src 'self' ${fontsGStatic};
   object-src 'none';
   base-uri 'self';
@@ -37,6 +47,16 @@ const cspHeader = `
 const nextConfig = {
   // reactStrictMode: false,
   staticPageGenerationTimeout: 180,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: config.urls.API.replace('https://', ''),
+        port: '',
+        pathname: '/media/images/products/**',
+      },
+    ],
+  },
   async headers() {
     return [
       {
@@ -72,4 +92,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);

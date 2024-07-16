@@ -133,47 +133,45 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
       <ProductJsonLd
         useAppDir
         id={product?.productId}
-        productName={getShoesType(product?.shoesType)}
-        images={product?.images}
-        description={upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}`).join(', '))}
+        mpn={product?.productId}
         brand="Weestep"
         color={product?.color.value}
-        mpn={product?.productId}
-        reviews={[
-          {
-            author: 'Jim',
-            datePublished: '2024-05-06T03:37:40Z',
-            reviewBody: 'This is my favorite product yet!',
-            name: 'So awesome!!!',
-            reviewRating: {
-              bestRating: '5',
-              ratingValue: '5',
-              worstRating: '4.5',
-            },
-            publisher: {
-              type: 'Organization',
-              name: 'TwoVit',
-            },
-          },
-        ]}
+        sizes={product?.sizes.map((size) => size.value)}
+        images={product?.images}
+        colors={product?.colors}
+        discount={product?.discount ? `${product?.discount.toFixed(0)}%` : undefined}
+        productName={getShoesType(product?.shoesType)}
+        description={upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}`).join(', '))}
         aggregateRating={{
           ratingValue: '4.6',
           reviewCount: '89',
         }}
-        offers={[
-          {
-            price: product?.price,
-            priceCurrency: 'EUR',
-            priceValidUntil: '2024-10-01',
-            itemCondition: 'https://schema.org/NewCondition',
-            availability: 'https://schema.org/InStock',
-            url: `${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
-            seller: {
-              name: 'Weestep Kids',
-            },
+        reviews={[{
+          author: 'Jim',
+          datePublished: '2024-05-06T03:37:40Z',
+          reviewBody: 'This is my favorite product yet!',
+          name: 'So awesome!!!',
+          reviewRating: {
+            bestRating: '5',
+            ratingValue: '5',
+            worstRating: '4.5',
           },
-        ]}
-
+          publisher: {
+            type: 'Organization',
+            name: 'TwoVit',
+          },
+        }]}
+        offers={[{
+          price: product?.price,
+          priceCurrency: 'EUR',
+          priceValidUntil: '2024-10-01',
+          itemCondition: 'https://schema.org/NewCondition',
+          availability: 'https://schema.org/InStock',
+          url: `${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
+          seller: {
+            name: 'Weestep Kids',
+          },
+        }]}
       />
 
       <Product product={product} />

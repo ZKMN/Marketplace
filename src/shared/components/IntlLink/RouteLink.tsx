@@ -14,6 +14,7 @@ export const RouteLink = ({
   to,
   width,
   color,
+  onClick,
   display,
   variant,
   fontSize,
@@ -43,6 +44,7 @@ export const RouteLink = ({
         mr={mr}
         width={width}
         color={color}
+        onClick={onClick}
         display={display}
         variant={variant}
         fontSize={fontSize}
