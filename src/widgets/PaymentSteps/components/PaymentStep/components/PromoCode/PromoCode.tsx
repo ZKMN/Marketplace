@@ -73,7 +73,7 @@ export const PromoCode = () => {
       <Grid item>
         <IntlButton
           sx={{ borderRadius: '0 8px 8px 0' }}
-          intl={{ label: 'applyCode' }}
+          intl={{ label: 'applyPromo' }}
           disabled={!promo}
           onClick={() => {
             setValue('');
