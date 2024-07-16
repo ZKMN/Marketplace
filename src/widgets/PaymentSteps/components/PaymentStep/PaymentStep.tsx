@@ -3,51 +3,38 @@
 import { Box, Grid } from '@mui/material';
 
 import { IntlLink, IntlTypography } from '@/shared/components';
-import { basketStore } from '@/shared/lib/store';
 
-import { ChoosePaymentTabs, OrderTotal } from './components';
+import { ChoosePaymentTabs, OrderTotal, PromoCode } from './components';
 
-export const PaymentStep = () => {
-  const basket = basketStore((state) => state.basket);
-  const carrier = basketStore((state) => state.carrier);
+export const PaymentStep = () => (
+  <Grid container justifyContent="center">
+    <Grid item xs={12} md={8}>
+      <PromoCode />
 
-  if (!basket) {
-    return null;
-  }
+      <OrderTotal />
 
-  const amount = (basket.total + (carrier?.price || 0)).toFixed(2);
+      <IntlTypography
+        intl={{ label: 'titles.paymentMethod' }}
+        fontWeight={700}
+        textTransform="uppercase"
+      />
 
-  return (
-    <Grid container justifyContent="center">
-      <Grid item xs={12} md={8}>
+      <Box mb={2}>
         <IntlTypography
-          intl={{ label: 'titles.paymentMethod' }}
-          fontWeight={700}
-          textTransform="uppercase"
+          intl={{ label: 'texts.paymentInfo' }}
+          color="text.grey"
+          fontSize="0.8rem"
+          component="span"
         />
 
-        <Box mb={2}>
-          <IntlTypography
-            intl={{ label: 'texts.paymentInfo' }}
-            fontSize="0.8rem"
-            component="span"
-            color="text.grey"
-          />
-
-          <IntlLink
-            intl={{ label: 'link' }}
-            href="https://stripe.com/es/legal/privacy-center"
-            fontSize="0.8rem"
-          />
-        </Box>
-
-        <ChoosePaymentTabs amount={amount} />
-
-        <OrderTotal
-          price={basket.total}
-          quantity={basket.numItems}
+        <IntlLink
+          intl={{ label: 'link' }}
+          href="https://stripe.com/es/legal/privacy-center"
+          fontSize="0.8rem"
         />
-      </Grid>
+      </Box>
+
+      <ChoosePaymentTabs />
     </Grid>
-  );
-};
+  </Grid>
+);

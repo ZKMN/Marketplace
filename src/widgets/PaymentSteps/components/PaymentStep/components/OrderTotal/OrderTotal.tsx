@@ -6,23 +6,28 @@ import {
   Typography,
 } from '@mui/material';
 
+import { getBasketTotal } from '@/widgets/PaymentSteps/lib/helpers';
+
 import { IntlTypography } from '@/shared/components';
 import { getPrice } from '@/shared/lib/helpers';
 import { basketStore } from '@/shared/lib/store';
 
-import { AddressDetailsButton } from '../../../ShippingDetailsStep/components';
+import { Discount } from './Discount';
+import { Handoff } from './Handoff';
 
-export const OrderTotal = ({
-  price,
-  quantity,
-}: {
-  price: number;
-  quantity: number;
-}) => {
+export const OrderTotal = () => {
+  const basket = basketStore((state) => state.basket);
   const carrier = basketStore((state) => state.carrier);
+  const promoCode = basketStore((state) => state.promoCode);
+
+  if (!basket) {
+    return null;
+  }
+
+  const total = getBasketTotal({ basket, carrier, promoCode });
 
   return (
-    <Grid container mt={3}>
+    <Grid container mb={3}>
       <Grid item xs={12}>
         <Box
           p={1}
@@ -40,11 +45,12 @@ export const OrderTotal = ({
 
           <Grid
             container
+            mb={0.5}
             alignItems="center"
             justifyContent="space-between"
           >
             <IntlTypography
-              intl={{ label: 'titles.pairs', values: { quantity } }}
+              intl={{ label: 'titles.pairs', values: { quantity: basket?.numItems } }}
               color="text.grey"
               fontWeight={700}
             />
@@ -53,61 +59,13 @@ export const OrderTotal = ({
               color="text.grey"
               fontWeight={700}
             >
-              {getPrice(price)}
+              {getPrice(basket?.total)}
             </Typography>
           </Grid>
 
-          {!carrier && (
-            <Grid
-              container
-              mb={0.5}
-              wrap="nowrap"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Grid item>
-                <IntlTypography
-                  intl={{ label: 'titles.pickup' }}
-                  color="text.grey"
-                  fontWeight={700}
-                />
-              </Grid>
+          <Handoff />
 
-              <Grid item pr={1}>
-                <AddressDetailsButton />
-              </Grid>
-            </Grid>
-          )}
-
-          {carrier && (
-            <Grid
-              container
-              mb={0.5}
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <IntlTypography
-                intl={{ label: 'titles.delivery' }}
-                color="text.grey"
-                fontWeight={700}
-              />
-
-              {carrier.price ? (
-                <Typography
-                  color="text.grey"
-                  fontWeight={700}
-                >
-                  {getPrice(carrier.price)}
-                </Typography>
-              ) : (
-                <IntlTypography
-                  intl={{ label: 'labels.free' }}
-                  color="text.grey"
-                  fontWeight={700}
-                />
-              )}
-            </Grid>
-          )}
+          <Discount />
 
           <Grid
             mt={2}
@@ -125,7 +83,7 @@ export const OrderTotal = ({
               color="text.grey"
               fontWeight={700}
             >
-              {getPrice(price + (carrier?.price || 0))}
+              {getPrice(total)}
             </Typography>
           </Grid>
         </Box>

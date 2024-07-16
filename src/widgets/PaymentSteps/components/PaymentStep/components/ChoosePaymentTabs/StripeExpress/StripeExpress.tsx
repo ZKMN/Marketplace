@@ -2,6 +2,7 @@ import { useStripe } from '@stripe/react-stripe-js';
 import { StripeExpressCheckoutElementOptions } from '@stripe/stripe-js';
 
 import { getClientSecret } from '@/widgets/PaymentSteps/lib/api';
+import { getBasketTotal } from '@/widgets/PaymentSteps/lib/helpers';
 
 import { config } from '@/shared/lib/config';
 import { errorMessage, getFBAEvent, getShoesType } from '@/shared/lib/helpers';
@@ -9,25 +10,29 @@ import { useTypedParams } from '@/shared/lib/hooks';
 import { basketStore } from '@/shared/lib/store';
 import { Links } from '@/shared/types';
 
-export const StripeExpress = ({ amount }: { amount: string; }) => {
+export const StripeExpress = () => {
+  const basket = basketStore((state) => state.basket);
   const carrier = basketStore((state) => state.carrier);
   const products = basketStore((state) => state.basket?.items);
+  const promoCode = basketStore((state) => state.promoCode);
   const shippingDetails = basketStore((state) => state.shippingDetails);
 
   const stripe = useStripe();
   const { lng } = useTypedParams();
 
-  if (!stripe || !shippingDetails) {
+  if (!basket || !stripe || !shippingDetails) {
     return null;
   }
+
+  const total = getBasketTotal({ basket, carrier, promoCode });
 
   const elements = stripe.elements({
     mode: 'payment',
     locale: lng,
     // stripe working with cents
-    amount: Number(amount) * 100,
-    currency: 'eur',
+    amount: total * 100,
     loader: 'always',
+    currency: 'eur',
   });
 
   const expressCheckoutOptions: StripeExpressCheckoutElementOptions = {
@@ -73,7 +78,12 @@ export const StripeExpress = ({ amount }: { amount: string; }) => {
 
   expressCheckoutElement.on('confirm', async () => {
     try {
-      const { clientSecret, orderNumber } = await getClientSecret(lng, carrier, shippingDetails);
+      const { clientSecret, orderNumber } = await getClientSecret({
+        lng,
+        carrier,
+        promoCode,
+        shippingDetails,
+      });
 
       const { error } = await stripe.confirmPayment({
         elements,

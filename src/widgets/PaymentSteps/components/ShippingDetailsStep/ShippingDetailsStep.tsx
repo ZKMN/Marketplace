@@ -70,7 +70,7 @@ export const ShippingDetailsStep = () => {
                 />
               )}
             />
-            <FormHelperText sx={{ mt: '-10px' }}>
+            <FormHelperText component="div" sx={{ mt: '-10px' }}>
               <IntlTypography
                 intl={{ label: 'texts.fastDeliveryOnlyFullPrice' }}
                 color="text.grey"

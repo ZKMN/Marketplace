@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import { CreditCard } from '@mui/icons-material';
 import { Grid, Tab, Tabs } from '@mui/material';
 import { Elements } from '@stripe/react-stripe-js';
@@ -59,8 +59,9 @@ const getA11yProps = (index: number) => ({
   'aria-controls': `pay-tabpanel-${index}`,
 });
 
-export const ChoosePaymentTabs = ({ amount }: { amount: string; }) => {
-  const [value, setValue] = React.useState(0);
+export const ChoosePaymentTabs = () => {
+  const [value, setValue] = useState(0);
+
   const { lng } = useTypedParams();
 
   const tabs = [{
@@ -166,9 +167,14 @@ export const ChoosePaymentTabs = ({ amount }: { amount: string; }) => {
           stripe={getStripe()}
           options={{ locale: lng }}
         >
-          <StripeExpress amount={amount} />
+          <StripeExpress />
 
-          <Grid item id="express-checkout-element" xs={12} minHeight={50} />
+          <Grid
+            item
+            id="express-checkout-element"
+            xs={12}
+            minHeight={50}
+          />
 
           <Grid container mt={2}>
             <Grid item xs={6}>

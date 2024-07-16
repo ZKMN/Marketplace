@@ -1,4 +1,4 @@
-import { CARRIERS, FREE_DELIVERY_PRICE } from '@/shared/consts';
+import { CARRIERS, FREE_DELIVERY_PRICE, PROMO_CODES } from '@/shared/consts';
 import { IBasketStoreActions } from '@/shared/types';
 
 import { basketStore } from './basketStore';
@@ -71,4 +71,18 @@ export const setCarrierAction: IBasketStoreActions['setCarrierAction'] = (carrie
     isFastDelivery: !carrier ? false : state.isFastDelivery,
     shippingDetails: !carrier ? null : state.shippingDetails,
   }));
+};
+
+export const setPromoCodeAction: IBasketStoreActions['setPromoCodeAction'] = (promoCode) => {
+  const promo = PROMO_CODES.find(({ code }) => code === promoCode);
+
+  if (!promo) {
+    return;
+  }
+
+  basketStore.setState({ promoCode: promo });
+};
+
+export const resetPromoCodeAction: IBasketStoreActions['resetPromoCodeAction'] = () => {
+  basketStore.setState({ promoCode: null });
 };

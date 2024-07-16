@@ -9,6 +9,7 @@ export const basketStoreValues: Readonly<IBasketStore> = {
   orderId: null,
   carrier: CARRIERS[0],
   carriers: CARRIERS,
+  promoCode: null,
   shippingDetails: null,
   isFastDelivery: false,
   isBasketLoading: true,

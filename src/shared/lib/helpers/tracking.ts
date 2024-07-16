@@ -25,7 +25,7 @@ export const FBPixelEvents = {
   init: () => {
     const ReactPixel = require('react-facebook-pixel');
 
-    ReactPixel.default.init(config.keys.FBPixelKey, undefined, { autoConfig: true, debug: true });
+    ReactPixel.default.init(config.keys.FBPixel, undefined, { autoConfig: true, debug: true });
   },
   pageView: () => {
     const ReactPixel = require('react-facebook-pixel');

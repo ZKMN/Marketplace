@@ -1,18 +1,25 @@
 import { apiPost } from '@/shared/api/instance';
 import { errorMessage, getFBAEvent } from '@/shared/lib/helpers';
-import { ICarrier, IShippingDetails, TLanguages } from '@/shared/types';
+import { IBasketStore, TLanguages } from '@/shared/types';
 
-export const getClientSecret = async (
-  lng: TLanguages,
-  carrier: ICarrier | null,
-  shippingDetails: IShippingDetails | null,
-): Promise<{ orderNumber: number; clientSecret: string; }> => {
+export const getClientSecret = async ({
+  lng,
+  carrier,
+  promoCode,
+  shippingDetails,
+}: {
+  lng: TLanguages;
+  carrier: IBasketStore['carrier'];
+  promoCode: IBasketStore['promoCode'];
+  shippingDetails: IBasketStore['shippingDetails'];
+}): Promise<{ orderNumber: number; clientSecret: string; }> => {
   try {
-    const { data } = await apiPost<{ clientSecret: string; orderNumber: number;}, { carrier: string; shippingDetails: string; }>({
+    const { data } = await apiPost<{ clientSecret: string; orderNumber: number; }, { carrier: string; promoCode: string; shippingDetails: string; }>({
       url: `/${lng}/v1/checkout/payment-intent/`,
       withCredentials: true,
       payload: {
         carrier: JSON.stringify(carrier),
+        promoCode: JSON.stringify(promoCode),
         shippingDetails: JSON.stringify(shippingDetails),
       },
     });

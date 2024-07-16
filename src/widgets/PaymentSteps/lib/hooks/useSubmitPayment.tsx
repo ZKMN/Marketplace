@@ -10,6 +10,7 @@ import { getClientSecret } from '../api';
 export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] => {
   const carrier = basketStore((state) => state.carrier);
   const products = basketStore((state) => state.basket?.items);
+  const promoCode = basketStore((state) => state.promoCode);
   const shippingDetails = basketStore((state) => state.shippingDetails);
 
   const stripe = useStripe();
@@ -32,7 +33,12 @@ export const useSubmitStripePayment = (): [() => void, { loading: boolean; }] =>
     try {
       const prods = products?.map((item) => ({ sizeId: item.product.size.id }));
 
-      const { clientSecret, orderNumber } = await getClientSecret(lng, carrier, shippingDetails);
+      const { clientSecret, orderNumber } = await getClientSecret({
+        lng,
+        carrier,
+        promoCode,
+        shippingDetails,
+      });
 
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {

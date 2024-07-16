@@ -1,4 +1,4 @@
-import { ICarrier } from '../types';
+import { ICarrier, IPromoCode } from '../types';
 
 export const PRODUCTS_COUNT = 16;
 export const FAQ_QUESTIONS = 28;
@@ -14,4 +14,10 @@ export const CARRIERS: ICarrier[] = [{
   name: 'MRW',
   price: 10,
   image: '/images/mrw-logo.png',
+}];
+
+export const PROMO_CODES: IPromoCode[] = [{
+  id: 1,
+  code: 'WEESTEP10',
+  discountPercent: 10,
 }];

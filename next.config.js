@@ -1,9 +1,10 @@
 const vercelAPI = 'https://vercel.live';
 const stripeApi = 'https://js.stripe.com';
+const stripeUI = 'https://merchant-ui-api.stripe.com/link/set-cookie';
 const mapsGoogleapis = 'https://maps.googleapis.com';
 const fontsGoogleapis = 'https://fonts.googleapis.com';
 const mapsGStatic = 'https://maps.gstatic.com';
-const fontsGStatic = ' https://fonts.gstatic.com';
+const fontsGStatic = 'https://fonts.gstatic.com';
 const appAPI = 'https://api.weestep-kids.es';
 const appAPIDev = 'https://apidev.weestep-kids.es';
 const GTag = 'https://www.googletagmanager.com';
@@ -11,7 +12,6 @@ const FBAPIs = 'https://firebaseinstallations.googleapis.com https://firebase.go
 const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytics.com';
 const clarityAPI = 'https://www.clarity.ms';
 const clarityConnect = 'https://r.clarity.ms';
-const stripeUI = 'https://merchant-ui-api.stripe.com';
 const FBPixel = 'https://connect.facebook.net';
 const facebook = 'https://www.facebook.com';
 

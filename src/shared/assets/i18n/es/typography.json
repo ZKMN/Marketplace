@@ -10,7 +10,8 @@
     "discount30": "Da la bienvenida al verano con -30% de descuento!",
     "freeDelivery": "Envío gratuito para compras superiores a 60 euros",
     "weSoldThis": "Lo siento, puede que hayamos vendido este modelo.",
-    "fastDeliveryOnlyFullPrice": "Entrega rápida sólo precio completo"
+    "fastDeliveryOnlyFullPrice": "Entrega rápida sólo precio completo",
+    "appliedPromo": "Promoción aplicada"
   },
   "labels": {
     "topSale": "Venta Superior",
@@ -57,7 +58,9 @@
     "youMayLike": "También le puede interesar",
     "howToMeasureFoot": "¿Cómo medir tu pie para elegir la talla correcta?",
     "oops": "OOPS!",
-    "orderIdValue": "Número de pedido - #{{ value }}"
+    "orderIdValue": "Número de pedido - #{{ value }}",
+    "discount": "Descuento",
+    "promo": "Promoción"
   },
   "links": {
     "home": "Inicio",

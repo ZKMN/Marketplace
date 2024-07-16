@@ -6,3 +6,5 @@ export interface IValueChange {
 }
 
 export type TLanguages = 'es' | 'en';
+
+export type TPromoCodes = 'WEESTEP10';

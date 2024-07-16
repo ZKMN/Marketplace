@@ -10,7 +10,8 @@
     "discount30": "Welcome the summer with a -30% discount!",
     "freeDelivery": "Free delivery for purchases over 60 euros!",
     "weSoldThis": "Sorry, maybe we sold this model.",
-    "fastDeliveryOnlyFullPrice": "Fast delivery only full price"
+    "fastDeliveryOnlyFullPrice": "Fast delivery only full price",
+    "appliedPromo": "Applied Promo"
   },
   "labels": {
     "topSale": "Top Sale",
@@ -57,7 +58,9 @@
     "youMayLike": "You may also like",
     "howToMeasureFoot": "How to measure your foot to choose the right size?",
     "oops": "OOPS!",
-    "orderIdValue": "Order ID - #{{ value }}"
+    "orderIdValue": "Order ID - #{{ value }}",
+    "discount": "Discount",
+    "promo": "Promotion"
   },
   "links": {
     "home": "Home",

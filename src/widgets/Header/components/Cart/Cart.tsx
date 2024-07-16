@@ -51,7 +51,7 @@ const Cart = () => {
             },
           })}
         >
-          {getPrice(basket?.total)}
+          {getPrice(basket?.total || 0)}
         </Typography>
       </IntlLink>
     </Grid>

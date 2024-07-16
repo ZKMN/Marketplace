@@ -1,10 +1,8 @@
-import { firebaseConfig } from './firebase.config';
-
 const commonVars = {
   email: 'kidsweestep@gmail.com',
   storageKeyName: 'r2-d2-kjkszpj',
   keys: {
-    gAPI: firebaseConfig.apiKey,
+    gAPI: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     FBPixel: process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID,
     stripePublish: process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY,
   },
@@ -15,7 +13,7 @@ const commonVars = {
   },
 };
 
-export const config = {
+const config = {
   test: commonVars,
   production: {
     ...commonVars,
@@ -25,4 +23,6 @@ export const config = {
     },
   },
   development: commonVars,
-}[process.env.NEXT_PUBLIC_APP_ENV || 'development'] as typeof commonVars;
+}[process.env.NEXT_PUBLIC_APP_ENV || 'development'];
+
+module.exports = config;
