@@ -7,4 +7,4 @@ export interface IValueChange {
 
 export type TLanguages = 'es' | 'en';
 
-export type TPromoCodes = 'WEESTEP10';
+export type TPromoCodes = 'WEESTEP10' | 'WEESTEP5';

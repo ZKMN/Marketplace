@@ -27,7 +27,7 @@ export const Discount = () => {
         />
       </Grid>
 
-      <Grid item pr={1}>
+      <Grid item>
         <Typography
           color="text.grey"
           fontWeight={700}
