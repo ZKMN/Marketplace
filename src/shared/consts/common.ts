@@ -16,12 +16,13 @@ export const CARRIERS: ICarrier[] = [{
   image: '/images/mrw-logo.png',
 }];
 
-export const PROMO_CODES: IPromoCode[] = [{
-  id: 1,
-  code: 'WEESTEP10',
-  discountPercent: 10,
-}, {
-  id: 1,
-  code: 'WEESTEP5',
-  discountValue: 5,
-}];
+// export const PROMO_CODES: IPromoCode[] = [{
+//   id: 1,
+//   code: 'WEESTEP10',
+//   discountPercent: 10,
+// }, {
+//   id: 1,
+//   code: 'WEESTEP5',
+//   discountValue: 5,
+// }];
+export const PROMO_CODES: IPromoCode[] = [];

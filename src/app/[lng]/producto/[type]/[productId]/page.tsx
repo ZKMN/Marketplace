@@ -17,7 +17,7 @@ export async function generateMetadata({ params: { lng, productId } }: INextPage
 
     return {
       title: `👟💖 Look at these cool ${getShoesType(product?.shoesType)}${discountText}`,
-      metadataBase: new URL(String(config.urls.site)),
+      metadataBase: new URL(config.urls.site),
       description: upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}🌟`).join(', ')),
       alternates: {
         canonical: `${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
@@ -55,8 +55,15 @@ export async function generateMetadata({ params: { lng, productId } }: INextPage
 
   return {
     title: `👟💖 Mira qué ${getShoesType(product?.shoesType)} tan chulos${discountText}`,
-    metadataBase: new URL(String(config.urls.site)),
+    metadataBase: new URL(config.urls.site),
     description: upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}🌟`).join(', ')),
+    alternates: {
+      canonical: `${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
+      languages: {
+        'es-ES': `${config.urls.site}/es${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
+        'en-US': `${config.urls.site}/en${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
+      },
+    },
     openGraph: {
       url: `${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`,
       type: 'website',
