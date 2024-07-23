@@ -55,57 +55,57 @@ export default async function generateSitemaps(): Promise<MetadataRoute.Sitemap>
     ...productsES,
     ...productsEN,
     {
-      url: `${config.urls.site}/es/${Links.CONTACTS}`,
+      url: `${config.urls.site}/es${Links.CONTACTS}`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.9,
       alternates: {
         languages: {
-          en: `${config.urls.site}/en/${Links.CONTACTS}`,
+          en: `${config.urls.site}/en${Links.CONTACTS}`,
         },
       },
     },
     {
-      url: `${config.urls.site}/es/${Links.BLOG}`,
+      url: `${config.urls.site}/es${Links.BLOG}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
       alternates: {
         languages: {
-          en: `${config.urls.site}/en/${Links.BLOG}`,
+          en: `${config.urls.site}/en${Links.BLOG}`,
         },
       },
     },
     {
-      url: `${config.urls.site}/es/${Links.FAQ}`,
+      url: `${config.urls.site}/es${Links.FAQ}`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
       alternates: {
         languages: {
-          en: `${config.urls.site}/en/${Links.FAQ}`,
+          en: `${config.urls.site}/en${Links.FAQ}`,
         },
       },
     },
     {
-      url: `${config.urls.site}/es/${Links.RETURNS_REFUNDS}`,
+      url: `${config.urls.site}/es${Links.RETURNS_REFUNDS}`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
       alternates: {
         languages: {
-          en: `${config.urls.site}/en/${Links.RETURNS_REFUNDS}`,
+          en: `${config.urls.site}/en${Links.RETURNS_REFUNDS}`,
         },
       },
     },
     {
-      url: `${config.urls.site}/es/${Links.TERMS_CONDITIONS}`,
+      url: `${config.urls.site}/es${Links.TERMS_CONDITIONS}`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
       alternates: {
         languages: {
-          en: `${config.urls.site}/en/${Links.TERMS_CONDITIONS}`,
+          en: `${config.urls.site}/en${Links.TERMS_CONDITIONS}`,
         },
       },
     },

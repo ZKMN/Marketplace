@@ -22,6 +22,7 @@ const GAAPIs = 'https://region1.google-analytics.com https://www.google-analytic
 const clarityAPI = 'https://www.clarity.ms';
 const clarityConnect = 'https://r.clarity.ms';
 const clarityIMG = 'https://c.clarity.ms';
+const clarityMSQ = 'https://q.clarity.ms';
 const FBPixel = 'https://connect.facebook.net';
 const facebook = 'https://www.facebook.com';
 
@@ -39,7 +40,7 @@ const cspHeader = `
   frame-ancestors 'none';
   block-all-mixed-content;
   upgrade-insecure-requests;
-  connect-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${clarityConnect} ${stripeUI};
+  connect-src 'self' ${appAPI} ${appAPIDev} ${mapsGoogleapis} ${stripeApi} ${vercelAPI} ${FBAPIs} ${GAAPIs} ${clarityConnect} ${stripeUI} ${clarityMSQ};
   frame-src 'self' ${vercelAPI} ${stripeApi};
 `;
 
@@ -56,6 +57,10 @@ const nextConfig = {
         pathname: '/media/images/products/**',
       },
     ],
+  },
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'es',
   },
   async headers() {
     return [
