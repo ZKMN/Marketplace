@@ -74,7 +74,7 @@ const CatalogueListComponent = ({ filters, items, ordering }: IProductsResponse)
       </Grid>
 
       <Grid container spacing={3} columns={24}>
-        <Grid item xs={24} md={7} lg={5} component="section">
+        <Grid item xs={24} md={6} lg={5} component="section">
           <Grid container spacing={{ xs: 1 }}>
             <Grid item xs={6} md={24}>
               <Grid

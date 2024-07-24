@@ -30,7 +30,7 @@ export const Header = () => {
         <Marquee autoFill>
           <IntlTypography
             pl={5}
-            intl={{ label: 'texts.discount30' }}
+            intl={{ label: 'texts.discount50' }}
             color="text.white"
             textAlign="center"
             fontWeight={700}

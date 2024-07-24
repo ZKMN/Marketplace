@@ -58,7 +58,6 @@ export const BaseImage = ({
         sizes="100vw"
         width={0}
         height={0}
-        loader={imageLoader}
         onClick={onClick}
         priority={priority}
         style={{

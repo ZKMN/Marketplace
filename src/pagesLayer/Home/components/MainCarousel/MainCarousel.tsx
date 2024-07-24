@@ -11,7 +11,7 @@ import { Links } from '@/shared/types';
 export const MainCarousel = () => {
   const [handleRedirect] = useClickRedirect();
 
-  const banners = [1, 2, 3, 4, 5, 6];
+  const banners = [2, 3, 5, 6];
 
   return (
     <BaseContainer disableGutters maxWidth={1500}>
@@ -28,7 +28,7 @@ export const MainCarousel = () => {
           autoplaySpeed={4000}
           slidesToScroll={1}
         >
-          {banners.map((image, index) => (
+          {banners.map((image) => (
             <Grid
               key={image}
               onClick={handleRedirect(`${Links.CATALOGUE}/1`)}
@@ -49,8 +49,8 @@ export const MainCarousel = () => {
               <BaseImage
                 pointer
                 fullWidth
-                alt={`Banner-${index}`}
-                src={`/images/banners/banner-es-${index + 1}.png`}
+                alt={`Banner-${image}`}
+                src={`/images/banners/banner-es-${image}.png`}
               />
             </Grid>
           ))}
