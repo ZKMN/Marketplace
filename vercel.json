@@ -1,11 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/",
-      "destination": "/es",
-      "statusCode": 301
-    },
-    {
       "source": "/:path+",
       "has": [
         {
@@ -13,7 +8,7 @@
           "key": "selected_facets"
         }
       ],
-      "destination": "/:path+",
+      "destination": "/es",
       "statusCode": 301
     },
     {
