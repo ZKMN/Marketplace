@@ -240,7 +240,7 @@ export const getEnMetadata = ({
   metadataBase: new URL(config.urls.site),
   applicationName: 'Weestep kids',
   alternates: {
-    canonical: url.replace('/en', '/es'),
+    canonical: url,
     languages: {
       'es-ES': new URL(`${config.urls.site}/es`),
       'en-US': new URL(`${config.urls.site}/en`),
