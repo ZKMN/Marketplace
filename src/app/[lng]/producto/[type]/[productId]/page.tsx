@@ -139,7 +139,7 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
 
       <ProductJsonLd
         useAppDir
-        id={String(product?.productId)}
+        id={`${config.urls.site}/${lng}${Links.PRODUCT}/${product?.shoesType}/${product?.productId}`}
         mpn={String(product?.productId)}
         brand="Weestep"
         color={product?.color.value}
