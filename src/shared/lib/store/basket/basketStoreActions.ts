@@ -56,6 +56,7 @@ export const resetPaymentInfoAction: IBasketStoreActions['resetPaymentInfoAction
   basketStore.setState({
     step: 0,
     carrier: CARRIERS[0],
+    promoCode: null,
     isFastDelivery: false,
     shippingDetails: null,
   });
