@@ -143,10 +143,10 @@ const ProductPage = async ({ params: { lng, type, productId } }: INextPageParams
         mpn={String(product?.productId)}
         brand="Weestep"
         color={product?.color.value}
-        sizes={product?.sizes.map((size) => size.value)}
+        // sizes={product?.sizes.map((size) => size.value)}
         images={product?.images}
-        colors={product?.colors}
-        discount={product?.discount ? `${product?.discount.toFixed(0)}%` : undefined}
+        // colors={product?.colors}
+        // discount={product?.discount ? `${product?.discount.toFixed(0)}%` : undefined}
         productName={getShoesType(product?.shoesType)}
         description={upperFirst(product?.details.map((detail) => `${detail.title} - ${detail.description}`).join(', '))}
         aggregateRating={{
