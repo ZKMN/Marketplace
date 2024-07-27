@@ -8,7 +8,8 @@ export interface IProductColor {
 export interface IProductSize {
   id: number;
   value: string;
-  centimeters?: number;
+  available: number;
+  centimeters: number;
 }
 
 export interface IProduct {

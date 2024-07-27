@@ -46,8 +46,8 @@ export const getEsMetadata = ({
   alternates: {
     canonical: url,
     languages: {
-      'es-ES': new URL(`${config.urls.site}/es`),
-      'en-US': new URL(`${config.urls.site}/en`),
+      'es-ES': `${config.urls.site}/es`,
+      'en-US': `${config.urls.site}/en`,
     },
   },
   icons: ICONS,
@@ -142,8 +142,8 @@ export const getArticleEsMetadata = ({
   alternates: {
     canonical: url,
     languages: {
-      'es-ES': new URL(`${config.urls.site}/es`),
-      'en-US': new URL(`${config.urls.site}/en`),
+      'es-ES': `${config.urls.site}/es`,
+      'en-US': `${config.urls.site}/en`,
     },
   },
   icons: ICONS,
@@ -195,10 +195,10 @@ export const getArticleEnMetadata = ({
   category: 'Shoes',
   applicationName: 'Weestep kids',
   alternates: {
-    canonical: url.replace('/en', '/es'),
+    canonical: url,
     languages: {
-      'es-ES': new URL(`${config.urls.site}/es`),
-      'en-US': new URL(`${config.urls.site}/en`),
+      'es-ES': `${config.urls.site}/es`,
+      'en-US': `${config.urls.site}/en`,
     },
   },
   icons: ICONS,
@@ -242,8 +242,8 @@ export const getEnMetadata = ({
   alternates: {
     canonical: url,
     languages: {
-      'es-ES': new URL(`${config.urls.site}/es`),
-      'en-US': new URL(`${config.urls.site}/en`),
+      'es-ES': `${config.urls.site}/es`,
+      'en-US': `${config.urls.site}/en`,
     },
   },
   icons: ICONS,

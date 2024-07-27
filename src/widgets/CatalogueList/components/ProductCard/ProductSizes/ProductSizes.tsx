@@ -16,7 +16,7 @@ export const ProductSizes = ({ sizes }: { sizes: IProduct['sizes']; }) => (
 
     <Grid item flex={1}>
       <Grid container spacing={0.5}>
-        {sizes.map(({ id, value }) => (
+        {sizes.filter(({ available }) => !!available).map(({ id, value }) => (
           <Grid
             item
             key={id}

@@ -25,7 +25,7 @@ export const ChooseSize = ({ sizes }: { sizes?: IProductDetails['sizes']; }) => 
 
       <Grid item flex={1}>
         <Grid container spacing={1}>
-          {sizes?.map(({ id, value }) => (
+          {sizes?.filter(({ available }) => !!available).map(({ id, value }) => (
             <Grid item key={id} flex={1} maxWidth={60}>
               <Box
                 width="100%"
