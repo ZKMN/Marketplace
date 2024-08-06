@@ -15,14 +15,14 @@ const questions = Array.from({ length: FAQ_QUESTIONS }, (_, index) => index + 1)
 export async function generateMetadata({ params: { lng } }: INextPageParams): Promise<Metadata> {
   if (lng === 'en') {
     return getEnMetadata({
-      url: `${config.urls.site}/${lng}${Links.RETURNS_REFUNDS}`,
+      url: `${config.urls.site}/${lng}${Links.FAQ}`,
       title: 'Frequent Questions - Weestep Kids',
       description: "🔎 Seeking answers? Discover quick solutions to common questions about Weestep Kids on our FAQ page. From returns to shipping, we've got you covered. 🛍️ Shop confidently with us! 🌟 Got questions? We have answers! 💬🔍",
     });
   }
 
   return getEsMetadata({
-    url: `${config.urls.site}/${lng}${Links.RETURNS_REFUNDS}`,
+    url: `${config.urls.site}/${lng}${Links.FAQ}`,
     title: 'Preguntas Frecuentes - Weestep Kids',
     description: '🔎 ¿Buscas respuestas? Descubre soluciones rápidas a preguntas comunes sobre Weestep Kids en nuestra página de preguntas frecuentes. Desde devoluciones hasta envíos, ¡te tenemos cubierto! 🛍️ ¡Compra con confianza con nosotros! 🌟 ¿Tienes preguntas? ¡Nosotros tenemos respuestas! 💬🔍',
   });

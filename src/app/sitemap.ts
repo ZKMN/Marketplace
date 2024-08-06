@@ -24,7 +24,7 @@ const getCatalogSitemapPages = async (): Promise<MetadataRoute.Sitemap> => {
 };
 
 const getProductSitemap = async (lng: TLanguages): Promise<MetadataRoute.Sitemap> => {
-  const products = await getAllProducts('en');
+  const products = await getAllProducts(lng);
 
   return products.map((product) => ({
     url: `${config.urls.site}/${lng}${Links.PRODUCT}/${product.shoesType}/${product.productId}`,
