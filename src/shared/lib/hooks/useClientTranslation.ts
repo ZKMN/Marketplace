@@ -31,7 +31,7 @@ export const useClientTranslation = (
 ): [(label: string, values?: Record<string, unknown>) => string, { i18n: i18n; ready: boolean; }] => {
   const { lng } = useTypedParams();
 
-  const translation = useTranslation();
+  const translation = useTranslation(filename, options);
 
   const { i18n } = translation;
 
