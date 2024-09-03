@@ -31,7 +31,7 @@ export const useClientTranslation = (
 ): [(label: string, values?: Record<string, unknown>) => string, { i18n: i18n; ready: boolean; }] => {
   const { lng } = useTypedParams();
 
-  const translation = useTranslation(filename, options);
+  const translation = useTranslation();
 
   const { i18n } = translation;
 
@@ -53,7 +53,16 @@ export const useClientTranslation = (
     }, [lng, i18n]);
   }
 
-  const handleTranslation = useCallback((label: string, values?: Record<string, unknown>) => translation.t(label, values), []);
+  const handleTranslation = useCallback((label: string, values?: Record<string, unknown>) => {
+    const prefixedKey = options.keyPrefix ? `${options.keyPrefix}.${label}` : label;
+    const translationExists = i18n.exists(prefixedKey, { ns: filename });
+
+    if (translationExists) {
+      return translation.t(label, values);
+    }
+
+    return label;
+  }, [lng, options.keyPrefix]);
 
   return [handleTranslation, { i18n, ready: translation.ready }];
 };

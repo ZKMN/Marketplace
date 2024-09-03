@@ -1,6 +1,9 @@
 import { PRODUCTS_COUNT } from '@/shared/consts';
 import {
-  IProduct, IProductDetails, IProductsResponse, TLanguages,
+  IProduct,
+  IProductDetails,
+  IProductsResponse,
+  TLanguages,
 } from '@/shared/types';
 
 import { apiGet } from '../instance';
@@ -13,8 +16,6 @@ export const getServerProducts = async (lng: TLanguages, page: string) => {
 
     return data;
   } catch (error) {
-    console.warn(error);
-
     return {
       items: [], filters: [], ordering: null, total: 0,
     };

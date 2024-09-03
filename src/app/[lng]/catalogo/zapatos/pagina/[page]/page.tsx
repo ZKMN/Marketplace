@@ -14,14 +14,14 @@ export async function generateMetadata({ params: { lng, page } }: INextPageParam
     return getEnMetadata({
       url: `${config.urls.site}/${lng}${Links.CATALOGUE}/${page}`,
       title: 'Look at these cool shoes - Weestep Kids',
-      description: '👟💖 Immerse yourself in the world of comfort with our children\'s footwear! 💫 300+ models of orthopedic footwear - caring for your child\'s health. Find the perfect pair right now and get a -30% discount! 👣🌟',
+      description: '👟💖 Immerse yourself in the world of comfort with our children\'s footwear! 💫 300+ models of orthopedic footwear - caring for your child\'s health. Find the perfect pair right now and get a -50% discount! 👣🌟',
     });
   }
 
   return getEsMetadata({
     url: `${config.urls.site}/${lng}${Links.CATALOGUE}/${page}`,
     title: 'Mira qué zapatos tan chulos - Weestep Kids',
-    description: '👟💖 ¡Sumérgete en el mundo del confort con nuestro calzado infantil! 💫 Más de 300+ modelos de calzado ortopédico: cuidado de la salud de tu hijo. ¡Encuentra el par perfecto ahora y obtén un descuento del -30%! 👣🌟',
+    description: '👟💖 ¡Sumérgete en el mundo del confort con nuestro calzado infantil! 💫 Más de 300+ modelos de calzado ortopédico: cuidado de la salud de tu hijo. ¡Encuentra el par perfecto ahora y obtén un descuento del -50%! 👣🌟',
   });
 }
 

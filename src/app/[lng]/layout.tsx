@@ -24,15 +24,26 @@ const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INext
   <html lang={lng} dir={dir(lng)}>
     <body className={weestepFont.className}>
       {process.env.NEXT_PUBLIC_APP_ENV === 'production' && (
-        <Script id="ms-clarity">
-          {`
-          (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, "clarity", "script", "moqac0yyrw");
-        `}
-        </Script>
+        <>
+          <Script id="ms-clarity">
+            {`
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "moqac0yyrw");
+            `}
+          </Script>
+          <Script id="ga">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'AW-16690972399');
+            `}
+          </Script>
+        </>
       )}
 
       <SpeedInsights />
@@ -79,7 +90,7 @@ const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INext
         id={config.urls.site}
         type="Store"
         name="Weestep Kids"
-        description="👟💖 ¡Sumérgete en el mundo del confort con nuestro calzado infantil! 💫 Más de 300+ modelos de calzado ortopédico: cuidado de la salud de tu hijo. ¡Encuentra el par perfecto ahora y obtén un descuento del -30%! 👣🌟"
+        description="👟💖 ¡Sumérgete en el mundo del confort con nuestro calzado infantil! 💫 Más de 300+ modelos de calzado ortopédico: cuidado de la salud de tu hijo. ¡Encuentra el par perfecto ahora y obtén un descuento del -50%! 👣🌟"
         url="https://www.google.com/maps/place/Weestep+Kids/@38.3451796,-0.4872723,17z/data=!3m1!4b1!4m6!3m5!1s0xd623756defcf3f7:0x78e330b29a88f2f8!8m2!3d38.3451796!4d-0.4872723!16s%2Fg%2F11vjdvrb87?entry=ttu"
         telephone="+34611822584"
         address={{
