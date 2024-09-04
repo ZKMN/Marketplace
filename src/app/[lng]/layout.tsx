@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { dir } from 'i18next';
 import Script from 'next/script';
@@ -46,6 +47,7 @@ const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INext
         </>
       )}
 
+      <Analytics />
       <SpeedInsights />
 
       <LogoJsonLd
